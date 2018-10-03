@@ -4,8 +4,8 @@
   <div class="row text-center">
     <div class="col-12">
       <form>
-        <input class="form-control" placeholder="Search your event, city or artist" >
-        <button class="btn btn-primary mt-4 mb-4">Search</button>
+        <input #bar class="form-control" placeholder="Search your event, city or artist" (keyup.enter)="onSubmit(bar.value)" >
+        <button (click)="onSubmit(bar.value)" class="btn btn-primary mt-4 mb-4">Search</button>
       </form>
       </div>
   </div>
