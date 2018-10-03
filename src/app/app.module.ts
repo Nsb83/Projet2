@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ResultsPageComponent } from './results-page/results-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     HomeComponent,
     SearchBarComponent,
     ResultsPageComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
