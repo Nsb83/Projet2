@@ -3,8 +3,8 @@
 <div class="container">
   <div class="row text-center">
     <div class="col-12">
-        <input #bar class="form-control" placeholder="Search your event, city or artist" (keyup.enter)="onSubmit(bar.value)">
-        <button (click)="onSubmit(bar.value)" class="btn btn-primary mt-4 mb-4" type="button">Search</button>
+        <input #bar class="form-control" placeholder="Search your event, city or artist">
+        <button (click)="onSubmit(bar.value)" class="btn btn-primary mt-4 mb-4" type="button" routerLink="/results">Search</button>
         <p style="color:white">You searched for: {{ inputSearch }}</p>
       </div>
   </div>
