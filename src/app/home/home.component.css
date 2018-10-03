@@ -1,13 +1,16 @@
-body {
+.container-fluid {
     height: 100vh;
     background-image: url(https://hebergeur-images.com/up/23f9e731ba63a91ec9d7fbcd8a7934dd.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 h1 {
     color: white;
     padding-top: 40vh;
     font-size: 8vh;
     text-align: center;
-    text-shadow: 3px 4px black;
+    text-shadow:  0px 4px 3px rgba(0,0,0,0.4),
+                  0px 8px 13px rgba(0,0,0,0.1),
+                  0px 18px 23px rgba(0,0,0,0.1);
 }
