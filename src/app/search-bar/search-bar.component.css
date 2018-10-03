@@ -1,15 +1,8 @@
-input{
+input {
     border-radius:20em;
-
 }
 
-button{
+button {
     width:12rem;
-    border-radius:20em;
-}
-
-.caca{
-
-    font-size: 1.5em;
-    border-radius:20em;
+    border-radius:20rem;
 }
