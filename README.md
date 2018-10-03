@@ -1,27 +1,30 @@
-# Project
+# Projet 2 Java : Find your concert 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+### Team : 
+* Nicolas Barbier
+* Mathieu Kanel
+* Julien Schader
+* Jean-Noël Bourrat
+* Magali Klein
+* Zakaria Hamichi
 
-## Development server
+### Objectif / Goal
+_Concevoir un site de recherche d’évènements musicaux. Le site doit permettre une recherche par ville, artiste, salle de concert. Le site est responsive._
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Design a website that allow the user to search for concert by city, artist or concert hall. It must be responsive. 
 
-## Code scaffolding
+### Données techniques / Technical data 
+_Les contraintes techniques sont de 3 ordres : 
+* Utilisation du Framework Angular
+* Utilisation de l’API Songkick
+* Utilisation de l’API Google pour la localisation des évènements sur une carte_
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Website must use : 
+* Angular Framework
+* Songkick API
+* Google map API
 
-## Build
+### Période de réalisation / implementation period
+_Octobre - Novembre 2018_
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+October - November 2018
