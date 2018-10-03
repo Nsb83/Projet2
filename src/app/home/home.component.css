@@ -1,0 +1,13 @@
+body {
+    height: 100vh;
+    background-image: url(https://hebergeur-images.com/up/23f9e731ba63a91ec9d7fbcd8a7934dd.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1 {
+    color: white;
+    padding-top: 40vh;
+    font-size: 8vh;
+    text-align: center;
+    text-shadow: 3px 4px black;
+}
