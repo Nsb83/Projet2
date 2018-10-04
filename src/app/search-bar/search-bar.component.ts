@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { SearchInputService } from '../search-input.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  public inputSearch: string;
+  constructor(
+    public _searchInputService: SearchInputService,
+    private router: Router
+    ) { }
 
-  constructor() { }
-
-  onSubmit(value: string) {
-    this.inputSearch = value;
+  onSearch(value) {
+    this._searchInputService.searchInput=value;
+    this.router.navigateByUrl('/results');
   }
 
   ngOnInit() {

@@ -1,0 +1,10 @@
+.userInput {
+  font-size: 2rem;
+  color: purple;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.resultsLine {
+  font-size: 2rem;
+}

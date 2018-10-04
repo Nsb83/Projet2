@@ -1,1 +1,12 @@
-<p>Artiste recherché :</p>
+<div class="row mr-5">
+  <div class="col-12">
+    <span class="resultsLine">Results for <span class="userInput">'{{ userInput }}'</span></span>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-12">
+    <ul *ngIf="userInput">
+      <li>{{ artists.resultsPage.results.artist | json }}</li>
+    </ul>
+  </div>
+</div>
