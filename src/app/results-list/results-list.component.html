@@ -1,4 +1,12 @@
-<p>Results for {{ userInput }} </p>
-<!-- <ul *ngFor="let artist of artists"> -->
-  <li> {{ artists | json }}</li>
-<!-- </ul> -->
+<div class="row mr-5">
+  <div class="col-12">
+    <span class="resultsLine">Results for <span class="userInput">'{{ userInput }}'</span></span>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-12">
+    <ul *ngIf="userInput">
+      <li>{{ artists.resultsPage.results.artist | json }}</li>
+    </ul>
+  </div>
+</div>
