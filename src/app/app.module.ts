@@ -9,7 +9,8 @@ import { ResultsPageComponent } from './results-page/results-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ResultsListComponent } from './results-list/results-list.component';
 // import { FormsModule } from '@angular/forms';
-import { SearchInputService } from './search-input.service'
+import { SearchInputService } from './search-input.service';
+import { SearchByArtistService } from './search-by-artist.service'
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,8 +36,10 @@ const appRoutes: Routes = [
     // FormsModule
   ],
   providers: [
-    SearchInputService
+    SearchInputService,
+    SearchByArtistService
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import { SearchInputService } from '../search-input.service';
+import { SearchByArtistService } from "../search-by-artist.service";
+// import { SearchInputService } from '../search-input.service';
 
 @Component({
   selector: 'app-results-list',
@@ -11,12 +12,12 @@ import { SearchInputService } from '../search-input.service';
 
 export class ResultsListComponent implements OnInit {
 
-  public input: string;
+  public output: any;
 
-  constructor(private _searchInputService: SearchInputService) { }
+  constructor(private _searchbyArtistService: SearchByArtistService) { }
 
   ngOnInit() {
-    this.input=this._searchInputService.getSearchInput();
+    this.output=this._searchbyArtistService.getResults();
   }
 
 }
