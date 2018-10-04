@@ -1,11 +1,8 @@
 
-<!-- Ceci est le code de la barre de recherche et du titre -->
-<div class="container">
-  <div class="row text-center">
-    <div class="col-12">
-        <input #bar class="form-control" placeholder="Search your event, city or artist">
-        <button (click)="onSubmit(bar.value)" class="btn btn-primary mt-4 mb-4" type="button" routerLink="/results">Search</button>
-        <p style="color:white">You searched for: {{ inputSearch }}</p>
-      </div>
+<!-- Ceci est le code de la barre de recherche -->
+<div class="input-group d-flex justify-content-center">
+  <input #bar class="form-control" placeholder="Search for an artist">
+  <div class="input-group-append">
+    <button (click)="onSubmit(bar.value)" class="btn btn-primary" type="button" routerLink="/results"><i class="fa fa-search"></i></button>
   </div>
 </div>
