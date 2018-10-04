@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchInputService } from '../search-input.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,12 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  public inputSearch: string;
+  constructor(public _searchInputService: SearchInputService) { }
 
-  constructor() { }
-
-  onSubmit(value: string) {
-    this.inputSearch = value;
+  onSearch(value) {
+    this._searchInputService.searchInput=value;
   }
 
   ngOnInit() {
