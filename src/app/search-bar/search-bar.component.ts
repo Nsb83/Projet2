@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
+  public inputSearch: string;
+
   constructor() { }
+
+  onSubmit(value: string) {
+    this.inputSearch = value;
+  }
 
   ngOnInit() {
   }
