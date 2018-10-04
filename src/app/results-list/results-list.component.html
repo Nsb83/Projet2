@@ -5,8 +5,11 @@
 </div>
 <div class="row mt-3">
   <div class="col-12">
-    <ul *ngIf="userInput">
-      <li>{{ artists.resultsPage.results.artist | json }}</li>
+    <ul *ngFor="let x of artists.resultsPage.results.artist">
+      <li>{{ x.displayName | json }}</li>
+      <hr>
     </ul>
   </div>
 </div>
+
+<!-- *ngIf="userInput"  -->

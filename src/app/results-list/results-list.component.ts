@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { SearchByArtistService } from "../search-by-artist.service";
 import { SearchInputService } from '../search-input.service';
-// import { IArtist } from "../classes/iartist";
+
 
 @Component({
   selector: 'app-results-list',

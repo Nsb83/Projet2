@@ -8,3 +8,7 @@
 .resultsLine {
   font-size: 2rem;
 }
+
+ul li {
+  list-style-type: none;
+}
