@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { SearchByArtistService } from "../search-by-artist.service";
-// import { SearchInputService } from '../search-input.service';
+import { SearchInputService } from '../search-input.service';
+// import { IArtist } from "../classes/iartist";
 
 @Component({
   selector: 'app-results-list',
@@ -12,12 +13,19 @@ import { SearchByArtistService } from "../search-by-artist.service";
 
 export class ResultsListComponent implements OnInit {
 
-  public output: any;
+  public userInput: string;
+  public artists: any;
+  // public artistArray = this.artists.resultsPage.results.artist;
 
-  constructor(private _searchbyArtistService: SearchByArtistService) { }
+  constructor(
+    private _searchbyArtistService: SearchByArtistService,
+    private _searchInputService: SearchInputService
+    ) { }
 
   ngOnInit() {
-    this.output=this._searchbyArtistService.getResults();
+    this._searchbyArtistService.getResults()
+      .subscribe(data => this.artists = data);
+    this.userInput = this._searchInputService.getSearchInput();
   }
 
 }
