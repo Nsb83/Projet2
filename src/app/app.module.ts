@@ -7,6 +7,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ResultsPageComponent } from './results-page/results-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ResultsListComponent } from './results-list/results-list.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,12 +23,14 @@ const appRoutes: Routes = [
     SearchBarComponent,
     ResultsPageComponent,
     NavbarComponent,
+    ResultsListComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
