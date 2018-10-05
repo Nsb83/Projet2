@@ -5,10 +5,22 @@
   font-style: italic;
 }
 
+.subText {
+  font-size: 1.3rem;
+}
+
 .resultsLine {
   font-size: 2rem;
 }
 
 ul li {
   list-style-type: none;
+}
+
+.artistName {
+  font-size: 1.7rem;
+}
+
+.songkickLink {
+  font-size: 1.3rem;
 }
