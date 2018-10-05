@@ -9,7 +9,7 @@
   </div>
   <div class="row mt-3">
     <div class="col-12">
-      <ul *ngFor="let artist of artists.resultsPage.results.artist">
+      <ul *ngFor="let artist of artists">
         <li>
           <div class="row">
             <div class="col-12 artistName mr-3">{{ artist.displayName }}<span class="text-success" *ngIf="artist.onTourUntil !== null"> (on tour until {{ artist.onTourUntil }})</span></div>

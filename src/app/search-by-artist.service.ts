@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { IArtist } from './classes/iartist';
+// import { IArtist } from './classes/iartist';
 import { Observable } from 'rxjs';
 import { SearchInputService } from './search-input.service';
 
@@ -17,7 +17,7 @@ export class SearchByArtistService {
     private _searchInputService: SearchInputService
   ) { }
 
-  getResults(): Observable<IArtist[]> {
-    return this.http.get<IArtist[]>(this._url);
+  getResults(): Observable<any> {
+    return this.http.get<any>(this._url);
   }
 }
