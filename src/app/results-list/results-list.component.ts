@@ -14,7 +14,7 @@ import { SearchInputService } from '../search-input.service';
 export class ResultsListComponent implements OnInit {
 
   public userInput: string;
-  public artists: any;
+  public artists= [];
   // public artistArray = this.artists.resultsPage.results.artist;
 
   constructor(
@@ -33,7 +33,7 @@ export class ResultsListComponent implements OnInit {
   ngOnInit() {
     this.userInput = this._searchInputService.getSearchInput();
     this._searchbyArtistService.getResults()
-      .subscribe(data => this.artists = data);
+      .subscribe(data => this.artists = data.resultsPage.results.artist);
   }
 
 }
