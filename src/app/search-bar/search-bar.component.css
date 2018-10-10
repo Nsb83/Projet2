@@ -8,3 +8,16 @@ button {
   min-width:50px;
   border-radius:20rem;
 }
+
+
+@media (max-width: 577px) {
+  :host input {
+    min-width:100px; 
+    }
+  }
+
+@media (min-width: 788px) {
+  :host input {
+    min-width:400px; 
+      }
+    }
