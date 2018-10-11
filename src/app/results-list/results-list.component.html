@@ -4,7 +4,7 @@
       <span class="resultsLine">Results for <span class="userInput">'{{ userInput }}'</span></span>
     </div>
     <div class="col-12">
-      <span class="subText">Click on the link to visit the artist's profile on songkick.</span>
+      <span class="subText">Click on the artist's name to get the list of their next concerts.</span>
     </div>
   </div>
   <div class="row mt-3">
@@ -14,7 +14,7 @@
           <div class="row align-items-center">
             <div class="col-10">
               <div class="artistName">
-                <a routerLink='/artist/{{artist.id}}'> {{ artist.displayName }}</a>
+                <a routerLink='/artist/{{ artist.id }}'> {{ artist.displayName }}</a>
               </div>
               <div class="col-12">
                 <span class="text-success onTour" *ngIf="artist.onTourUntil !== null"> ( On tour until {{ artist.onTourUntil }} )</span>
@@ -22,7 +22,7 @@
               </div>
             </div>
             <div class="col-2 d-flex justify-content-end align">
-              <img class="musicNote" src="http://www.iconninja.com/files/652/469/90/note-audio-music-sound-icon.png" alt="a music note">
+              <a href='{{ artist.uri }}' target="blank"><img class="musicNote" src="http://www.iconninja.com/files/652/469/90/note-audio-music-sound-icon.png" alt="a music note"></a>
             </div>
           </div>
         </li>

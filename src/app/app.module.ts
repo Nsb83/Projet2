@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ResultsListComponent } from './results-list/results-list.component';
 import { SearchByArtistService } from './search-by-artist.service';
 import { ArtistPageComponent } from "./artist-page/artist-page.component";
+import { ConcertListComponent } from './concert-list/concert-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
     NavbarComponent,
     ResultsListComponent,
     ArtistPageComponent,
+    ConcertListComponent,
   ],
   imports: [
     BrowserModule,
