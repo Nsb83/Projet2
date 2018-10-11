@@ -9,8 +9,6 @@ import { ActivatedRoute, Params } from "@angular/router";
   styleUrls: ['./results-list.component.css']
 })
 
-
-
 export class ResultsListComponent implements OnInit {
 
 
