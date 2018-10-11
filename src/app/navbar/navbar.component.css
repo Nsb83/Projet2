@@ -1,8 +1,8 @@
-button {
+/* button {
   border: none;
   outline: none;
   text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-}
+} */
 
 button:hover {
   opacity:0.8;
@@ -11,8 +11,15 @@ button:hover {
 
 a {
   text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  font-size: 2rem;
 }
 
 a:hover {
   opacity:0.8;
+}
+
+@media (max-width: 577px) {
+  .txt {
+    display:none;
+  }
 }
