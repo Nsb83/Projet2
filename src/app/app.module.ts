@@ -16,7 +16,6 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'results', component: ResultsPageComponent },
   { path: 'results/:value', component: ResultsPageComponent }
-  // { path: '**', component: PageNotFoundComponent }
 ]
 
 @NgModule({
@@ -33,11 +32,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes
     ),
-    HttpClientModule,
-    // FormsModule
+    HttpClientModule
   ],
   providers: [
-    SearchInputService,
     SearchByArtistService
   ],
   bootstrap: [AppComponent]
