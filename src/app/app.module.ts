@@ -8,13 +8,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { ResultsPageComponent } from './results-page/results-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ResultsListComponent } from './results-list/results-list.component';
-import { SearchByArtistService } from './search-by-artist.service'
+import { SearchByArtistService } from './search-by-artist.service';
+import { ArtistPageComponent } from "./artist-page/artist-page.component";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'results', component: ResultsPageComponent },
-  { path: 'results/:value', component: ResultsPageComponent }
+  { path: 'results/:value', component: ResultsPageComponent },
+  { path: 'artist/:id', component: ArtistPageComponent },
+
 ]
 
 @NgModule({
@@ -25,6 +28,7 @@ const appRoutes: Routes = [
     ResultsPageComponent,
     NavbarComponent,
     ResultsListComponent,
+    ArtistPageComponent,
   ],
   imports: [
     BrowserModule,

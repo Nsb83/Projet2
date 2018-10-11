@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchByArtistService } from "../search-by-artist.service";
-import { ActivatedRoute, Params } from "@angular/router";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 
 
 @Component({
@@ -14,14 +14,19 @@ export class ResultsListComponent implements OnInit {
 
   constructor(
     private _searchbyArtistService: SearchByArtistService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) { }
 
   public userInput: string;
   public artists = [];
 
+  onChoosing(id) {
+    this.router.navigate(['/artist', id]);
+  }
+
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
+    this.route.params.subscribe((params: ParamMap) => {
         this.userInput = params['value'];
         this._searchbyArtistService.getResults(this.userInput)
           .subscribe(data => this.artists = data.resultsPage.results.artist);
