@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-// import { IArtist } from './classes/iartist';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SearchInputService } from './search-input.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchByArtistService {
 
-  public userInput: string = this._searchInputService.getSearchInput();
-  private _url: string = `https://api.songkick.com/api/3.0/search/artists.json?apikey=R82Hox7PJZDJyV0G&query=${this.userInput}`;
+  private _url: string;
 
   constructor(
     private http: HttpClient,
-    private _searchInputService: SearchInputService
   ) { }
 
-  getResults(): Observable<any> {
+  getResults(userInput): Observable<any> {
+    this._url = `https://api.songkick.com/api/3.0/search/artists.json?apikey=R82Hox7PJZDJyV0G&query=${userInput}`;
+    console.log(`Le service search-by-artiste a utilisé l'url suivante : ${this._url}`);
     return this.http.get<any>(this._url);
   }
 }

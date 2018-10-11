@@ -9,8 +9,4 @@ export class SearchInputService {
   searchInput: string;
 
   constructor() { }
-
-  getSearchInput() {
-    return this.searchInput;
-  }
 }
