@@ -12,12 +12,12 @@ button {
 
 @media (max-width: 577px) {
   :host input {
-    min-width:100px; 
+    min-width:100px;
     }
   }
 
 @media (min-width: 788px) {
   :host input {
-    min-width:400px; 
+    min-width:400px;
       }
     }

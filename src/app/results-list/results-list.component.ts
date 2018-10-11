@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchByArtistService } from "../search-by-artist.service";
-import { SearchInputService } from '../search-input.service';
+import { ActivatedRoute, Params } from "@angular/router";
 
 
 @Component({
@@ -9,33 +9,24 @@ import { SearchInputService } from '../search-input.service';
   styleUrls: ['./results-list.component.css']
 })
 
-
-
 export class ResultsListComponent implements OnInit {
 
-  public userInput: string;
-  public artists= [];
-  // public artistArray = this.artists.resultsPage.results.artist;
 
   constructor(
-    private _searchInputService: SearchInputService,
-    private _searchbyArtistService: SearchByArtistService
+    private _searchbyArtistService: SearchByArtistService,
+    private route: ActivatedRoute
     ) { }
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if(changes.userInput) {
-  //     this.userInput = this._searchInputService.getSearchInput();
-  //     this._searchbyArtistService.getResults()
-  //       .subscribe(data => this.artists = data);
-  //   }
-  // }
+  public userInput: string;
+  public artists = [];
 
   ngOnInit() {
-    this.userInput = this._searchInputService.getSearchInput();
-    this._searchbyArtistService.getResults()
-      .subscribe(data => this.artists = data.resultsPage.results.artist);
+    this.route.params.subscribe((params: Params) => {
+        this.userInput = params['value'];
+        this._searchbyArtistService.getResults(this.userInput)
+          .subscribe(data => this.artists = data.resultsPage.results.artist);
+      });
   }
-
 }
 
 
