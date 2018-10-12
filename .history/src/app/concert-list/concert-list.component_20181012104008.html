@@ -4,18 +4,18 @@
     <div class=row>
 
       <div class="col-md-2 mt-3 text-info">
-        <h2>{{concert.performance[0].displayName}}</h2>
+          <h2>{{concert.performance[0].displayName}}</h2>
       </div>
 
       <div class="col-md-10">
         <ul>
           <li class="list-group-item shadow p-3 mb-5 bg-white rounded">
 
-            <div>
-              <h3 class='text-secondary'>{{concert.start.datetime | date:"short"}}</h3>
-              <h4><a href='{{concert.uri}}'>{{concert.venue.displayName}}</a></h4>
-              <h5>{{concert.location.city}}</h5>
-            </div>
+              <div >
+                <h3 class='text-secondary'>{{concert.start.datetime | date:"short"}}</h3>
+                <h4><a href='{{concert.uri }}'{{concert.venue.displayName}}</h4>
+                <h5>{{concert.location.city}}</h5>
+              </div>
 
           </li>
         </ul>
