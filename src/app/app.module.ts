@@ -11,6 +11,7 @@ import { ResultsListComponent } from './results-list/results-list.component';
 import { SearchByArtistService } from './search-by-artist.service';
 import { ArtistPageComponent } from "./artist-page/artist-page.component";
 import { ConcertListComponent } from './concert-list/concert-list.component';
+import { ArtistImgComponent } from './artist-img/artist-img.component'
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   { path: 'results', component: ResultsPageComponent },
   { path: 'results/:value', component: ResultsPageComponent },
   { path: 'artist/:id', component: ArtistPageComponent },
-
+  { path: 'artist-img', component: ArtistImgComponent },
+  { path: 'artist-img/:Muse', component: ArtistImgComponent },
 ]
 
 @NgModule({
@@ -31,6 +33,7 @@ const appRoutes: Routes = [
     ResultsListComponent,
     ArtistPageComponent,
     ConcertListComponent,
+    ArtistImgComponent,
   ],
   imports: [
     BrowserModule,
