@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div *ngFor="let concert of concerts">
+
+    <div class=row>
+
+      <div class="col-md-2 mt-3 text-info">
+          <h2>{{concert.performance[0].displayName}}</h2>
+      </div>
+
+      <div class="col-md-10">
+        <ul>
+          <li class="list-group-item shadow p-3 mb-5 bg-white rounded">
+            
+              <div >
+                <h3 class='text-secondary'>{{concert.start.datetime | date:"short"}}</h3>
+                <h4><a href='{{concert.uri}}'>{{concert.venue.displayName}}</h4>
+                <h5>{{concert.location.city}}</h5>
+              </div>
+
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!--
+  {{ concert | json }}
+  <div class="row mt-3">
+    <div class="col-12">
+      <ul *ngFor="let concert of concerts">
+        <li>
+          <div class="row">
+            <div class="col-12 list-group-item">{{concert.displayName}}</div>
+            <div class="list-group-item">{{concert.location.city}}</div>
+            <div class="list-group-item">{{concert.venue.displayName}}</div>
+          </div>
+        </li>
+        <hr>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<h1>{{title}}</h1>
+  <h2>My favorite hero is: {{myHero}}</h2>
+  <p>Heroes:</p>
+  <ul>
+    <li *ngFor="let hero of heroes">
+      {{ hero }}
+    </li>
+  </ul>
+-->
+

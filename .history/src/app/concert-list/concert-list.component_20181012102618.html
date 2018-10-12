@@ -25,3 +25,33 @@
 
   </div>
 </div>
+
+
+<!--
+  {{ concert | json }}
+  <div class="row mt-3">
+    <div class="col-12">
+      <ul *ngFor="let concert of concerts">
+        <li>
+          <div class="row">
+            <div class="col-12 list-group-item">{{concert.displayName}}</div>
+            <div class="list-group-item">{{concert.location.city}}</div>
+            <div class="list-group-item">{{concert.venue.displayName}}</div>
+          </div>
+        </li>
+        <hr>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<h1>{{title}}</h1>
+  <h2>My favorite hero is: {{myHero}}</h2>
+  <p>Heroes:</p>
+  <ul>
+    <li *ngFor="let hero of heroes">
+      {{ hero }}
+    </li>
+  </ul>
+-->
