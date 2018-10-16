@@ -31,10 +31,9 @@ ul{
 }
 
 .musicNote{
-  min-width: 3rem;
-  max-width: 3rem;
-  min-height: 3rem;
-  max-height: 3rem}
+  max-width: 7rem;
+  
+}
 
 .align{
   padding:0;

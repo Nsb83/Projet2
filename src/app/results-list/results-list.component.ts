@@ -43,12 +43,11 @@ export class ResultsListComponent implements OnInit {
           for (let artist of artistes){
             let unArtiste = new Artist(artist.displayName, artist.id, artist.onTourUntil, artist.uri);
             this._searchbyArtistService.getImgDescr(unArtiste.name).subscribe((data: any) => {
-              unArtiste.image = data.artist.image[0]['#text'];
+              unArtiste.image = data.artist.image[2]['#text'];
               // unArtiste.summary = data.artist.bio.summary;
               this.artists.push(unArtiste);
           });
           }
-        console.log(this.artists[0])
       });
     });
 
