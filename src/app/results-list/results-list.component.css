@@ -32,7 +32,7 @@ ul{
 
 .musicNote{
   max-width: 7rem;
-  
+  border-radius: 50%;
 }
 
 .align{

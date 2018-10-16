@@ -21,7 +21,7 @@
                 <span class="text-danger onTour" *ngIf="artist.onTourUntil === null"> ( Not on tour at the moment :/ )</span>
               </div>
             </div>
-            <div class="col-2 d-flex justify-content-end align">
+            <div class="col-2 d-flex justify-content-center align">
               <!-- <a href='{{ artist.uri }}' target="blank"><img class="musicNote" *NgIf [src]="artist.image" alt="a music note"></a> -->
               <a href='{{ artist.uri }}' target="blank">
                 <img *ngIf='artist.image != ""' class="musicNote" [src]="artist.image" alt="a music note">
