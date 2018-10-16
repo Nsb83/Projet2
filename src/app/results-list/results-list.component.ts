@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchByArtistService } from "../search-by-artist.service";
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { Artist } from '../Artist';
 
 @Component({
@@ -21,8 +21,9 @@ export class ResultsListComponent implements OnInit {
 
   constructor(
     private _searchbyArtistService: SearchByArtistService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   public artistDisplayName: string;
   public userInput: string;
@@ -38,15 +39,16 @@ export class ResultsListComponent implements OnInit {
             let unArtiste = new Artist(artist.displayName, artist.id, artist.onTourUntil, artist.uri);
             this._searchbyArtistService.getImgDescr(unArtiste.name).subscribe((data: any) => {
               unArtiste.image = data.artist.image[2]['#text'];
+              unArtiste.summary = data.artist.bio.summary;
               this.artists.push(unArtiste);
           });
-          }
+        }
       });
     });
+  }
 
-
-
-
+  onChoosing(paramArtist){
+    this.router.navigate(['artist', {artist: paramArtist}]);
   }
 }
 

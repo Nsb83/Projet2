@@ -14,7 +14,8 @@
           <div class="row align-items-center">
             <div class="col-10">
               <div class="artistName">
-                <a routerLink='/artist/{{ artist.id }}/{{ artist.name}}'> {{ artist.name }}</a>
+                <!-- <a routerLink='/artist/{{ artist.id }}/{{ artist.name}}'> {{ artist.name }}</a> -->
+                <a (click)='onChoosing(artist)'> {{ artist.name }}</a>
               </div>
               <div class="col-12">
                 <span class="text-success onTour" *ngIf="artist.onTourUntil !== null"> ( On tour until {{ artist.onTourUntil }} )</span>

@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'results', component: ResultsPageComponent },
   { path: 'results/:value', component: ResultsPageComponent },
-  { path: 'artist/:id/:artistName', component: ArtistPageComponent }
+  { path: 'artist', component: ArtistPageComponent }
 ]
 
 @NgModule({
