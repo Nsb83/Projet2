@@ -38,7 +38,6 @@ export class ResultsListComponent implements OnInit {
             let unArtiste = new Artist(artist.displayName, artist.id, artist.onTourUntil, artist.uri);
             this._searchbyArtistService.getImgDescr(unArtiste.name).subscribe((data: any) => {
               unArtiste.image = data.artist.image[2]['#text'];
-              // unArtiste.summary = data.artist.bio.summary;
               this.artists.push(unArtiste);
           });
           }
