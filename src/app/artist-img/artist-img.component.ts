@@ -22,10 +22,10 @@ export class ArtistImgComponent implements OnInit {
   artist: Artist = {
     name: '',
     image: '',
-    listeners: 0,
-    playcount: 0,
+    id: 0,
+    onTourUntil: '',
     summary: '',
-    url: ''
+    uri: '',
 };
 
   ngOnInit() {
