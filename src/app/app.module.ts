@@ -20,8 +20,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'results', component: ResultsPageComponent },
   { path: 'results/:value', component: ResultsPageComponent },
-  { path: 'map', component: MapComponent},
-  { path: 'artist/:id/:artistName', component: ArtistPageComponent },
+  { path: 'artist/:id', component: ArtistPageComponent },
 ]
 
 @NgModule({
@@ -47,7 +46,7 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyDQ0W8cM7rJsvHPWQ0g0oU9DNBhlpKr-Lc'
     })
   ],
-  
+
   providers: [
     SearchByArtistService
   ],
