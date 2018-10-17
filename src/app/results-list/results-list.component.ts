@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchByArtistService } from "../search-by-artist.service";
-import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+import { ActivatedRoute, ParamMap } from "@angular/router";
 import { Artist } from '../Artist';
 
 @Component({
@@ -22,12 +22,10 @@ export class ResultsListComponent implements OnInit {
   constructor(
     private _searchbyArtistService: SearchByArtistService,
     private route: ActivatedRoute,
-    private router: Router
     ) { }
 
-  public artistDisplayName: string;
   public userInput: string;
-  public artists : Artist[] = [];
+  public artists : Artist[];
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
@@ -38,7 +36,7 @@ export class ResultsListComponent implements OnInit {
           for (let artist of artistes){
             let unArtiste = new Artist(artist.displayName, artist.id, artist.onTourUntil, artist.uri);
             this._searchbyArtistService.getImgDescr(unArtiste.name).subscribe((data: any) => {
-              unArtiste.image = data.artist.image[2]['#text'];
+              unArtiste.image = data.artist.image[3]['#text'];
               unArtiste.summary = data.artist.bio.summary;
               this.artists.push(unArtiste);
           });
@@ -47,8 +45,8 @@ export class ResultsListComponent implements OnInit {
     });
   }
 
-  onChoosing(paramArtist){
-    this.router.navigate(['artist', {artist: paramArtist}]);
+  onChoosing(chosenArtist){
+    this._searchbyArtistService.setChosenArtist(chosenArtist);
   }
 }
 

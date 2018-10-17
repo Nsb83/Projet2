@@ -15,24 +15,11 @@ export class ArtistImgComponent implements OnInit {
     private route: ActivatedRoute
     ) { }
 
-  public artistDisplayName: string;
-  artist: Artist = {
-    name: '',
-    image: '',
-    id: 0,
-    onTourUntil: '',
-    summary: '',
-    uri: '',
-};
+  artist: Artist;
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.artistDisplayName = params['artistName'];
-    });
-    this._searchbyArtistService.getImgDescr(this.artistDisplayName).subscribe((res: any) => {
-      this.artist.name = res.artist.name;
-      this.artist.image = res.artist.image[3]['#text'];
-      this.artist.summary = res.artist.bio.summary;
+      this.artist = this._searchbyArtistService.getChosenArtist();
     });
   }
 }
