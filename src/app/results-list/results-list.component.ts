@@ -53,8 +53,8 @@ export class ResultsListComponent implements OnInit {
     });
   }
   onPageChange(page: number) {
-    this.p = page;
-    window.scrollTo(0, 0);
-    }
+    window.scrollTo({ top:0, behavior: 'smooth' })
+    setTimeout(() => this.p = page, 200);
+  }
 }
 
