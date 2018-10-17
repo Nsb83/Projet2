@@ -11,8 +11,9 @@ export class MapComponent implements OnInit {
 
   artistId: number;
   concerts = [];
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 41.485818;
+  lng: number = 5.618187;
+  infoWindowOpened = null;
 
   constructor(
     private _searchbyArtistService: SearchByArtistService,
@@ -25,7 +26,24 @@ export class MapComponent implements OnInit {
       console.log(this.artistId);
       this._searchbyArtistService.getArtistConcerts(this.artistId)
         .subscribe(data => this.concerts = data.resultsPage.results.event);
-    });console.log(this.concerts)
+    });
   }
+
+  filter() {
+    this.infoWindowOpened = null;
+    // redraw the map with filtered markers
+}
+
+showInfoWindow(infoWindow, index) {
+    if (this.infoWindowOpened === infoWindow) {
+        return;
+    }
+
+    if (this.infoWindowOpened !== null) {
+        this.infoWindowOpened.close();
+    }
+    
+    this.infoWindowOpened = infoWindow;   
+}
 
 }

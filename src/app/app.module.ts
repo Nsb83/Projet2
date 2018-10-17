@@ -11,26 +11,17 @@ import { ResultsListComponent } from './results-list/results-list.component';
 import { SearchByArtistService } from './search-by-artist.service';
 import { ArtistPageComponent } from "./artist-page/artist-page.component";
 import { ConcertListComponent } from './concert-list/concert-list.component';
-<<<<<<< HEAD
 import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';
-=======
 import { ArtistImgComponent } from './artist-img/artist-img.component'
->>>>>>> 54f47227c436ea20314d3398a86ddc9a55c26ff9
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'results', component: ResultsPageComponent },
   { path: 'results/:value', component: ResultsPageComponent },
-<<<<<<< HEAD
-  { path: 'artist/:id', component: ArtistPageComponent },
-  { path: 'map', component: MapComponent}
-=======
+  { path: 'map', component: MapComponent},
   { path: 'artist/:id/:artistName', component: ArtistPageComponent },
-  { path: 'artist-img', component: ArtistImgComponent },
-  { path: 'artist-img/:Muse', component: ArtistImgComponent },
->>>>>>> 54f47227c436ea20314d3398a86ddc9a55c26ff9
 ]
 
 @NgModule({
@@ -43,11 +34,8 @@ const appRoutes: Routes = [
     ResultsListComponent,
     ArtistPageComponent,
     ConcertListComponent,
-<<<<<<< HEAD
     MapComponent,
-=======
     ArtistImgComponent,
->>>>>>> 54f47227c436ea20314d3398a86ddc9a55c26ff9
   ],
   imports: [
     BrowserModule,
