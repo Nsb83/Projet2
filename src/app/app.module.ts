@@ -15,6 +15,7 @@ import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';
 import { ArtistImgComponent } from './artist-img/artist-img.component';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     RouterModule.forRoot(
       appRoutes
     ),

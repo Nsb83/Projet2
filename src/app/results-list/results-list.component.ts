@@ -11,7 +11,7 @@ import { Artist } from '../Artist';
 
 export class ResultsListComponent implements OnInit {
   artist: Artist;
-
+  p: number = 1;
   constructor(
     private _searchbyArtistService: SearchByArtistService,
     private route: ActivatedRoute,
@@ -37,8 +37,11 @@ export class ResultsListComponent implements OnInit {
       });
     });
   }
-
-  onChoosing(chosenArtist){
+  onPageChange(page: number) {
+    window.scrollTo({ top:0, behavior: 'smooth' })
+    setTimeout(() => this.p = page, 200);
+  }
+  onChoosing(chosenArtist) {
     this._searchbyArtistService.setChosenArtist(chosenArtist);
   }
 }
