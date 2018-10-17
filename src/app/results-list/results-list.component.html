@@ -1,7 +1,7 @@
 <div *ngIf="userInput">
   <div class="row ">
     <div class="col-12">
-      <span class="resultsLine">Results for <span class="userInput">'{{ userInput }}'</span></span>
+      <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> gave <span class="userInput">{{artists.length}} </span>results</span>
     </div>
     <div class="col-12">
       <span class="subText">Click on the artist's name to get the list of their next concerts.</span>
@@ -9,7 +9,7 @@
   </div>
   <div class="row mt-3">
     <div class="col-12">
-      <ul *ngFor="let artist of artists">
+      <ul *ngFor="let artist of artists | paginate: { itemsPerPage: 10, currentPage: p }">
         <li>
           <div class="row align-items-center">
             <div class="col-10">
@@ -32,6 +32,12 @@
         </li>
         <hr>
       </ul>
+      <div class="col-12 d-flex justify-content-center">
+      <pagination-controls (pageChange)="onPageChange($event)"
+                            autoHide="true"
+                            responsive="true">
+      </pagination-controls>
+    </div>
     </div>
   </div>
 </div>

@@ -18,6 +18,7 @@ export class ResultsListComponent implements OnInit {
     summary: '',
     uri: '',
   };
+  p: number = 1;
 
   constructor(
     private _searchbyArtistService: SearchByArtistService,
@@ -50,15 +51,10 @@ export class ResultsListComponent implements OnInit {
           }
       });
     });
-
-
-      
-    
   }
+  onPageChange(page: number) {
+    this.p = page;
+    window.scrollTo(0, 0);
+    }
 }
-
-
-// https://api.songkick.com/api/3.0/artists/mbid:a523bd85-01ad-4815-aaac-2b95c1946088/calendar.json?apikey=R82Hox7PJZDJyV0G
-// https://api.songkick.com/api/3.0/search/artists.json?apikey=R82Hox7PJZDJyV0G&query=oldelaf
-
 
