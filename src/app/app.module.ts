@@ -21,8 +21,6 @@ const appRoutes: Routes = [
   { path: 'results', component: ResultsPageComponent },
   { path: 'results/:value', component: ResultsPageComponent },
   { path: 'artist/:id', component: ArtistPageComponent },
-  { path: 'map', component: MapComponent},
-  { path: 'artist/:id/:artistName', component: ArtistPageComponent }
 ]
 
 @NgModule({

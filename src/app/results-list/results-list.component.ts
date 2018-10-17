@@ -10,14 +10,7 @@ import { Artist } from '../Artist';
 })
 
 export class ResultsListComponent implements OnInit {
-  artist: Artist = {
-    name: '',
-    image: '',
-    id: 0,
-    onTourUntil: '',
-    summary: '',
-    uri: '',
-  };
+  artist: Artist;
 
   constructor(
     private _searchbyArtistService: SearchByArtistService,
