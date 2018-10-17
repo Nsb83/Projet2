@@ -7,7 +7,6 @@ import { Artist } from './Artist';
 })
 export class SearchByArtistService {
 
-  public artistDisplayName:string
   private _url: string;
   private _artistUrl: string;
   private _imgDescr: string;
@@ -16,8 +15,6 @@ export class SearchByArtistService {
   constructor(
     private http: HttpClient,
   ) { }
-
-
 
   setChosenArtist(chosenArtist){
     this.chosenArtist = chosenArtist;
@@ -37,8 +34,8 @@ export class SearchByArtistService {
     return this.http.get<any>(this._url);
   }
 
-  getImgDescr(artistDisplayName) {
-    this._imgDescr = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistDisplayName}&api_key=9b7579d5f409106928353935ac0ab5ab&format=json`;
+  getImgDescr(artistName) {
+    this._imgDescr = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=9b7579d5f409106928353935ac0ab5ab&format=json`;
     return this.http.get<any>(this._imgDescr);
   }
 }
