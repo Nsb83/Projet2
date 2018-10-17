@@ -21,8 +21,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'results', component: ResultsPageComponent },
   { path: 'results/:value', component: ResultsPageComponent },
-  { path: 'map', component: MapComponent},
-  { path: 'artist/:id/:artistName', component: ArtistPageComponent },
+  { path: 'artist/:id', component: ArtistPageComponent },
 ]
 
 @NgModule({
@@ -49,7 +48,7 @@ const appRoutes: Routes = [
     }),
     AgmSnazzyInfoWindowModule
   ],
-  
+
   providers: [
     SearchByArtistService
   ],

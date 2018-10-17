@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchByArtistService } from "../search-by-artist.service";
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+import { Artist } from '../Artist';
 
 @Component({
   selector: 'app-concert-list',
@@ -9,7 +10,7 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 })
 export class ConcertListComponent implements OnInit {
 
-  artistId: number;
+  artist: Artist;
   concerts = [];
 
   constructor(
@@ -18,10 +19,9 @@ export class ConcertListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: ParamMap) => {
-        this.artistId = params['id'];
-        console.log(this.artistId);
-        this._searchbyArtistService.getArtistConcerts(this.artistId)
+    this.route.params.subscribe(() => {
+        this.artist = this._searchbyArtistService.getChosenArtist();
+        this._searchbyArtistService.getArtistConcerts(this.artist.id)
           .subscribe(data => this.concerts = data.resultsPage.results.event);
       });
   }
