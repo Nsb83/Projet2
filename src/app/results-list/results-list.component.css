@@ -35,8 +35,8 @@ ul{
   border-radius: 50%;
 }
 
-.align{
-  padding:0;
+.align a img {
+  box-shadow: 2px 2px 2px 0px rgba(173,171,173,1);
 }
 
 @media (max-width:577px) {
