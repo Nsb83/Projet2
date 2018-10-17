@@ -9,12 +9,16 @@
       [label]="m.label"
       [markerDraggable]="m.draggable"
       (dragEnd)="markerDragEnd(m, $event)">
-      <agm-info-window #infoWindow id="iw-container">
-                        <h2>{{ m.performance[0].displayName }}</h2>
-                        <h3 class='text-secondary'>{{ m.start.datetime | date:"short" }}</h3>
+      <agm-snazzy-info-window #infoWindow>
+                        <div id="window">
+                        <ng-template>
+                        <h3>{{ m.performance[0].displayName }}</h3>
+                        <h4 class='text-secondary'>{{ m.start.datetime | date:"short" }}</h4>
                         <h4><a href='{{m.uri}}' target='blank'>{{ m.venue.displayName }}</a></h4>
-                        <h5>{{ m.location.city }}</h5>             
-      </agm-info-window>
+                        <h5>{{ m.location.city }}</h5>                         
+                        </ng-template>  
+                        </div>         
+      </agm-snazzy-info-window>
   </agm-marker>
 </agm-map>
 </div>
