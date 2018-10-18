@@ -1,6 +1,26 @@
 agm-map {
     height: 600px;
   }
-  iw-container {
-  background-color: red;
+
+h2{
+  font-size:2em;
+}
+
+h3{
+  font-size:1.5em;
+}
+
+h4{
+  font-size: 1.2em;
+}
+
+h5{
+  font-size:1.2em;
+}
+
+.windows{
+  min-width:13em;
+  max-width:20em;
+  text-align:center;
+  overflow-x:hidden;
 }
