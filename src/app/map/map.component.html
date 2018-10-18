@@ -1,4 +1,4 @@
-<div container>
+<div *ngIf="concerts">
     
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="1.7">
   <agm-marker 
@@ -18,3 +18,7 @@
   </agm-marker>
 </agm-map>
 </div>
+<div *ngIf="!concerts">
+
+</div>
+

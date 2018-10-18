@@ -1,0 +1,30 @@
+.groupName {
+    font-size: 15px;
+    line-height: 1;
+    margin-bottom: 7px;
+}
+
+.text-secondary {
+    font-size: 12px;
+    /* line-height: 1; */
+    margin-bottom: 7px;
+}
+
+.concertVenue {
+    font-size: 12px;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.concertCity {
+    font-size: 12px;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+ul {
+    padding-left: 0px;
+}
+ul.ngx.pagination.responsive {
+    padding : 0px;
+}

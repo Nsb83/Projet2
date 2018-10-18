@@ -12,6 +12,7 @@ export class ConcertListComponent implements OnInit {
 
   artist: Artist;
   concerts = [];
+  page: number = 1;
 
   constructor(
     private _searchbyArtistService: SearchByArtistService,
@@ -25,5 +26,7 @@ export class ConcertListComponent implements OnInit {
           .subscribe(data => this.concerts = data.resultsPage.results.event);
       });
   }
-
+  onPageChange(page: number) {
+    this.page = page;
+  }
 }

@@ -1,18 +1,21 @@
 <div class="container">
-  <div *ngFor="let concert of concerts">
-    <div class="row">
-      <div class="col-11">
-        <ul>
-          <li class="list-group-item shadow bg-white rounded">
-            <div>
-              <h2>{{ concert.performance[0].displayName }}</h2>
-              <h3 class='text-secondary'>{{ concert.start.datetime | date:"short" }}</h3>
-              <h4><a href='{{concert.uri}}' target='blank'>{{ concert.venue.displayName }}</a></h4>
-              <h5>{{ concert.location.city }}</h5>
+  <div class="row">
+    <div class="col-12">
+      <ul *ngFor="let concert of concerts | paginate: { itemsPerPage: 5, currentPage: page } ">
+        <li class="list-group-item shadow bg-white rounded">
+          <div>
+            <div class="col-12 d-flex justify-content-between p-0">
+                <div class="p-0"><p class="groupName"><a href='{{concert.uri}}' target='blank'>{{ concert.displayName }}</a></p></div>
+                <!-- <div class="col-6 p-0 d-flex justify-content-end"><p class="text-secondary">{{ concert.start.date | date:"short" }}</p></div> -->
             </div>
-          </li>
-        </ul>
-      </div>
+            <p class="concertVenue">{{ concert.venue.displayName }}</p>
+            <p class="concertCity">{{ concert.location.city }}</p>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
+  <div class="col-11 p-0 d-flex justify-content-center">
+    <pagination-controls (pageChange)="onPageChange($event)" autoHide="true" responsive="true" maxSize="5" previousLabel="" nextLabel=""></pagination-controls>
+</div>
 </div>
