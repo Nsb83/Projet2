@@ -29,6 +29,8 @@ export class ResultsListComponent implements OnInit {
   public userInput: string;
   public artists: Artist[];
   public venues: Venue[];
+  public filterArtists: boolean = true;
+  public filterVenues: boolean = true;
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
@@ -80,6 +82,21 @@ export class ResultsListComponent implements OnInit {
   }
   onChoosing(chosenArtist) {
     this._searchbyArtistService.setChosenArtist(chosenArtist);
+  }
+
+  showArtists() {
+    this.filterArtists = true;
+    this.filterVenues = false;
+  }
+
+  showVenues() {
+    this.filterVenues = true;
+    this.filterArtists = false;
+  }
+
+  showAll() {
+    this.filterArtists = true;
+    this.filterVenues = true;
   }
 }
 
