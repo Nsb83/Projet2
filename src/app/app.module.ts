@@ -15,14 +15,14 @@ import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';
 import { ArtistImgComponent } from './artist-img/artist-img.component';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'results', component: ResultsPageComponent },
   { path: 'results/:value', component: ResultsPageComponent },
-  { path: 'map', component: MapComponent},
-  { path: 'artist/:id/:artistName', component: ArtistPageComponent },
+  { path: 'artist/:id', component: ArtistPageComponent },
 ]
 
 @NgModule({
@@ -40,6 +40,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     RouterModule.forRoot(
       appRoutes
     ),
@@ -49,7 +50,7 @@ const appRoutes: Routes = [
     }),
     AgmSnazzyInfoWindowModule,
   ],
-  
+
   providers: [
     SearchByArtistService
   ],
