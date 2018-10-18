@@ -1,0 +1,63 @@
+<div *ngIf="userInput">
+  <div class="row ">
+    <div class="col-12">
+      <span class="resultsLine">Results for <span class="userInput">'{{ userInput }}'</span></span>
+    </div>
+    <div class="col-12">
+      <span class="subText">Click on the artist's name to get the list of their next concerts.</span>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <ul *ngFor="let artist of artists">
+        <li>
+          <div class="row align-items-center">
+            <div class="col-10">
+              <div class="artistName">
+                <a routerLink='/artist/{{ artist.id }}/{{ artist.name}}'> {{ artist.name }}</a>
+              </div>
+              <div class="col-12">
+                <span class="text-success onTour" *ngIf="artist.onTourUntil !== null"> ( On tour until {{
+                  artist.onTourUntil }} )</span>
+                <span class="text-danger onTour" *ngIf="artist.onTourUntil === null"> ( Not on tour at the moment :/ )</span>
+              </div>
+            </div>
+            <div class="col-2 d-flex justify-content-center align">
+              <!-- <a href='{{ artist.uri }}' target="blank"><img class="musicNote" *NgIf [src]="artist.image" alt="a music note"></a> -->
+              <a href='{{ artist.uri }}' target="blank">
+                <img *ngIf='artist.image != ""' class="musicNote" [src]="artist.image" alt="a music note">
+                <img *ngIf='artist.image == ""' src="http://www.iconninja.com/files/652/469/90/note-audio-music-sound-icon.png"
+                  alt="a music note">
+              </a>
+            </div>
+          </div>
+        </li>
+        <hr>
+      </ul>
+    </div>
+  </div>
+</div>
+<div *ngIf="!userInput">
+  <div class="col-12">
+    <span class="resultsLine">Please, search for an artist with the search bar!</span>
+  </div>
+</div>
+
+
+<div>
+  <div>
+    <ul *ngFor="let venue of venues">
+      <li>
+
+        <div>
+          <h2><a href="{{venue.uri}}" target="blank">{{venue.name}}</a></h2>
+        </div>
+        <div>{{venue.city.displayName}} , {{venue.city.country.}}</div>
+
+        <img src="scène.jpg" alt="scène" id="scène">
+      </li>
+      <hr>
+    </ul>
+
+  </div>
+</div>
