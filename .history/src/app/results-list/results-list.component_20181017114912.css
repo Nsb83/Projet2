@@ -1,0 +1,66 @@
+.userInput {
+  font-size: 2rem;
+  color: purple;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.subText {
+  font-size: 1.3rem;
+}
+
+.resultsLine {
+  font-size: 2rem;
+}
+
+ul{
+  list-style-type: none;
+  padding:0;
+}
+
+.artistName {
+  font-size: 1.7rem;
+}
+
+.songkickLink {
+  font-size: 1.3rem;
+}
+
+.onTour {
+  font-size: 1.3rem;
+}
+
+.musicNote{
+  max-width: 7rem;
+  border-radius: 50%;
+}
+
+.align{
+  padding:0;
+}
+
+@media (max-width:577px) {
+  .userInput{
+    font-size: 1.7rem;
+  }
+  .subText {
+    font-size: 1.3rem;
+  }
+  .resultsLine {
+    font-size: 1.7rem;
+  }
+  .artistName {
+    font-size: 1.5rem;
+  }
+  .songkickLink {
+    font-size: 1.3rem;
+  }
+  .onTour {
+    font-size: 1.3rem;
+  }
+}
+
+#scène{
+
+  height: 10px;
+}

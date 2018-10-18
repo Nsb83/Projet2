@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { SearchByArtistService } from "../search-by-artist.service";
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { Artist } from "../Artist";
 import { Venue } from "../Venue";
 
@@ -25,6 +25,7 @@ export class ResultsListComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  public artistDisplayName: string;
   public userInput: string;
   public artists: Artist[];
   public venues: Venue[];
