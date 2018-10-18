@@ -13,7 +13,8 @@ import { ArtistPageComponent } from "./artist-page/artist-page.component";
 import { ConcertListComponent } from './concert-list/concert-list.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';
-import { ArtistImgComponent } from './artist-img/artist-img.component'
+import { ArtistImgComponent } from './artist-img/artist-img.component';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 const appRoutes: Routes = [
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDQ0W8cM7rJsvHPWQ0g0oU9DNBhlpKr-Lc'
-    })
+    }),
+    AgmSnazzyInfoWindowModule,
   ],
 
   providers: [

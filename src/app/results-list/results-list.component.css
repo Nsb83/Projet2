@@ -13,9 +13,9 @@
   font-size: 2rem;
 }
 
-ul{
+ul {
   list-style-type: none;
-  padding:0;
+  padding: 0;
 }
 
 .artistName {
@@ -30,17 +30,17 @@ ul{
   font-size: 1.3rem;
 }
 
-.musicNote{
+.musicNote {
   max-width: 7rem;
   border-radius: 50%;
 }
 
 .align a img {
-  box-shadow: 2px 2px 2px 0px rgba(173,171,173,1);
+  box-shadow: 2px 2px 2px 0px rgba(173, 171, 173, 1);
 }
 
-@media (max-width:577px) {
-  .userInput{
+@media (max-width: 577px) {
+  .userInput {
     font-size: 1.7rem;
   }
   .subText {
@@ -58,4 +58,12 @@ ul{
   .onTour {
     font-size: 1.3rem;
   }
+}
+
+.imgVenue {
+  max-width: 7rem;
+  max-height: 7rem;
+  margin-left: 65px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 2px 0px rgba(173, 171, 173, 1);
 }

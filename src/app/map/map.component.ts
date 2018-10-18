@@ -28,22 +28,5 @@ export class MapComponent implements OnInit {
         .subscribe(data => this.concerts = data.resultsPage.results.event);
     });
   }
-
-  filter() {
-    this.infoWindowOpened = null;
-    // redraw the map with filtered markers
 }
 
-showInfoWindow(infoWindow, index) {
-    if (this.infoWindowOpened === infoWindow) {
-        return;
-    }
-
-    if (this.infoWindowOpened !== null) {
-        this.infoWindowOpened.close();
-    }
-    
-    this.infoWindowOpened = infoWindow;   
-}
-
-}
