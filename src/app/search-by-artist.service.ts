@@ -33,7 +33,7 @@ export class SearchByArtistService {
   }
 
   getImgDescr(artistName) {
-    this._imgDescr = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=9b7579d5f409106928353935ac0ab5ab&format=json`;
+    this._imgDescr = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&autocorrect=1&api_key=9b7579d5f409106928353935ac0ab5ab&format=json`;
     return this.http.get<any>(this._imgDescr);
   }
 

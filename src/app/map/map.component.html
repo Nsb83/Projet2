@@ -1,4 +1,4 @@
-
+<div *ngIf="concerts">
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="1.7">
       <agm-marker 
           *ngFor="let m of concerts; let i = index"
@@ -27,3 +27,6 @@
           </agm-snazzy-info-window>
       </agm-marker>
     </agm-map>
+  </div>
+<div *ngIf="!concerts">
+</div>
