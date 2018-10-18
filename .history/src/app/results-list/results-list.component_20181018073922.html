@@ -26,7 +26,7 @@
             <div class="col-2 d-flex justify-content-end align">
               <a href='{{ artist.uri }}' target="blank">
                 <img *ngIf='artist.image != ""' class="musicNote" [src]="artist.image" alt="a music note">
-                <img *ngIf='artist.image == ""' class="musicNote" src="http://www.iconninja.com/files/652/469/90/note-audio-music-sound-icon.png"
+                <img *ngIf='artist.image == ""' src="http://www.iconninja.com/files/652/469/90/note-audio-music-sound-icon.png"
                   alt="a music note">
               </a>
             </div>
@@ -59,10 +59,10 @@
               <div class="col-10">
                 <h3><a href='{{venue.uri}}' target='blank'>{{ venue.name }}</a></h3>
                 <h6>{{ venue.street }}</h6>
-                <h5>{{venue.city.displayName}} / {{ venue.city.country.displayName }}</h5>
+                <h5>{{venue.city}} / {{ venue.city.country.displayName }}</h5>
               </div>
               <div class="col-2 d-flex justify-content-center align">
-                <img class="imgVenue" src="ticket.png" alt="ticket">
+                <img class="imgVenue" src="park-concert-shell.png" alt="scène">
               </div>
             </div>
 

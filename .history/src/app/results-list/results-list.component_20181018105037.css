@@ -33,6 +33,7 @@ ul {
 .musicNote {
   max-width: 7rem;
   border-radius: 50%;
+  box-shadow: 2px 2px 2px 0px rgba(173, 171, 173, 1);
 }
 
 .align a img {

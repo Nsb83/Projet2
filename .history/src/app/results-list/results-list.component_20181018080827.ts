@@ -19,7 +19,7 @@ export class ResultsListComponent implements OnInit {
   };
 
   artist: Artist;
-  p: number = 1;
+  p: number = 1;    
   constructor(
     private _searchbyArtistService: SearchByArtistService,
     private route: ActivatedRoute
@@ -59,7 +59,7 @@ export class ResultsListComponent implements OnInit {
         .getVenues(this.userInput)
         .subscribe((reponse: any) => {
           this.venues = [];
-          let venuess = reponse.resultsPage.results.venue;
+          let venuess = reponse.resultPage.results.venues;
           for (let venue of venuess) {
             let aVenue = new Venue(
               venue.displayName,

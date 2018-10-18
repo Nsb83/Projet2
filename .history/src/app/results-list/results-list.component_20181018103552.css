@@ -61,9 +61,7 @@ ul {
 }
 
 .imgVenue {
-  max-width: 7rem;
-  max-height: 7rem;
-  margin-left: 65px;
-  border-radius: 50%;
-  box-shadow: 2px 2px 2px 0px rgba(173, 171, 173, 1);
+  max-width: 6rem;
+  max-height: 6rem;
+  margin-left: 60px;
 }

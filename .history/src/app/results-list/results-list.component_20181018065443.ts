@@ -27,11 +27,26 @@ export class ResultsListComponent implements OnInit {
 
   public userInput: string;
   public artists: Artist[];
-  public venues: Venue[];
+  public venues : Venue[];  
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.userInput = params["value"];
+
+
+      this._searchbyArtistService.getVenues(this.userInput).subscribe((reponse : any) => {
+        this.venues = []
+        let venuess = reponse.resultPage.results.venues;
+        for (let venue of venuess){
+          aVenue = new Venue{
+            name
+          }
+        }
+      }
+
+
+
+
 
       this._searchbyArtistService
         .getResults(this.userInput)
@@ -52,23 +67,6 @@ export class ResultsListComponent implements OnInit {
                 unArtiste.summary = data.artist.bio.summary;
                 this.artists.push(unArtiste);
               });
-          }
-        });
-
-      this._searchbyArtistService
-        .getVenues(this.userInput)
-        .subscribe((reponse: any) => {
-          this.venues = [];
-          let venuess = reponse.resultsPage.results.venue;
-          for (let venue of venuess) {
-            let aVenue = new Venue(
-              venue.displayName,
-              venue.city,
-              venue.country,
-              venue.street,
-              venue.uri
-            );
-            this.venues.push(aVenue);
           }
         });
     });

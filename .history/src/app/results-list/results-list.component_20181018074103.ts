@@ -33,6 +33,8 @@ export class ResultsListComponent implements OnInit {
     this.route.params.subscribe((params: ParamMap) => {
       this.userInput = params["value"];
 
+   
+
       this._searchbyArtistService
         .getResults(this.userInput)
         .subscribe((res: any) => {
@@ -52,23 +54,6 @@ export class ResultsListComponent implements OnInit {
                 unArtiste.summary = data.artist.bio.summary;
                 this.artists.push(unArtiste);
               });
-          }
-        });
-
-      this._searchbyArtistService
-        .getVenues(this.userInput)
-        .subscribe((reponse: any) => {
-          this.venues = [];
-          let venuess = reponse.resultsPage.results.venue;
-          for (let venue of venuess) {
-            let aVenue = new Venue(
-              venue.displayName,
-              venue.city,
-              venue.country,
-              venue.street,
-              venue.uri
-            );
-            this.venues.push(aVenue);
           }
         });
     });

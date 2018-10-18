@@ -10,13 +10,7 @@ import { Venue } from "../Venue";
   styleUrls: ["./results-list.component.css"]
 })
 export class ResultsListComponent implements OnInit {
-  venue: Venue = {
-    name: "",
-    city: "",
-    country: "",
-    street: "",
-    uri: ""
-  };
+ 
 
   artist: Artist;
   p: number = 1;
@@ -59,7 +53,7 @@ export class ResultsListComponent implements OnInit {
         .getVenues(this.userInput)
         .subscribe((reponse: any) => {
           this.venues = [];
-          let venuess = reponse.resultsPage.results.venue;
+          let venuess = reponse.resultPage.results.venues;
           for (let venue of venuess) {
             let aVenue = new Venue(
               venue.displayName,

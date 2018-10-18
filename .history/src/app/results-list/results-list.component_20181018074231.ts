@@ -55,11 +55,11 @@ export class ResultsListComponent implements OnInit {
           }
         });
 
-      this._searchbyArtistService
+        this._searchbyArtistService
         .getVenues(this.userInput)
         .subscribe((reponse: any) => {
           this.venues = [];
-          let venuess = reponse.resultsPage.results.venue;
+          let venuess = reponse.resultPage.results.venues;
           for (let venue of venuess) {
             let aVenue = new Venue(
               venue.displayName,

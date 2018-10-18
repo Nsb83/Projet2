@@ -27,11 +27,34 @@ export class ResultsListComponent implements OnInit {
 
   public userInput: string;
   public artists: Artist[];
-  public venues: Venue[];
+  public venues : Venue[];  
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.userInput = params["value"];
+
+
+      this._searchbyArtistService.getVenues(this.userInput).subscribe((reponse : any) => {
+        this.venues = []
+        let venuess = reponse.resultPage.results.venues;
+        for (let venue of venuess){
+          let aVenue = new Venue(
+            venue.displayName,
+            venue.city,
+            venue.country,
+            venue.street,
+            venue.uri,
+          );
+          this.venue.push(aVenue);
+           
+
+          }
+        });
+      });
+
+
+
+
 
       this._searchbyArtistService
         .getResults(this.userInput)
@@ -54,24 +77,7 @@ export class ResultsListComponent implements OnInit {
               });
           }
         });
-
-      this._searchbyArtistService
-        .getVenues(this.userInput)
-        .subscribe((reponse: any) => {
-          this.venues = [];
-          let venuess = reponse.resultsPage.results.venue;
-          for (let venue of venuess) {
-            let aVenue = new Venue(
-              venue.displayName,
-              venue.city,
-              venue.country,
-              venue.street,
-              venue.uri
-            );
-            this.venues.push(aVenue);
-          }
-        });
-    });
+    ;
   }
   onPageChange(page: number) {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -80,7 +86,7 @@ export class ResultsListComponent implements OnInit {
   onChoosing(chosenArtist) {
     this._searchbyArtistService.setChosenArtist(chosenArtist);
   }
-}
+
 
 // https://api.songkick.com/api/3.0/artists/mbid:a523bd85-01ad-4815-aaac-2b95c1946088/calendar.json?apikey=R82Hox7PJZDJyV0G
 // https://api.songkick.com/api/3.0/search/artists.json?apikey=R82Hox7PJZDJyV0G&query=oldelaf

@@ -34,32 +34,10 @@ export class ResultsListComponent implements OnInit {
       this.userInput = params["value"];
 
       this._searchbyArtistService
-        .getResults(this.userInput)
-        .subscribe((res: any) => {
-          this.artists = [];
-          let artistes = res.resultsPage.results.artist;
-          for (let artist of artistes) {
-            let unArtiste = new Artist(
-              artist.displayName,
-              artist.id,
-              artist.onTourUntil,
-              artist.uri
-            );
-            this._searchbyArtistService
-              .getImgDescr(unArtiste.name)
-              .subscribe((data: any) => {
-                unArtiste.image = data.artist.image[3]["#text"];
-                unArtiste.summary = data.artist.bio.summary;
-                this.artists.push(unArtiste);
-              });
-          }
-        });
-
-      this._searchbyArtistService
         .getVenues(this.userInput)
         .subscribe((reponse: any) => {
           this.venues = [];
-          let venuess = reponse.resultsPage.results.venue;
+          let venuess = reponse.resultPage.results.venues;
           for (let venue of venuess) {
             let aVenue = new Venue(
               venue.displayName,
@@ -71,7 +49,29 @@ export class ResultsListComponent implements OnInit {
             this.venues.push(aVenue);
           }
         });
-    });
+    };
+
+    this._searchbyArtistService
+      .getResults(this.userInput)
+      .subscribe((res: any) => {
+        this.artists = [];
+        let artistes = res.resultsPage.results.artist;
+        for (let artist of artistes) {
+          let unArtiste = new Artist(
+            artist.displayName,
+            artist.id,
+            artist.onTourUntil,
+            artist.uri
+          );
+          this._searchbyArtistService
+            .getImgDescr(unArtiste.name)
+            .subscribe((data: any) => {
+              unArtiste.image = data.artist.image[3]["#text"];
+              unArtiste.summary = data.artist.bio.summary;
+              this.artists.push(unArtiste);
+            });
+        }
+      });
   }
   onPageChange(page: number) {
     window.scrollTo({ top: 0, behavior: "smooth" });
