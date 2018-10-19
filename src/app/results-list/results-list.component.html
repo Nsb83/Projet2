@@ -9,7 +9,7 @@
 <div *ngIf="userInput">
   <div class="row ">
     <div class="col-12">
-      <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> gave <span class="userInput">{{artists.length}}
+      <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> gave <span class="userInput">{{ artists.length + venues.length}}
         </span>results</span>
     </div>
     <div class="col-12">
@@ -20,7 +20,8 @@
   <div class="row mt-3">
     <div class="col-12">
       <div *ngIf="filterArtists">
-      <ul *ngFor="let artist of artists | paginate: { itemsPerPage: 10, currentPage: p }">
+      <ul *ngFor="let artist of artists">
+        <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
         <li>
           <div class="row align-items-center">
             <div class="col-10">
@@ -47,7 +48,8 @@
           <div>
             <div class="row">
               <div class="col-12">
-                <ul *ngFor="let venue of venues | paginate: { itemsPerPage: 10, currentPage: p }">
+                <ul *ngFor="let venue of venues">
+                   <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
                   <li>
                     <div class="row align-items-center">
                       <div class="col-10">
@@ -66,12 +68,12 @@
             </div>
           </div>
       </div>
-      <div *ngIf="!filterVenues || !filterArtists">
+      <!-- <div *ngIf="!filterVenues || !filterArtists">
         <div class="col-12 d-flex justify-content-center">
           <pagination-controls (pageChange)="onPageChange($event)" autoHide="true" responsive="true">
           </pagination-controls>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div *ngIf="!userInput">
