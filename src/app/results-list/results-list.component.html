@@ -1,29 +1,27 @@
-<div class="row">
-  <div class="m-2"><button type="button" class="btn btn-primary" (click)='showAll()'>All</button></div>
-  <div class="m-2"><button type="button" class="btn btn-primary" (click)='showArtists()'>Artists</button></div>
-  <div class="m-2"><button type="button" class="btn btn-primary" (click)='showVenues()'>Venues</button></div>
-
+<div *ngIf="userInput">
+  <div class="row">
+    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showAll()'>All</button></div>
+    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showArtists()'>Artists</button></div>
+    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showVenues()'>Venues</button></div>
+  </div>
 </div>
-
-
-
 
 <div *ngIf="userInput">
   <div class="row ">
     <div class="col-12">
-      <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> gave <span class="userInput">{{artists.length}}
+      <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> gave <span class="userInput">{{ artists.length + venues.length}}
         </span>results</span>
     </div>
     <div class="col-12">
       <span class="subText">Click on the artist's name to get the list of their next concerts.</span>
     </div>
   </div>
-</div>
 
-<div *ngIf="filterArtists">
   <div class="row mt-3">
     <div class="col-12">
-      <ul *ngFor="let artist of artists | paginate: { itemsPerPage: 10, currentPage: p }">
+      <div *ngIf="filterArtists">
+      <ul *ngFor="let artist of artists">
+        <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
         <li>
           <div class="row align-items-center">
             <div class="col-10">
@@ -31,38 +29,62 @@
                 <a routerLink='/artist/{{ artist.id }}' (click)='onChoosingArtist(artist)'> {{ artist.name }}</a>
               </div>
               <div class="col-12">
-                <span class="text-success onTour" *ngIf="artist.onTourUntil !== null"> ( On tour until {{
-                  artist.onTourUntil }} )</span>
-                <span class="text-danger onTour" *ngIf="artist.onTourUntil === null"> ( Not on tour at the moment
-                  :/
-                  )</span>
+                <span class="text-success onTour" *ngIf="artist.onTourUntil !== null"> ( On tour until {{ artist.onTourUntil }} )</span>
+                <span class="text-danger onTour" *ngIf="artist.onTourUntil === null"> ( Not on tour at the moment :/ )</span>
               </div>
             </div>
-            <div class="col-2 d-flex justify-content-end align">
+            <div class="col-2 d-flex justify-content-end">
               <a href='{{ artist.uri }}' target="blank">
                 <img *ngIf='artist.image != ""' class="musicNote" [src]="artist.image" alt="a music note">
-                <img *ngIf='artist.image == ""' class="musicNote" src="http://www.iconninja.com/files/652/469/90/note-audio-music-sound-icon.png"
-                  alt="a music note">
+                <img *ngIf='artist.image == ""' class="musicNote" src="http://www.iconninja.com/files/652/469/90/note-audio-music-sound-icon.png" alt="a music note">
               </a>
             </div>
           </div>
         </li>
         <hr>
       </ul>
-      <div class="col-12 d-flex justify-content-center">
-        <pagination-controls (pageChange)="onPageChange($event)" autoHide="true" responsive="true">
-        </pagination-controls>
       </div>
+      <div *ngIf="filterVenues">
+          <div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <ul *ngFor="let venue of venues">
+                   <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
+                  <li>
+                    <div class="row align-items-center">
+                      <div class="col-10">
+                        <p class="artistName"><a href='{{venue.uri}}' target='blank'>{{ venue.name }}</a></p>
+                        <div class="col-12">
+                        <p class="onTour">{{ venue.street }}</p>
+                        <p class="onTour">{{venue.city.displayName}} / {{ venue.city.country.displayName }}</p>
+                        </div>
+                      </div>
+                      <div class="col-2 d-flex justify-content-end ">
+                        <img class="musicNote" src="../../assets/images/ticket.png" alt="ticket">
+                      </div>
+                    </div>
+                  </li>
+                  <hr>
+                </ul>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- <div *ngIf="!filterVenues || !filterArtists">
+        <div class="col-12 d-flex justify-content-center">
+          <pagination-controls (pageChange)="onPageChange($event)" autoHide="true" responsive="true">
+          </pagination-controls>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <div *ngIf="!userInput">
+    <div class="col-12">
+      <span class="resultsLine">Please, search for an artist with the search bar!</span>
     </div>
   </div>
 </div>
-<div *ngIf="!userInput">
-  <div class="col-12">
-    <span class="resultsLine">Please, search for an artist with the search bar!</span>
-  </div>
-</div>
-
-
+<!--
 
 <div *ngIf="filterVenues">
   <div *ngIf="userInput">
@@ -91,4 +113,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
