@@ -10,11 +10,9 @@ import { Venue } from '../Venue'
 export class VenuePageComponent implements OnInit {
 
   constructor(private _searchbyArtistService: SearchByArtistService) { }
-
-  venue: Venue;
-  
+   venue: Venue;
   ngOnInit() {
-    this.venue = this._searchbyArtistService.getChosenVenue();
+  this.venue = this._searchbyArtistService.getChosenVenue();
   }
 
 }

@@ -25,6 +25,9 @@ export class ConcertListVenueComponent implements OnInit {
         this._searchbyArtistService.getVenueConcerts(this.venue.id)
           .subscribe(data => this.concerts = data.resultsPage.results.event);
       });
+
+    
+      
   }
   onPageChange(page: number) {
     this.page = page;
