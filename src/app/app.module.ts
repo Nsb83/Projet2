@@ -16,6 +16,10 @@ import { MapComponent } from './map/map.component';
 import { ArtistImgComponent } from './artist-img/artist-img.component';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { VenuePageComponent } from './venue-page/venue-page.component';
+import { ConcertListVenueComponent } from './concert-list-venue/concert-list-venue.component';
+import { MapVenueComponent } from './map-venue/map-venue.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +27,7 @@ const appRoutes: Routes = [
   { path: 'results', component: ResultsPageComponent },
   { path: 'results/:value', component: ResultsPageComponent },
   { path: 'artist/:id', component: ArtistPageComponent },
+  { path: 'venue/:id',component: VenuePageComponent }
 ]
 
 @NgModule({
@@ -37,6 +42,9 @@ const appRoutes: Routes = [
     ConcertListComponent,
     MapComponent,
     ArtistImgComponent,
+    VenuePageComponent,
+    ConcertListVenueComponent,
+    MapVenueComponent,
   ],
   imports: [
     BrowserModule,

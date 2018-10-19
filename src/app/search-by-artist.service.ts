@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { Artist } from "./Artist";
+import { Venue } from "./Venue";
 
 @Injectable({
   providedIn: "root"
@@ -10,7 +11,9 @@ export class SearchByArtistService {
   private _url: string;
   private _artistUrl: string;
   private _imgDescr: string;
+  private _venueUrl: string;
   public chosenArtist: Artist;
+  public chosenVenue: Venue;
 
   constructor(private http: HttpClient) {}
 
@@ -18,8 +21,16 @@ export class SearchByArtistService {
     this.chosenArtist = chosenArtist;
   }
 
+  setChosenVenue(chosenVenue) {
+    this.chosenVenue = chosenVenue;
+  }
+
   getChosenArtist() {
     return this.chosenArtist;
+  }
+
+  getChosenVenue() {
+    return this.chosenVenue;
   }
 
   getArtistConcerts(artistId) {
@@ -42,4 +53,9 @@ export class SearchByArtistService {
       `https://api.songkick.com/api/3.0/search/venues.json?query=${venueName}&apikey=R82Hox7PJZDJyV0G`
     );
   }
+
+   getVenueConcerts(venueId) {
+     this._venueUrl = `https://api.songkick.com/api/3.0/venues/${venueId}/calendar.json?apikey=R82Hox7PJZDJyV0G`
+     return this.http.get<any>(this._venueUrl);
+   }
 }
