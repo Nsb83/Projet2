@@ -10,13 +10,7 @@ import { Venue } from "../Venue";
   styleUrls: ["./results-list.component.css"]
 })
 export class ResultsListComponent implements OnInit {
-  venue: Venue = {
-    name: "",
-    city: "",
-    country: "",
-    street: "",
-    uri: ""
-  };
+  venue: Venue;
 
   artist: Artist;
   p: number = 1;
@@ -69,7 +63,13 @@ export class ResultsListComponent implements OnInit {
               venue.city,
               venue.country,
               venue.street,
-              venue.uri
+              venue.uri,
+              venue.id,
+              venue.lat,
+              venue.lng,
+              venue.website,
+              venue.description,
+              
             );
             this.venues.push(aVenue);
           }
@@ -80,8 +80,12 @@ export class ResultsListComponent implements OnInit {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => (this.p = page), 200);
   }
-  onChoosing(chosenArtist) {
+  onChoosingArtist(chosenArtist) {
     this._searchbyArtistService.setChosenArtist(chosenArtist);
+  }
+
+  onChoosingVenue(chosenVenue) {
+    this._searchbyArtistService.setChosenVenue(chosenVenue);
   }
 
   showArtists() {

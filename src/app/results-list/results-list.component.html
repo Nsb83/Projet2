@@ -12,9 +12,9 @@
       <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> gave <span class="userInput">{{ artists.length + venues.length}}
         </span>results</span>
     </div>
-    <div class="col-12">
+    <!-- <div class="col-12">
       <span class="subText">Click on the artist's name to get the list of their next concerts.</span>
-    </div>
+    </div> -->
   </div>
 
   <div class="row mt-3">
@@ -26,7 +26,7 @@
           <div class="row align-items-center">
             <div class="col-10">
               <div class="artistName">
-                <a routerLink='/artist/{{ artist.id }}' (click)='onChoosing(artist)'> {{ artist.name }}</a>
+                <a routerLink='/artist/{{ artist.id }}' (click)='onChoosingArtist(artist)'> {{ artist.name }}</a>
               </div>
               <div class="col-12">
                 <span class="text-success onTour" *ngIf="artist.onTourUntil !== null"> ( On tour until {{ artist.onTourUntil }} )</span>
@@ -53,7 +53,7 @@
                   <li>
                     <div class="row align-items-center">
                       <div class="col-10">
-                        <p class="artistName"><a href='{{venue.uri}}' target='blank'>{{ venue.name }}</a></p>
+                        <p class="artistName"><a routerLink="/venue/{{venue.id}}" (click)="onChoosingVenue(venue)" >{{ venue.name }}</a></p>
                         <div class="col-12">
                         <p class="onTour">{{ venue.street }}</p>
                         <p class="onTour">{{venue.city.displayName}} / {{ venue.city.country.displayName }}</p>
@@ -96,7 +96,7 @@
 
               <div class="row align-items-center">
                 <div class="col-10">
-                  <h3><a href='{{venue.uri}}' target='blank'>{{ venue.name }}</a></h3>
+                  <h3><a routerLink='/venue/{{ venue.id }}' (click)='onChoosingVenue(venue)'>{{ venue.name }}</a></h3>
                   <h6>{{ venue.street }}</h6>
                   <h5>{{venue.city.displayName}} / {{ venue.city.country.displayName }}</h5>
                 </div>

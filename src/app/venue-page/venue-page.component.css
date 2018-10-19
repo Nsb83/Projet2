@@ -1,0 +1,17 @@
+.venueDescription{
+    font-size:1em;
+}
+
+.venueName, .nextConcerts{
+    font-size:1.5em;
+    font-weight: bold;
+    color:darkblue;
+}
+
+.venueStreet{
+    font-size:1em;
+}
+
+.venueCountry{
+    font-size:1em;
+}

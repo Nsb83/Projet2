@@ -1,0 +1,28 @@
+<div class="row padding-move">
+  <div class="col-12">
+    <ul *ngFor="let concert of concerts">
+      <li class="list-group-item shadow bg-white rounded">
+        <div>
+          <div class="col-12 d-flex justify-content-between p-0">
+              <div class="p-0"><p class="groupName"><a href='{{concert.uri}}' target='blank'>{{ concert.displayName }}</a></p></div>
+          </div>
+          <p class="concertVenue">Starts at {{ concert.start.time }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  </div>
+
+
+  <!-- { "id": 35444339, "displayName": "U2 at Manchester Arena (October 19, 2018)", "type": "Concert", "uri":
+  "http://www.songkick.com/concerts/35444339-u2-at-manchester-arena?utm_source=51167&utm_medium=partner", "status": "ok",
+  "popularity": 0.8682, "start": { "date": "2018-10-19", "datetime": "2018-10-19T18:30:00+0100", "time": "18:30:00" },
+  "performance": [ { "id": 67819204, "displayName": "U2", "billing": "headline", "billingIndex": 1, "artist": { "id":
+  313388, "displayName": "U2", "uri": "http://www.songkick.com/artists/313388-u2?utm_source=51167&utm_medium=partner",
+  "identifier": [ { "mbid": "a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432", "href":
+  "http://api.songkick.com/api/3.0/artists/mbid:a3cb23fc-acd3-4ce0-8f36-1e5aa6a18432.json" } ] } } ], "ageRestriction":
+  null, "flaggedAsEnded": false, "venue": { "id": 17602, "displayName": "Manchester Arena", "uri":
+  "http://www.songkick.com/venues/17602-manchester-arena?utm_source=51167&utm_medium=partner", "metroArea": {
+  "displayName": "Manchester", "country": { "displayName": "UK" }, "id": 24475, "uri":
+  "http://www.songkick.com/metro_areas/24475-uk-manchester?utm_source=51167&utm_medium=partner" }, "lat": 53.48731,
+  "lng": -2.24335 }, "location": { "city": "Manchester, UK", "lat": 53.48731, "lng": -2.24335 } } -->
