@@ -4,13 +4,29 @@
     <div class="col-lg-6">
         <app-map-venue></app-map-venue>
     </div>
-    <div class="col-lg-6 venueDescription">
-      {{venue.description}}
+    <div class="col-lg-6">
+      <div class="venueName">
+        {{venue.name}}
+      </div>
+      <div class="venueStreet">
+        {{venue.street}}
+      </div>
+      <div class="venueCountry">
+        <p>{{venue.city.displayName}}, {{venue.city.country.displayName}}</p>
+      </div>
+      <div class="venueDescription">
+        Description: {{venue.description}}
+      </div>
+      <div class="venueWebsite">
+        <a href="{{ venue.website }}" target="blank">{{ venue.name }}'s website</a>
+      </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-12">
-      <app-concert-list-venue></app-concert-list-venue>
-    </div>
-</div>
+  </div>
+  <hr>
+  <div class="row mb-2">
+      <div class="col-12">
+        <div class="nextConcerts">Next concerts:</div>
+        <app-concert-list-venue></app-concert-list-venue>
+      </div>
+  </div>
 </div>
