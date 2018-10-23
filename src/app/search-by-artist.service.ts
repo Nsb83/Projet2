@@ -38,6 +38,10 @@ export class SearchByArtistService {
     return this.chosenVenue;
   }
 
+  getChosenCity() {
+    return this.chosenCity;
+  }
+
   getArtistConcerts(artistId) {
     this._artistUrl = `https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=R82Hox7PJZDJyV0G`;
     return this.http.get<any>(this._artistUrl);

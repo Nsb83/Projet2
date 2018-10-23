@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { City } from '../City';
+import { SearchByArtistService } from '../search-by-artist.service';
 
 @Component({
   selector: 'app-city-page',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CityPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _searchbyArtistService: SearchByArtistService) { }
+
+  city: City;
 
   ngOnInit() {
+    this.city = this._searchbyArtistService.getChosenCity();
   }
 
 }
