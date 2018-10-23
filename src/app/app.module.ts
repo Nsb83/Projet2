@@ -20,6 +20,7 @@ import { VenuePageComponent } from './venue-page/venue-page.component';
 import { ConcertListVenueComponent } from './concert-list-venue/concert-list-venue.component';
 import { MapVenueComponent } from './map-venue/map-venue.component';
 import { CityPageComponent } from './city-page/city-page.component';
+import { ConcertListCityComponent } from './concert-list-city/concert-list-city.component';
 
 
 
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     VenuePageComponent,
     ConcertListVenueComponent,
     MapVenueComponent,
-    CityPageComponent
+    CityPageComponent,
+    ConcertListCityComponent
   ],
   imports: [
     BrowserModule,

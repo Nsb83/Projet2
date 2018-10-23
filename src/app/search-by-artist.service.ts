@@ -71,4 +71,9 @@ export class SearchByArtistService {
      this._venueUrl = `https://api.songkick.com/api/3.0/venues/${venueId}/calendar.json?apikey=R82Hox7PJZDJyV0G`
      return this.http.get<any>(this._venueUrl);
    }
+
+   getCityConcerts(cityId) {
+     // let _cityUrl = `https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`
+     return this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`);
+   }
 }

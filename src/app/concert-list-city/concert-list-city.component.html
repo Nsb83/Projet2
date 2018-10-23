@@ -1,0 +1,14 @@
+<div class="row padding-move">
+  <div class="col-12">
+    <ul *ngFor="let concert of concerts">
+      <li class="list-group-item shadow bg-white rounded">
+        <div>
+          <div class="col-12 d-flex justify-content-between p-0">
+              <div class="p-0"><p class="groupName"><a href='{{concert.uri}}' target='blank'>{{ concert.displayName }}</a></p></div>
+          </div>
+          <p class="concertVenue">Starts at {{ concert.start.time }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  </div>
