@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Artist } from "./Artist";
 import { Venue } from "./Venue";
+import { City } from "./City";
 
 @Injectable({
   providedIn: "root"
@@ -13,6 +14,7 @@ export class SearchByArtistService {
   private _venueUrl: string;
   public chosenArtist: Artist;
   public chosenVenue: Venue;
+  public chosenCity: City;
 
   constructor(private http: HttpClient) {}
 
@@ -22,6 +24,10 @@ export class SearchByArtistService {
 
   setChosenVenue(chosenVenue) {
     this.chosenVenue = chosenVenue;
+  }
+
+  setChosenCity(chosenCity) {
+    this.chosenCity = chosenCity;
   }
 
   getChosenArtist() {

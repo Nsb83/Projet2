@@ -111,6 +111,10 @@ export class ResultsListComponent implements OnInit {
     this._searchbyArtistService.setChosenVenue(chosenVenue);
   }
 
+  onChoosingCity(chosenCity) {
+    this._searchbyArtistService.setChosenCity(chosenCity);
+  }
+
   showArtists() {
     this.filterArtists = true;
     this.filterVenues = false;

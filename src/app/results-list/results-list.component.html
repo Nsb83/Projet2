@@ -52,7 +52,7 @@
           <div class="row align-items-center">
             <div class="col-10">
               <div class="artistName">
-                <a href='{{city.uri}}' target="blank"> {{ city.name }}</a>
+                <a routerLink="/city/{{city.id}}" (click)="onChoosingCity(city)"> {{ city.name }}</a>
               </div>
               <div class="col-12">
                 <span class="onTour">({{ city.country }})</span>
