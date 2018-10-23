@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { SearchByArtistService } from "../search-by-artist.service";
-import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { ActivatedRoute, ParamMap } from "@angular/router";
+import { City } from "../City";
 import { Artist } from "../Artist";
 import { Venue } from "../Venue";
 
@@ -11,9 +12,10 @@ import { Venue } from "../Venue";
 })
 export class ResultsListComponent implements OnInit {
   venue: Venue;
-
   artist: Artist;
+
   p: number = 1;
+
   constructor(
     private _searchbyArtistService: SearchByArtistService,
     private route: ActivatedRoute
@@ -23,8 +25,10 @@ export class ResultsListComponent implements OnInit {
   public userInput: string;
   public artists: Artist[];
   public venues: Venue[];
+  public cities: City[];
   public filterArtists: boolean = true;
   public filterVenues: boolean = true;
+  public filterCities: boolean = true;
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
@@ -68,18 +72,37 @@ export class ResultsListComponent implements OnInit {
               venue.lat,
               venue.lng,
               venue.website,
-              venue.description,
-              
+              venue.description
             );
             this.venues.push(aVenue);
           }
         });
+
+      this._searchbyArtistService
+        .getCities(this.userInput)
+        .subscribe((obj: any) => {
+          this.cities = [];
+          let citiesTable = obj.resultsPage.results.location;
+          for (let city of citiesTable) {
+            let aCity = new City(
+              city.metroArea.id,
+              city.metroArea.uri,
+              city.city.displayName,
+              city.metroArea.country.displayName,
+              city.metroArea.lat,
+              city.metroArea.lng
+            );
+            this.cities.push(aCity);
+          }
+        });
     });
   }
+
   onPageChange(page: number) {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => (this.p = page), 200);
   }
+
   onChoosingArtist(chosenArtist) {
     this._searchbyArtistService.setChosenArtist(chosenArtist);
   }
@@ -91,16 +114,25 @@ export class ResultsListComponent implements OnInit {
   showArtists() {
     this.filterArtists = true;
     this.filterVenues = false;
+    this.filterCities = false;
   }
 
   showVenues() {
     this.filterVenues = true;
     this.filterArtists = false;
+    this.filterCities = false;
   }
 
   showAll() {
     this.filterArtists = true;
     this.filterVenues = true;
+    this.filterCities = true;
+  }
+
+  showCities() {
+    this.filterArtists = false;
+    this.filterVenues = false;
+    this.filterCities = true;
   }
 }
 

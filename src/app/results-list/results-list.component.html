@@ -1,15 +1,16 @@
 <div *ngIf="userInput">
   <div class="row">
-    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showAll()'>All</button></div>
-    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showArtists()'>Artists</button></div>
-    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showVenues()'>Venues</button></div>
+    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showAll()'>All ({{cities.length + venues.length + cities.length}})</button></div>
+    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showArtists()'>Artists ({{artists.length}})</button></div>
+    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showVenues()'>Venues ({{venues.length}})</button></div>
+    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showCities()'>Cities ({{cities.length}})</button></div>
   </div>
 </div>
 
 <div *ngIf="userInput">
   <div class="row ">
     <div class="col-12">
-      <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> gave <span class="userInput">{{ artists.length + venues.length}}
+      <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> gave <span class="userInput">{{ artists.length + venues.length + cities.length}}
         </span>results</span>
     </div>
     <!-- <div class="col-12">
@@ -37,6 +38,29 @@
               <a href='{{ artist.uri }}' target="blank">
                 <img *ngIf='artist.image != ""' class="musicNote" [src]="artist.image" alt="a music note">
                 <img *ngIf='artist.image == ""' class="musicNote" src="http://www.iconninja.com/files/652/469/90/note-audio-music-sound-icon.png" alt="a music note">
+              </a>
+            </div>
+          </div>
+        </li>
+        <hr>
+      </ul>
+      </div>
+      <div *ngIf="filterCities">
+      <ul *ngFor="let city of cities">
+        <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
+        <li>
+          <div class="row align-items-center">
+            <div class="col-10">
+              <div class="artistName">
+                <a href='{{city.uri}}' target="blank"> {{ city.name }}</a>
+              </div>
+              <div class="col-12">
+                <span class="onTour">({{ city.country }})</span>
+              </div>
+            </div>
+            <div class="col-2 d-flex justify-content-end">
+              <a href='{{ city.uri }}' target="blank">
+                <i class="fas fa-map-marked-alt fa-5x" style="color:black"></i>
               </a>
             </div>
           </div>
