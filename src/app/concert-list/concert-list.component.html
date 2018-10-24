@@ -1,3 +1,4 @@
+<div *ngIf="concerts">
 <div class="container">
   <div class="row">
     <div class="col-12">
@@ -19,3 +20,8 @@
     <pagination-controls (pageChange)="onPageChange($event)" autoHide="true" responsive="true" maxSize="5" previousLabel="" nextLabel=""></pagination-controls>
 </div>
 </div>
+</div>
+<div *ngIf="!concerts">
+  <p>This artist is not tour at the moment, so we have nothing to show you :(</p>
+</div>
+
