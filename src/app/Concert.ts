@@ -7,11 +7,11 @@
     city: string;
     lat: number;
     lng: number;
-    date: string;
-    time: string;
+    dateTime: string;
+    
 
       
-    constructor (name: string, artistName: string, venueName: string, id: number, uri: string, city: string, lat: number, lng: number, date: string, time: string){
+    constructor (name: string, artistName: string, venueName: string, id: number, uri: string, city: string, lat: number, lng: number, dateTime: string){
         this.name = name;
         this.artistName = artistName;
         this.venueName = venueName;
@@ -20,7 +20,6 @@
         this.city = city;
         this.lat = lat;
         this.lng = lng;
-        this.date = date;
-        this.time = time;
+        this.dateTime = dateTime;
      }
  }

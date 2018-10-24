@@ -39,8 +39,7 @@ export class ConcertListVenueComponent implements OnInit {
                 concert.location.city,
                 concert.location.lat,
                 concert.location.lng,
-                concert.start.date,
-                concert.start.time
+                concert.start.datetime
               );
 
               
