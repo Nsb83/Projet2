@@ -8,10 +8,7 @@ import { City } from "./City";
   providedIn: "root"
 })
 export class SearchByArtistService {
-  private _url: string;
-  private _artistUrl: string;
-  private _imgDescr: string;
-  private _venueUrl: string;
+
   public chosenArtist: Artist;
   public chosenVenue: Venue;
   public chosenCity: City;
@@ -42,38 +39,93 @@ export class SearchByArtistService {
     return this.chosenCity;
   }
 
-  getArtistConcerts(artistId) {
-    this._artistUrl = `https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=R82Hox7PJZDJyV0G`;
-    return this.http.get<any>(this._artistUrl);
-  }
+  getArtists(userInput) {
+    let artists: Artist[] = [];
 
-  getResults(userInput) {
-    this._url = `https://api.songkick.com/api/3.0/search/artists.json?apikey=R82Hox7PJZDJyV0G&query=${userInput}`;
-    return this.http.get<any>(this._url);
+    this.http.get<any>(`https://api.songkick.com/api/3.0/search/artists.json?apikey=R82Hox7PJZDJyV0G&query=${userInput}`)
+      .subscribe((res: any) => {
+        let artistes = res.resultsPage.results.artist;
+        for (let artist of artistes) {
+          let unArtiste = new Artist(
+            artist.displayName,
+            artist.id,
+            artist.onTourUntil,
+            artist.uri
+          );
+
+          this.getImgDescr(unArtiste.name)
+            .subscribe((data: any) => {
+              unArtiste.image = data.artist.image[3]["#text"];
+              unArtiste.summary = data.artist.bio.summary;
+              artists.push(unArtiste);
+            });
+        }
+      });
+
+     return artists;
   }
 
   getImgDescr(artistName) {
-    this._imgDescr = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&autocorrect=1&api_key=9b7579d5f409106928353935ac0ab5ab&format=json`;
-    return this.http.get<any>(this._imgDescr);
+    return this.http.get<any>(`http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&autocorrect=1&api_key=9b7579d5f409106928353935ac0ab5ab&format=json`);
   }
 
-  getVenues(venueName) {
-    return this.http.get<any>(
-      `https://api.songkick.com/api/3.0/search/venues.json?query=${venueName}&apikey=R82Hox7PJZDJyV0G`
-    );
+  getVenues(userInput) {
+    let venues: Venue[] = [];
+
+    this.http.get<any>(`https://api.songkick.com/api/3.0/search/venues.json?query=${userInput}&apikey=R82Hox7PJZDJyV0G`)
+      .subscribe((res: any) => {
+        let venuess = res.resultsPage.results.venue;
+        for (let venue of venuess) {
+          let aVenue = new Venue(
+            venue.displayName,
+            venue.city,
+            venue.country,
+            venue.street,
+            venue.uri,
+            venue.id,
+            venue.lat,
+            venue.lng,
+            venue.website,
+            venue.description
+          );
+
+          venues.push(aVenue);
+        }
+      });
+
+      return venues;
   }
 
   getCities(userInput){
-    return this.http.get<any>(`https://api.songkick.com/api/3.0/search/locations.json?query=${userInput}&apikey=R82Hox7PJZDJyV0G`)
+    let cities: City[] = [];
+    this.http.get<any>(`https://api.songkick.com/api/3.0/search/locations.json?query=${userInput}&apikey=R82Hox7PJZDJyV0G`)
+      .subscribe((data: any) => {
+        let citiesTable = data.resultsPage.results.location;
+        for (let city of citiesTable) {
+          let aCity = new City(
+            city.metroArea.id,
+            city.metroArea.uri,
+            city.city.displayName,
+            city.metroArea.country.displayName,
+            city.metroArea.lat,
+            city.metroArea.lng
+          );
+          cities.push(aCity);
+        }
+      });
+
+      return cities;
   }
 
    getVenueConcerts(venueId) {
-     this._venueUrl = `https://api.songkick.com/api/3.0/venues/${venueId}/calendar.json?apikey=R82Hox7PJZDJyV0G`
-     return this.http.get<any>(this._venueUrl);
+     return this.http.get<any>(`https://api.songkick.com/api/3.0/venues/${venueId}/calendar.json?apikey=R82Hox7PJZDJyV0G`);
    }
 
    getCityConcerts(cityId) {
-     // let _cityUrl = `https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`
      return this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`);
+   }
+
+   getArtistConcerts(artistId) {
+     return this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=R82Hox7PJZDJyV0G`);
    }
 }
