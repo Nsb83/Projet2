@@ -1,0 +1,15 @@
+.groupName {
+    font-size: 15px;
+    line-height: 1;
+    margin-bottom: 7px;
+}
+
+.concertVenue {
+    font-size: 12px;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+ul {
+    padding-left: 0px;
+}
