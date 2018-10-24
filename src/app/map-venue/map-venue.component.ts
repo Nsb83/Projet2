@@ -23,9 +23,7 @@ export class MapVenueComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.venueId = params['id'];
-      console.log(this.venueId);
       this.venue = this._searchbyArtistService.getChosenVenue();
-      console.log(this.venue)
       this.lat = this.venue.lat;
       this.lng = this.venue.lng;
     });

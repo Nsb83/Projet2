@@ -14,8 +14,6 @@ export class ResultsListComponent implements OnInit {
   venue: Venue;
   artist: Artist;
 
-  p: number = 1;
-
   constructor(
     private _searchbyArtistService: SearchByArtistService,
     private route: ActivatedRoute
@@ -23,9 +21,11 @@ export class ResultsListComponent implements OnInit {
 
   public artistDisplayName: string;
   public userInput: string;
+
   public artists: Artist[];
   public venues: Venue[];
   public cities: City[];
+
   public filterArtists: boolean = true;
   public filterVenues: boolean = true;
   public filterCities: boolean = true;
@@ -34,73 +34,12 @@ export class ResultsListComponent implements OnInit {
     this.route.params.subscribe((params: ParamMap) => {
       this.userInput = params["value"];
 
-      this._searchbyArtistService
-        .getResults(this.userInput)
-        .subscribe((res: any) => {
-          this.artists = [];
-          let artistes = res.resultsPage.results.artist;
-          for (let artist of artistes) {
-            let unArtiste = new Artist(
-              artist.displayName,
-              artist.id,
-              artist.onTourUntil,
-              artist.uri
-            );
-            this._searchbyArtistService
-              .getImgDescr(unArtiste.name)
-              .subscribe((data: any) => {
-                unArtiste.image = data.artist.image[3]["#text"];
-                unArtiste.summary = data.artist.bio.summary;
-                this.artists.push(unArtiste);
-              });
-          }
-        });
+      this.artists = this._searchbyArtistService.getArtists(this.userInput);
 
-      this._searchbyArtistService
-        .getVenues(this.userInput)
-        .subscribe((reponse: any) => {
-          this.venues = [];
-          let venuess = reponse.resultsPage.results.venue;
-          for (let venue of venuess) {
-            let aVenue = new Venue(
-              venue.displayName,
-              venue.city,
-              venue.country,
-              venue.street,
-              venue.uri,
-              venue.id,
-              venue.lat,
-              venue.lng,
-              venue.website,
-              venue.description
-            );
-            this.venues.push(aVenue);
-          }
-        });
+      this.venues = this._searchbyArtistService.getVenues(this.userInput);
 
-      this._searchbyArtistService
-        .getCities(this.userInput)
-        .subscribe((obj: any) => {
-          this.cities = [];
-          let citiesTable = obj.resultsPage.results.location;
-          for (let city of citiesTable) {
-            let aCity = new City(
-              city.metroArea.id,
-              city.metroArea.uri,
-              city.city.displayName,
-              city.metroArea.country.displayName,
-              city.metroArea.lat,
-              city.metroArea.lng
-            );
-            this.cities.push(aCity);
-          }
-        });
+      this.cities = this._searchbyArtistService.getCities(this.userInput);
     });
-  }
-
-  onPageChange(page: number) {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setTimeout(() => (this.p = page), 200);
   }
 
   onChoosingArtist(chosenArtist) {
