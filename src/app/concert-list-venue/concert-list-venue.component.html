@@ -1,12 +1,12 @@
-<div class="row padding-move">
+<div class="row">
   <div class="col-12">
     <ul *ngFor="let concert of concerts">
       <li class="list-group-item shadow bg-white rounded">
         <div>
           <div class="col-12 d-flex justify-content-between p-0">
-              <div class="p-0"><p class="groupName"><a href='{{concert.uri}}' target='blank'>{{ concert.displayName }}</a></p></div>
+              <div class="p-0"><p class="groupName"><a href='{{concert.uri}}' target='blank'>{{ concert.name }}</a></p></div>
           </div>
-          <p class="concertVenue">Starts at {{ concert.start.time }}</p>
+          <p class="concertVenue">Starts at {{ concert.date }}</p>
         </div>
       </li>
     </ul>
