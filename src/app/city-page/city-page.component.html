@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="container pt-3">
+  <div class="row mb-3">
+    <div class="col-lg-6">
+        <app-map-city></app-map-city>
+    </div>
+    <div class="col-lg-6">
+      <div class="cityName">
+        {{city.name}}
+      </div>
+      <div class="cityCountry">
+        {{city.country}}
+      </div>
+      <!-- <div class="">
+        <p>Instance de classe City : {{city | json}}</p>
+      </div> -->
+      <div class="cityUri">
+        <a href="{{ city.uri }}" target="blank">{{ city.name }}'s songkick page</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row mb-2">
+      <div class="col-12">
+        <div class="nextConcerts">Next concerts:</div>
+        <app-concert-list-city></app-concert-list-city>
+      </div>
+  </div>
+</div>
