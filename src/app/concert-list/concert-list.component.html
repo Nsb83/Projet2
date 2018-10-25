@@ -4,13 +4,18 @@
     <div class="col-12">
       <ul *ngFor="let concert of concerts | paginate: { itemsPerPage: 5, currentPage: page } ">
         <li class="list-group-item shadow bg-white rounded">
-          <div>
-            <div class="col-12 d-flex justify-content-between p-0">
-                <div class="p-0"><p class="groupName"><a href='{{concert.uri}}' target='blank'>{{ concert.displayName }}</a></p></div>
-                <!-- <div class="col-6 p-0 d-flex justify-content-end"><p class="text-secondary">{{ concert.start.date | date:"short" }}</p></div> -->
+          
+          <div class="row">
+            <div class="col-4">
+                <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
+                <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
             </div>
-            <p class="concertVenue">{{ concert.venue.displayName }}</p>
-            <p class="concertCity">{{ concert.location.city }}</p>
+            <div class="col-8">
+                <p class="artistName"><a href='{{concert.uri}}' target='blank'>{{ concert.artistName }}</a></p>
+                <p class="groupName">{{ concert.venueName }}</p>
+                <p class="groupName">{{ concert.city }}</p>
+            </div>
+        
           </div>
         </li>
       </ul>
