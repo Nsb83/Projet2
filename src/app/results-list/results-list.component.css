@@ -39,8 +39,27 @@ ul {
   box-shadow: 2px 2px 2px 0px rgba(173, 171, 173, 1);
 }
 
+.menu {
+  height: 25%;
+}
+
+.list-group-item {
+  border-color: white;
+  margin: 0;
+  padding: 2px;
+}
+
+.list-group-item:hover {
+  cursor: pointer;
+}
+
+a:not([href]):not([tabindex]):hover {
+  text-decoration: underline;
+}
+
 .filtre {
-  margin-top: 80px;
+  margin-top: 70px;
+  background-color: white;
 }
 
 @media (max-width: 992px) {
