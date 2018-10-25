@@ -1,17 +1,20 @@
 <div *ngIf="userInput">
-  <div class="filtre row d-flex justify-content-center fixed-top" *ngIf="currentWindowWidth < 992" >
+  <div class="filtre row d-flex justify-content-center fixed-top" *ngIf="currentWindowWidth < 992">
     <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showAll()'>All</button></div>
-    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showArtists()'>Artists ({{artists.length}})</button></div>
-    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showVenues()'>Venues ({{venues.length}})</button></div>
-    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showCities()'>Cities ({{cities.length}})</button></div>
+    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showArtists()'>Artists
+        ({{artists.length}})</button></div>
+    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showVenues()'>Venues
+        ({{venues.length}})</button></div>
+    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showCities()'>Cities
+        ({{cities.length}})</button></div>
   </div>
 </div>
 
 <div class="row">
-<div class="menu col-2 position-fixed" *ngIf="currentWindowWidth >= 992" >
-  <ul class="list-group">
+  <div class="menu col-2 position-fixed" *ngIf="currentWindowWidth >= 992">
+    <ul class="list-group">
       <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showAll()'>
-          All
+        All
         <span class="badge badge-primary badge-pill">{{ artists.length + venues.length}}</span>
       </a>
       <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showArtists()'>
@@ -22,79 +25,86 @@
         Venues
         <span class="badge badge-primary badge-pill">{{ venues.length }}</span>
       </a>
+      <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showCities()'>
+        Cities
+        <span class="badge badge-primary badge-pill">{{ cities.length }}</span>
+      </a>
     </ul>
-</div>
+  </div>
 
 
-    <!-- <div *ngIf="currentWindowWidth > 992" class="offset-3 col-9"> -->
-        <div class="results offset-lg-3 col-lg-9 col-md-12">
-      <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> : </span>
+  <!-- <div *ngIf="currentWindowWidth > 992" class="offset-3 col-9"> -->
+  <div class="results offset-lg-3 col-lg-9 col-md-12">
+    <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> : </span>
 
-    
 
-  <div class="row mt-3">
-    <div class="col-12">
-      <div *ngIf="filterArtists">
-      <ul *ngFor="let artist of artists">
-        <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
-        <li>
-          <div class="row align-items-center">
-            <div class="col-10">
-              <div class="artistName">
-                <a routerLink='/artist/{{ artist.id }}' (click)='onChoosingArtist(artist)'> {{ artist.name }}</a>
+
+    <div class="row mt-3">
+      <div class="col-12">
+        <div *ngIf="filterArtists">
+          <ul *ngFor="let artist of artists">
+            <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
+            <li>
+              <div class="row align-items-center">
+                <div class="col-10">
+                  <div class="artistName">
+                    <a routerLink='/artist/{{ artist.id }}' (click)='onChoosingArtist(artist)'> {{ artist.name }}</a>
+                  </div>
+                  <div class="col-12">
+                    <span class="text-success onTour" *ngIf="artist.onTourUntil !== null"> ( On tour until {{
+                      artist.onTourUntil }} )</span>
+                    <span class="text-danger onTour" *ngIf="artist.onTourUntil === null"> ( Not on tour at the moment
+                      :/ )</span>
+                  </div>
+                </div>
+                <div class="col-2 d-flex justify-content-end">
+                  <a href='{{ artist.uri }}' target="blank">
+                    <img *ngIf='artist.image != ""' class="musicNote" [src]="artist.image" alt="a music note">
+                    <img *ngIf='artist.image == ""' class="musicNote" src="../../assets/images/note.png" alt="a music note">
+                  </a>
+                </div>
               </div>
-              <div class="col-12">
-                <span class="text-success onTour" *ngIf="artist.onTourUntil !== null"> ( On tour until {{ artist.onTourUntil }} )</span>
-                <span class="text-danger onTour" *ngIf="artist.onTourUntil === null"> ( Not on tour at the moment :/ )</span>
+            </li>
+            <hr>
+          </ul>
+        </div>
+        <div *ngIf="filterCities">
+          <ul *ngFor="let city of cities">
+            <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
+            <li>
+              <div class="row align-items-center">
+                <div class="col-10">
+                  <div class="artistName">
+                    <a routerLink="/city/{{city.id}}" (click)="onChoosingCity(city)"> {{ city.name }}</a>
+                  </div>
+                  <div class="col-12">
+                    <span class="onTour">({{ city.country }})</span>
+                  </div>
+                </div>
+                <div class="col-2 d-flex justify-content-end">
+                  <a href='{{ city.uri }}' target="blank">
+                    <img class="musicNote" src="../../assets/images/city.png" alt="city">
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="col-2 d-flex justify-content-end">
-              <a href='{{ artist.uri }}' target="blank">
-                <img *ngIf='artist.image != ""' class="musicNote" [src]="artist.image" alt="a music note">
-                <img *ngIf='artist.image == ""' class="musicNote" src="../../assets/images/note.png" alt="a music note">
-              </a>
-            </div>
-          </div>
-        </li>
-        <hr>
-      </ul>
-      </div>
-      <div *ngIf="filterCities">
-      <ul *ngFor="let city of cities">
-        <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
-        <li>
-          <div class="row align-items-center">
-            <div class="col-10">
-              <div class="artistName">
-                <a routerLink="/city/{{city.id}}" (click)="onChoosingCity(city)"> {{ city.name }}</a>
-              </div>
-              <div class="col-12">
-                <span class="onTour">({{ city.country }})</span>
-              </div>
-            </div>
-            <div class="col-2 d-flex justify-content-end">
-              <a href='{{ city.uri }}' target="blank">
-                <img class="musicNote" src="../../assets/images/city.png" alt="city">
-              </a>
-            </div>
-          </div>
-        </li>
-        <hr>
-      </ul>
-      </div>
-      <div *ngIf="filterVenues">
+            </li>
+            <hr>
+          </ul>
+        </div>
+        <div *ngIf="filterVenues">
           <div>
             <div class="row mt-3">
               <div class="col-12">
                 <ul *ngFor="let venue of venues">
-                   <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
+                  <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
                   <li>
                     <div class="row align-items-center">
                       <div class="col-10">
-                        <p class="artistName"><a routerLink="/venue/{{venue.id}}" (click)="onChoosingVenue(venue)" >{{ venue.name }}</a></p>
+                        <p class="artistName"><a routerLink="/venue/{{venue.id}}" (click)="onChoosingVenue(venue)">{{
+                            venue.name }}</a></p>
                         <div class="col-12">
-                        <p class="onTour">{{ venue.street }}</p>
-                        <p class="onTour">{{venue.city.displayName}} / {{ venue.city.country.displayName }}</p>
+                          <p class="onTour">{{ venue.street }}</p>
+                          <p class="onTour">{{venue.city.displayName}} / {{ venue.city.country.displayName }}</p>
                         </div>
                       </div>
                       <div class="col-2 d-flex justify-content-end ">
@@ -107,22 +117,22 @@
               </div>
             </div>
           </div>
-      </div>
-      <!-- <div *ngIf="!filterVenues || !filterArtists">
+        </div>
+        <!-- <div *ngIf="!filterVenues || !filterArtists">
         <div class="col-12 d-flex justify-content-center">
           <pagination-controls (pageChange)="onPageChange($event)" autoHide="true" responsive="true">
           </pagination-controls>
         </div>
       </div> -->
+      </div>
+    </div>
+    <div *ngIf="!userInput">
+      <div class="col-12">
+        <span class="resultsLine">Please, search for an artist with the search bar!</span>
+      </div>
     </div>
   </div>
-  <div *ngIf="!userInput">
-    <div class="col-12">
-      <span class="resultsLine">Please, search for an artist with the search bar!</span>
-    </div>
-  </div>
-</div>
-<!--
+  <!--
 
 <div *ngIf="filterVenues">
   <div *ngIf="userInput">
