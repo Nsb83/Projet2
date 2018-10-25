@@ -39,6 +39,15 @@ ul {
   box-shadow: 2px 2px 2px 0px rgba(173, 171, 173, 1);
 }
 
+.filtre {
+  margin-top: 80px;
+}
+
+@media (max-width: 992px) {
+  .results {
+    margin-top:50px;
+  }
+}
 
 @media (max-width: 577px) {
   .userInput {
@@ -60,6 +69,12 @@ ul {
     font-size: 1.3rem;
   }
   .musicNote {
+    max-width: 4rem;
+    max-height: 4rem;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px 0px rgba(173, 171, 173, 1);
+  }
+  .fas {
     max-width: 4rem;
     max-height: 4rem;
     border-radius: 50%;

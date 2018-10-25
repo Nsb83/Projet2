@@ -1,22 +1,36 @@
 <div *ngIf="userInput">
-  <div class="row">
-    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showAll()'>All</button></div>
-    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showArtists()'>Artists ({{artists.length}})</button></div>
-    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showVenues()'>Venues ({{venues.length}})</button></div>
-    <div class="m-2"><button type="button" class="btn btn-primary" (click)='showCities()'>Cities ({{cities.length}})</button></div>
+  <div class="filtre row d-flex justify-content-center fixed-top" *ngIf="currentWindowWidth < 992" >
+    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showAll()'>All</button></div>
+    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showArtists()'>Artists ({{artists.length}})</button></div>
+    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showVenues()'>Venues ({{venues.length}})</button></div>
+    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showCities()'>Cities ({{cities.length}})</button></div>
   </div>
 </div>
 
-<div *ngIf="userInput">
-  <div class="row ">
-    <div class="col-12">
-      <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> gave <span class="userInput">{{ artists.length + venues.length + cities.length}}
-        </span>results</span>
-    </div>
-    <!-- <div class="col-12">
-      <span class="subText">Click on the artist's name to get the list of their next concerts.</span>
-    </div> -->
-  </div>
+<div class="row">
+<div class="menu col-2 position-fixed" *ngIf="currentWindowWidth >= 992" >
+  <ul class="list-group">
+      <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showAll()'>
+          All
+        <span class="badge badge-primary badge-pill">{{ artists.length + venues.length}}</span>
+      </a>
+      <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showArtists()'>
+        Artists
+        <span class="badge badge-primary badge-pill">{{ artists.length }}</span>
+      </a>
+      <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showVenues()'>
+        Venues
+        <span class="badge badge-primary badge-pill">{{ venues.length }}</span>
+      </a>
+    </ul>
+</div>
+
+
+    <!-- <div *ngIf="currentWindowWidth > 992" class="offset-3 col-9"> -->
+        <div class="results offset-lg-3 col-lg-9 col-md-12">
+      <span class="resultsLine">Your search for <span class="userInput">'{{ userInput }}'</span> : </span>
+
+    
 
   <div class="row mt-3">
     <div class="col-12">
@@ -37,7 +51,7 @@
             <div class="col-2 d-flex justify-content-end">
               <a href='{{ artist.uri }}' target="blank">
                 <img *ngIf='artist.image != ""' class="musicNote" [src]="artist.image" alt="a music note">
-                <img *ngIf='artist.image == ""' class="musicNote" src="http://www.iconninja.com/files/652/469/90/note-audio-music-sound-icon.png" alt="a music note">
+                <img *ngIf='artist.image == ""' class="musicNote" src="../../assets/images/note.png" alt="a music note">
               </a>
             </div>
           </div>
@@ -60,7 +74,7 @@
             </div>
             <div class="col-2 d-flex justify-content-end">
               <a href='{{ city.uri }}' target="blank">
-                <i class="fas fa-map-marked-alt fa-5x" style="color:black"></i>
+                <img class="musicNote" src="../../assets/images/city.png" alt="city">
               </a>
             </div>
           </div>
