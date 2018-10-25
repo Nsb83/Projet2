@@ -9,7 +9,7 @@ import { ResultsPageComponent } from './results-page/results-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ResultsListComponent } from './results-list/results-list.component';
 import { SearchByArtistService } from './search-by-artist.service';
-import { ArtistPageComponent } from "./artist-page/artist-page.component";
+import { ArtistPageComponent } from './artist-page/artist-page.component';
 import { ConcertListComponent } from './concert-list/concert-list.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';

@@ -4,11 +4,27 @@
     margin-bottom: 7px;
 }
 
-.concertVenue {
-    font-size: 12px;
+.artistName a {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #1F618D;
+} 
+
+.date {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #283747;
+}
+
+.time {
+    font-size: 15px;
     line-height: 1;
     margin-bottom: 5px;
+    color: #283747;
 }
+
 
 ul {
     padding-left: 0px;

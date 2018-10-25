@@ -2,11 +2,16 @@
   <div class="col-12">
     <ul *ngFor="let concert of concerts">
       <li class="list-group-item shadow bg-white rounded">
-        <div>
-          <div class="col-12 d-flex justify-content-between p-0">
-              <div class="p-0"><p class="groupName"><a href='{{concert.uri}}' target='blank'>{{ concert.displayName }}</a></p></div>
+        <div class="row">
+          <div class="col-2">
+            <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
+            <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
           </div>
-          <p class="concertVenue">Starts at {{ concert.start.time }}</p>
+          <div class="col-10">
+            <p class="artistName"><a href='{{concert.uri}}' target='blank'>{{ concert.artistName }}</a></p>
+            <p class="groupName">{{ concert.venueName }}</p>
+            <p class="groupName">{{ concert.city }}</p>
+          </div>
         </div>
       </li>
     </ul>
