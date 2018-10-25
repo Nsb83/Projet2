@@ -19,7 +19,7 @@ export class ResultsListComponent implements OnInit {
     private _searchbyArtistService: SearchByArtistService,
     private route: ActivatedRoute
   ) {}
-  
+
   public mobile: boolean;
   public currentWindowWidth: number;
 
@@ -36,9 +36,7 @@ export class ResultsListComponent implements OnInit {
   public filterCities: boolean = true;
 
   @HostListener('window:resize')
-  onResize() {
-this.currentWindowWidth = window.innerWidth
-}
+  onResize() {this.currentWindowWidth = window.innerWidth}
 
   ngOnInit() {
     // if (window.screen.width === 700) { // 768px portrait

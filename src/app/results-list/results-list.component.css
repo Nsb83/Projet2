@@ -100,6 +100,12 @@ a:not([href]):not([tabindex]):hover {
     box-shadow: 2px 2px 2px 0px rgba(173, 171, 173, 1);
   }
 }
+@media (min-width: 1600px){
+.badge {
+    margin-right: 60px;
+  }
+}
+
 
 /* .imgVenue {
   max-width: 7rem;
