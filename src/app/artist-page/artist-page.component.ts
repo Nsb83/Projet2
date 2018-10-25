@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchByArtistService } from '../search-by-artist.service';
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Artist } from '../Artist';
 import { Concert } from '../Concert';
 
