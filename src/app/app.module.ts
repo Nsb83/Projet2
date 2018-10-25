@@ -52,7 +52,7 @@ const appRoutes: Routes = [
     MapVenueComponent,
     CityPageComponent,
     ConcertListCityComponent,
-    MapCityComponent
+    MapCityComponent,
   ],
   imports: [
     BrowserModule,

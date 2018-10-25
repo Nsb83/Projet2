@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 import { City } from "../City";
 import { Artist } from "../Artist";
 import { Venue } from "../Venue";
+import { HostListener } from '@angular/core'
 
 @Component({
   selector: "app-results-list",
@@ -18,6 +19,10 @@ export class ResultsListComponent implements OnInit {
     private _searchbyArtistService: SearchByArtistService,
     private route: ActivatedRoute
   ) {}
+  
+  public mobile: boolean;
+  public currentWindowWidth: number;
+
 
   public artistDisplayName: string;
   public userInput: string;
@@ -30,7 +35,19 @@ export class ResultsListComponent implements OnInit {
   public filterVenues: boolean = true;
   public filterCities: boolean = true;
 
+  @HostListener('window:resize')
+  onResize() {
+this.currentWindowWidth = window.innerWidth
+}
+
   ngOnInit() {
+    // if (window.screen.width === 700) { // 768px portrait
+    //   this.mobile = true;
+    // }
+    this.currentWindowWidth = window.innerWidth;
+
+
+
     this.route.params.subscribe((params: ParamMap) => {
       this.userInput = params["value"];
 
@@ -49,6 +66,8 @@ export class ResultsListComponent implements OnInit {
   onChoosingVenue(chosenVenue) {
     this._searchbyArtistService.setChosenVenue(chosenVenue);
   }
+
+
 
   onChoosingCity(chosenCity) {
     this._searchbyArtistService.setChosenCity(chosenCity);
