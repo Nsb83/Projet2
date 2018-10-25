@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { SearchByArtistService } from "../search-by-artist.service";
-import { Artist } from '../Artist'
+import { Artist } from '../Artist';
 
 @Component({
   selector: 'app-artist-img',
@@ -16,5 +16,10 @@ export class ArtistImgComponent implements OnInit {
   @Input() artist: Artist;
 
   ngOnInit() {
+  }
+
+  OnDestroy(){
+    
+    
   }
 }

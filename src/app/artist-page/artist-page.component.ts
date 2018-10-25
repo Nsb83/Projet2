@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SearchByArtistService } from '../search-by-artist.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Artist } from '../Artist';
@@ -16,14 +16,16 @@ export class ArtistPageComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
+
+  @Input() artist: Artist;
+
   artistId: number;
-  artist: Artist;
   concerts: Concert[];
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.artistId = params['id'];
-      this.artist = this._searchByArtistService.getChosenArtist();
+      this.artist =this._searchByArtistService.getChosenArtist();
       this._searchByArtistService.getArtistConcerts(this.artist.id)
         .subscribe(data => this.concerts = data.resultsPage.results.event);
     });
