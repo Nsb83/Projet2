@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SearchByArtistService } from "../search-by-artist.service";
 import { Artist } from '../Artist'
 
@@ -13,9 +13,8 @@ export class ArtistImgComponent implements OnInit {
     private _searchbyArtistService: SearchByArtistService
     ) { }
 
-  artist: Artist;
+  @Input() artist: Artist;
 
   ngOnInit() {
-    this.artist = this._searchbyArtistService.getChosenArtist();
   }
 }
