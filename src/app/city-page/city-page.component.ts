@@ -43,6 +43,6 @@ export class CityPageComponent implements OnInit {
       }
 
       this.concerts = this._searchByArtistService.getCityConcerts(this.cityId);
-      };
+      });
     }
   }

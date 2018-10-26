@@ -4,7 +4,7 @@
         <ul *ngFor="let concert of concerts | paginate: { itemsPerPage: 5, currentPage: page } ">
           <li class="list-group-item shadow bg-white rounded">
             <div class="row">
-              <div class="col-4">
+              <div class="col-2">
                 <div *ngIf="concert.dateTime">
                   <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
                   <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
@@ -26,6 +26,9 @@
                   <p class="groupName">{{ concert.venueName }}</p>
                   <p class="groupName">{{ concert.city }}</p>
                 </div>
+              </div>
+              <div class="col-2 align-self-center">
+                <a class="btn " href='{{concert.uri}}' role="button">Buy ticket</a>
               </div>
             </div>
           </li>

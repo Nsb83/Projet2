@@ -17,4 +17,8 @@ export class ConcertListCityComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  onPageChange(page: number) {
+    this.page = page;
+  }
 }
