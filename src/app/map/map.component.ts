@@ -10,7 +10,6 @@ export class MapComponent implements OnInit {
 
   @Input() concerts: Concert[];
 
-  artistId: number;
   lat: number = 41.485818;
   lng: number = 5.618187;
   infoWindowOpened = null;
@@ -19,5 +18,6 @@ export class MapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
   }
 }

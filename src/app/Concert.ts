@@ -8,6 +8,7 @@
     lat: number;
     lng: number;
     dateTime: string;
+    date: string;
 
     constructor (
         name: string,
@@ -18,7 +19,8 @@
         city: string,
         lat: number,
         lng: number,
-        dateTime: string
+        dateTime: string,
+        date?: string
         ) {
         this.name = name;
         this.artistName = artistName;
@@ -29,5 +31,6 @@
         this.lat = lat;
         this.lng = lng;
         this.dateTime = dateTime;
+        this.date = date;
      }
  }
