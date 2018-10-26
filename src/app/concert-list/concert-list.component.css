@@ -4,7 +4,7 @@
     margin-bottom: 7px;
 }
 
-.artistName a {
+.artistName {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -37,5 +37,14 @@ ul.ngx.pagination.responsive {
     background-color:#7d3c98;
     color:white;
     font-weight:bold;
-    width:8em;
+    width:6em;
 }
+
+@media screen and (max-width: 400px) {
+    .btn{
+        background-color:#7d3c98;
+        color:white;
+        font-weight:bold;
+        font-size:0.8em
+    }
+  }

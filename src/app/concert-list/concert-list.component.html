@@ -8,12 +8,12 @@
               <div *ngIf="concert.dateTime">
                 <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
                 <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
-                <a class="btn btn-sm" href='{{concert.uri}}' role="button">Buy ticket</a>
+                <a class="btn btn-sm" href='{{concert.uri}}' target='blank' role="button">Buy ticket</a>
               </div>
               <div *ngIf="!concert.dateTime">
                 <p class="date">{{ concert.date | date :'mediumDate' }}</p>
                 <p>Festival</p>
-                <a class="btn btn-sm" href='{{concert.uri}}' role="button">Buy ticket</a>
+                <a class="btn btn-sm" href='{{concert.uri}}' target='blank' role="button">Buy ticket</a>
               </div>
             </div>
             <div class="col-8">
