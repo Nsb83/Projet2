@@ -16,7 +16,7 @@ export class ConcertListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  
+
   }
 
   onPageChange(page: number) {

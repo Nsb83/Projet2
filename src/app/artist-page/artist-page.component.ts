@@ -43,9 +43,9 @@ export class ArtistPageComponent implements OnInit {
             });
           });
 
-      if (this._searchByArtistService.getArtistConcerts(this.artistId).length != 0) {
+      // if (this._searchByArtistService.getArtistConcerts(this.artist.id).length !== 0) {
         this.concerts = this._searchByArtistService.getArtistConcerts(this.artistId);
-      }
+      // }
     });
   }
 

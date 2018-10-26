@@ -1,5 +1,4 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
-import { SearchByArtistService } from '../search-by-artist.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { Artist } from '../Artist';
 
 @Component({
@@ -7,29 +6,13 @@ import { Artist } from '../Artist';
   templateUrl: './artist-img.component.html',
   styleUrls: ['./artist-img.component.css']
 })
-export class ArtistImgComponent implements OnChanges {
+export class ArtistImgComponent implements OnInit {
 
   constructor(
-    private _searchbyArtistService: SearchByArtistService
     ) { }
 
   @Input() artist: Artist;
 
-  ngOnChanges() {
-
+  ngOnInit() {
   }
-
-  // OnDestroy(){
-
-
-  // }
-
-  // getFromLocalStorage(): Artist {
-  //   // Récupération des artciles en format 'string'
-  //   const stringData = localStorage.getItem('articles');
-  //   // Converstion des données de type 'string' en objet Javascript
-  //   const articles: Article[] = JSON.parse(stringData);
-
-  //   return articles;
-  // }
 }

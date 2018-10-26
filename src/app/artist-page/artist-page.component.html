@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container pt-3">
   <app-artist-img [artist]='artist'></app-artist-img>
-  <div *ngIf="concerts">
+  <div *ngIf="concerts.length">
     <div class="row">
       <div class="col-lg-6">
         <app-concert-list [concerts]='concerts'></app-concert-list>
@@ -11,7 +11,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf='!concerts' class="text-center">
+  <div *ngIf='!concerts.length' class="text-center">
     <p>This artist is not tour at the moment, so we have nothing to show you :(</p>
   </div>
 </div>
