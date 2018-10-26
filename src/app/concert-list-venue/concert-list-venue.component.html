@@ -4,7 +4,7 @@
       <ul *ngFor="let concert of concerts | paginate: { itemsPerPage: 5, currentPage: page } ">
         <li class="list-group-item shadow bg-white rounded">
           <div class="row">
-            <div class="col-2">
+            <div class="col-md-2 col-sm-4">
               <div *ngIf="concert.dateTime">
                 <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
                 <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
@@ -14,22 +14,22 @@
                 <p>Festival</p>
               </div>
             </div>
-            <div class="col-8">
+            <div class="col-md-7 col-sm-8">
               <div *ngIf="!concert.dateTime">
-                <p class="artistName"><a href='{{concert.uri}}' target='blank'>{{ concert.name }}</a></p>
+                <p class="artistName">{{ concert.name }}</p>
                 <p class="groupName">{{ concert.venueName }}</p>
                 <p class="groupName">{{ concert.city }}</p>
                 <!-- <p class="groupName">{{ concert.artistName }}</p> -->
               </div>
               <div *ngIf="concert.dateTime">
-                <p class="artistName"><a href='{{concert.uri}}' target='blank'>{{ concert.artistName }}</a></p>
+                <p class="artistName">{{ concert.artistName }}</p>
                 <p class="groupName">{{ concert.venueName }}</p>
                 <p class="groupName">{{ concert.city }}</p>
               </div>
             </div>
-            <div class="col-2 align-self-center">
-              <a class="btn " href='{{concert.uri}}' role="button">Buy ticket</a>
-            </div>
+            <div class="col-md-3 col-12 col-sm-4 align-self-center text-center smartphone">
+              <a class="btn" href='{{concert.uri}}' target='blank' role="button">Buy ticket</a>
+          </div>
           </div>
         </li>
       </ul>

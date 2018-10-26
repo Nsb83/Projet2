@@ -16,7 +16,7 @@ export class Venue {
     city: string,
     country: string,
     street: string,
-    zip: string;
+    zip: string,
     uri: string,
     id: number,
     lat: number,
