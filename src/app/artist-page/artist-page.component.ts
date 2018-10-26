@@ -25,7 +25,9 @@ export class ArtistPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.artistId = params['id'];
-
+      if (this._searchByArtistService.chosenArtist) {
+        this.artist = this._searchByArtistService.getChosenArtist();
+      } else {
       this._searchByArtistService.getOneArtist(this.artistId)
         .subscribe(res => {
           let obj = res.resultsPage.results.artist;
@@ -42,10 +44,9 @@ export class ArtistPageComponent implements OnInit {
               this.artist.summary = data.artist.bio.summary;
             });
           });
+        }
 
-      // if (this._searchByArtistService.getArtistConcerts(this.artist.id).length !== 0) {
         this.concerts = this._searchByArtistService.getArtistConcerts(this.artistId);
-      // }
     });
   }
 

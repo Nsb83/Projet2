@@ -29,6 +29,10 @@ export class SearchByArtistService {
     this.chosenCity = chosenCity;
   }
 
+  getChosenArtist() {
+    return this.chosenArtist;
+  }
+
   getOneArtist(artistId) {
     return this.http.get<any>(`http://api.songkick.com/api/3.0/artists/${artistId}.json?apikey=R82Hox7PJZDJyV0G`);
   }
