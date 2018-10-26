@@ -41,10 +41,11 @@ export class ArtistPageComponent implements OnInit {
               this.artist.image = data.artist.image[3]['#text'];
               this.artist.summary = data.artist.bio.summary;
             });
-
-            this.concerts = this._searchByArtistService.getArtistConcerts(obj.id);
           });
 
+      if (this._searchByArtistService.getArtistConcerts(this.artistId).length != 0) {
+        this.concerts = this._searchByArtistService.getArtistConcerts(this.artistId);
+      }
     });
   }
 

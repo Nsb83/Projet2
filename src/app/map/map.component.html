@@ -1,4 +1,3 @@
-<div *ngIf="concerts">
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="1.7">
     <agm-marker
         *ngFor='let concert of concerts; let i = index'
@@ -21,11 +20,9 @@
             <h2>{{ concert.artistName }}</h2>
             <h3 class='text-secondary'>{{ concert.dateTime | date:"short" }}</h3>
             <h4><a href='{{concert.uri}}' target='blank'>{{ concert.venueName }}</a></h4>
-            <h5>{{ m.location.city }}</h5>
+            <h5>{{ concert.location.city }}</h5>
           </div>
         </ng-template>
       </agm-snazzy-info-window>
     </agm-marker>
   </agm-map>
-</div>
-
