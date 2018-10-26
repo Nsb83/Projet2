@@ -7,10 +7,12 @@
             <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
             <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
           </div>
-          <div class="col-10">
-            <p class="artistName"><a href='{{concert.uri}}' target='blank'>{{ concert.artistName }}</a></p>
+          <div class="col-8">
+            <p class="artistName">{{ concert.artistName }}</p>
             <p class="groupName">{{ concert.venueName }}</p>
             <p class="groupName">{{ concert.city }}</p>
+          </div><div class="col-2 align-self-center">
+            <a class="btn " href='{{concert.uri}}' role="button">Buy ticket</a>
           </div>
         </div>
       </li>

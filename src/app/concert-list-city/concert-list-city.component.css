@@ -29,3 +29,10 @@
 ul {
     padding-left: 0px;
 }
+
+.btn{
+    background-color:#7d3c98;
+    color:white;
+    font-weight:bold;
+    width:8em;
+}
