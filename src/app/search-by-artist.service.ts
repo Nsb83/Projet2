@@ -29,6 +29,10 @@ export class SearchByArtistService {
     this.chosenCity = chosenCity;
   }
 
+  getChosenArtist() {
+    return this.chosenArtist;
+  }
+
   getOneArtist(artistId) {
     return this.http.get<any>(`http://api.songkick.com/api/3.0/artists/${artistId}.json?apikey=R82Hox7PJZDJyV0G`);
   }
@@ -37,8 +41,16 @@ export class SearchByArtistService {
     return this.chosenVenue;
   }
 
+  getOneVenue(venueId) {
+    return this.http.get<any>(`https://api.songkick.com/api/3.0/venues/${venueId}.json?apikey=R82Hox7PJZDJyV0G`)
+  }
+
   getChosenCity() {
     return this.chosenCity;
+  }
+
+  getOneCity(cityId) {
+    return this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`);
   }
 
   getArtists(userInput) {
@@ -47,22 +59,24 @@ export class SearchByArtistService {
     this.http.get<any>(`https://api.songkick.com/api/3.0/search/artists.json?apikey=R82Hox7PJZDJyV0G&query=${userInput}`)
       .subscribe((res: any) => {
         let artistes = res.resultsPage.results.artist;
-        for (let artist of artistes) {
-          let unArtiste = new Artist(
-            artist.displayName,
-            artist.id,
-            artist.onTourUntil,
-            artist.uri
-          );
+        if (artistes) {
+          for (let artist of artistes) {
+            let unArtiste = new Artist(
+              artist.displayName,
+              artist.id,
+              artist.onTourUntil,
+              artist.uri
+            );
 
-          this.getImgDescr(unArtiste.name)
-            .subscribe((data: any) => {
-              if (data.artist) {
-                unArtiste.image = data.artist.image[3]["#text"];
-                unArtiste.summary = data.artist.bio.summary;
-                artists.push(unArtiste);
-              }
-            });
+            this.getImgDescr(unArtiste.name)
+              .subscribe((data: any) => {
+                if (data.artist) {
+                  unArtiste.image = data.artist.image[3]["#text"];
+                  unArtiste.summary = data.artist.bio.summary;
+                  artists.push(unArtiste);
+                }
+              });
+          }
         }
       });
 
@@ -83,9 +97,10 @@ export class SearchByArtistService {
         for (let venue of venuess) {
           let aVenue = new Venue(
             venue.displayName,
-            venue.city,
-            venue.country,
+            venue.city.displayName,
+            venue.city.country.displayName,
             venue.street,
+            venue.zip,
             venue.uri,
             venue.id,
             venue.lat,
@@ -126,11 +141,59 @@ export class SearchByArtistService {
   }
 
    getVenueConcerts(venueId) {
-     return this.http.get<any>(`https://api.songkick.com/api/3.0/venues/${venueId}/calendar.json?apikey=R82Hox7PJZDJyV0G`);
+     let concerts: Concert[] = [];
+
+     this.http.get<any>(`https://api.songkick.com/api/3.0/venues/${venueId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
+     .subscribe((reponse: any) => {
+      let concertTable = reponse.resultsPage.results.event;
+        if (concertTable) {
+          for (let concert of concertTable) {
+            let aConcert = new Concert(
+              concert.displayName,
+              concert.performance[0].displayName,
+              concert.venue.displayName,
+              concert.id,
+              concert.uri,
+              concert.location.city,
+              concert.location.lat,
+              concert.location.lng,
+              concert.start.datetime,
+              concert.start.date
+            );
+            concerts.push(aConcert);
+          }
+        }
+      });
+
+    return concerts;
    }
 
    getCityConcerts(cityId) {
-     return this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`);
+     let concerts: Concert[] = [];
+
+     this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
+     .subscribe((reponse: any) => {
+          let concertTable = reponse.resultsPage.results.event;
+            if (concertTable) {
+              for (let concert of concertTable) {
+                let aConcert = new Concert(
+                  concert.displayName,
+                  concert.performance[0].displayName,
+                  concert.venue.displayName,
+                  concert.id,
+                  concert.uri,
+                  concert.location.city,
+                  concert.location.lat,
+                  concert.location.lng,
+                  concert.start.datetime,
+                  concert.start.date
+                );
+                concerts.push(aConcert);
+              }
+            }
+          });
+
+      return concerts;
    }
 
    getArtistConcerts(artistId) {
