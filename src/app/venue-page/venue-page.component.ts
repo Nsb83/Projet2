@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchByArtistService } from "../search-by-artist.service";
-import { Venue } from '../Venue'
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
+import { SearchByArtistService } from '../search-by-artist.service';
+import { Venue } from '../Venue';
+import { Concert } from '../Concert';
 
 @Component({
   selector: 'app-venue-page',
@@ -9,11 +12,40 @@ import { Venue } from '../Venue'
 })
 export class VenuePageComponent implements OnInit {
 
-  constructor(private _searchbyArtistService: SearchByArtistService) { }
-   venue: Venue;
+  constructor(
+    private _searchByArtistService: SearchByArtistService,
+    private route: ActivatedRoute
+    ) { }
+
+  venue: Venue;
+  venueId: number;
+  concerts: Concert[];
 
   ngOnInit() {
-    this.venue = this._searchbyArtistService.getChosenVenue();
+    this.route.params.subscribe((params: ParamMap) => {
+      this.venueId = params['id'];
+      if (this._searchByArtistService.chosenVenue) {
+        this.venue = this._searchByArtistService.getChosenVenue();
+      } else {
+        this._searchByArtistService.getOneVenue(this.venueId)
+        .subscribe(res => {
+          let obj = res.resultsPage.results.venue;
+          this.venue = new Venue(
+            obj.displayName,
+            obj.city.displayName,
+            obj.city.country.displayName,
+            obj.street,
+            obj.zip,
+            obj.uri,
+            obj.id,
+            obj.lat,
+            obj.lng,
+            obj.website,
+            obj.description
+            );
+          });
+        }
+    this.concerts = this._searchByArtistService.getVenueConcerts(this.venueId);
+    });
   }
-
 }

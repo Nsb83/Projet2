@@ -1,12 +1,12 @@
 <div>
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+  <agm-map [latitude]="venue.lat" [longitude]="venue.lng" [zoom]="13">
     <agm-marker 
         (markerClick)="showInfoWindow(infoWindow, i)"
         [latitude]="venue.lat"
         [longitude]="venue.lng"
         [label]="venue.label"
         [markerDraggable]="venue.draggable"
-        (dragEnd)="markerDragEnd(m, $event)"> 
+        (dragEnd)="markerDragEnd(venue, $event)"> 
         <agm-snazzy-info-window [maxWidth]="800"
                                 [maxHeight]="800" 
                                 [shadow]="{h: '0px',v: '3px',blur: '6px',spread: '0px',opacity: 1.9,color: 'black'}" 
@@ -15,12 +15,10 @@
                                 [padding]="'1.5em'">   
         
         <ng-template>
-          
           <div class="windows"> 
-            <h2><a href='{{venue.website}}' target='blank'>{{ venue.name }}</a></h2>
-            <h3 class='text-secondary'>{{ venue.city.displayName }},{{venue.city.country.displayName}}</h3>
-             <h4>{{venue.street}}</h4> 
-            <h5></h5>
+            <h4><a href='{{venue.website}}' target='blank'>{{ venue.name }}</a></h4>
+            <h5 class='text-secondary'>{{ venue.street }} {{venue.zip}}</h5>
+            <h5>{{venue.city}}, {{ venue.country }}</h5> 
           </div>
         </ng-template>  
         </agm-snazzy-info-window>
