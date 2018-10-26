@@ -1,31 +1,26 @@
-<div *ngIf="concerts">
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="1.7">
+  <agm-map [latitude]="(concerts[0].lat+concerts[concerts.length-1].lat)/2" [longitude]="(concerts[0].lng+concerts[concerts.length-1].lng)/2" [zoom]="2">
     <agm-marker
-        *ngFor="let m of concerts; let i = index"
+        *ngFor='let concert of concerts; let i = index'
         (markerClick)="showInfoWindow(infoWindow, i)"
-        [latitude]="m.venue.lat"
-        [longitude]="m.venue.lng"
-        [label]="m.label"
-        [markerDraggable]="m.draggable"
-        (dragEnd)="markerDragEnd(m, $event)">
+        [latitude]="concert.lat"
+        [longitude]="concert.lng"
+        [label]="concert.label"
+        [markerDraggable]="concert.draggable"
+        (dragEnd)="markerDragEnd(concert, $event)">
         <agm-snazzy-info-window [maxWidth]="800"
                                 [maxHeight]="800"
                                 [shadow]="{h: '0px',v: '3px',blur: '6px',spread: '0px',opacity: 1.9,color: 'black'}"
                                 [closeWhenOthersOpen]="true"
                                 [borderRadius]="'15px'"
                                 [padding]="'1.5em'">
-
         <ng-template>
-
           <div class="windows">
-            <h2>{{ m.performance[0].displayName }}</h2>
-            <h3 class='text-secondary'>{{ m.start.datetime | date:"short" }}</h3>
-            <h4><a href='{{m.uri}}' target='blank'>{{ m.venue.displayName }}</a></h4>
-            <h5>{{ m.location.city }}</h5>
+            <h2>{{ concert.artistName }}</h2>
+            <h3 class='text-secondary'>{{ concert.dateTime | date:"short" }}</h3>
+            <h4><a href='{{concert.uri}}' target='blank'>{{ concert.venueName }}</a></h4>
+            <h5>{{ concert.location.city }}</h5>
           </div>
         </ng-template>
       </agm-snazzy-info-window>
     </agm-marker>
   </agm-map>
-</div>
-

@@ -9,7 +9,7 @@ export class Venue {
   lng: number;
   website: string;
   description: string;
-  
+
   constructor(
     name: string,
     city: string,

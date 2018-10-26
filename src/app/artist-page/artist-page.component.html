@@ -1,12 +1,19 @@
 <app-navbar></app-navbar>
 <div class="container pt-3">
-  <app-artist-img></app-artist-img>
-  <div class="row">
-    <div class="col-lg-6">
-      <app-concert-list></app-concert-list>
-    </div>
-    <div class="col-lg-6">
-      <app-map></app-map>
+  <app-artist-img [artist]='artist'></app-artist-img>
+  <div *ngIf="concerts.length">
+    <div class="row">
+      <div class="col-lg-6">
+        <app-concert-list [concerts]='concerts'></app-concert-list>
+      </div>
+      <div class="col-lg-6">
+        <app-map  [concerts]='concerts'></app-map>
+      </div>
     </div>
   </div>
+  <div *ngIf='!concerts.length' class="text-center">
+    <p>This artist is not tour at the moment, so we have nothing to show you :(</p>
+  </div>
 </div>
+
+
