@@ -1,32 +1,50 @@
 <app-navbar></app-navbar>
 <div class="container pt-3">
-  <div class="row mb-3">
-    <div class="col-lg-6">
-        <app-map-venue></app-map-venue>
-    </div>
-    <div class="col-lg-6">
-      <div class="venueName">
-        {{venue.name}}
+  <div *ngIf="venue">
+    <div class="row mb-3">
+      <div class="col-lg-6">
+        <app-map-venue [venue]='venue'></app-map-venue>
       </div>
-      <div class="venueStreet">
-        {{venue.street}}
-      </div>
-      <div class="venueCountry">
-        <p>{{venue.city.displayName}}, {{venue.city.country.displayName}}</p>
-      </div>
-      <div class="venueDescription">
-        Description: {{venue.description}}
-      </div>
-      <div class="venueWebsite">
-        <a href="{{ venue.website }}" target="blank">{{ venue.name }}'s website</a>
+      <div class="col-lg-6">
+        <div class="venueName">
+          {{venue.name}}
+        </div>
+        <div class="venueStreet">
+          {{venue.street}} {{ venue.zip }} {{ venue.city }}
+        </div>
+        <div class="venueCountry">
+          <p>({{ venue.country }})</p>
+        </div>
+        <div *ngIf="venue.description">
+          <div class="venueDescription">
+            Description: {{venue.description}}
+          </div>
+        </div>
+        <div *ngIf="!venue.description">
+            <div class="venueDescription">
+              We don't have any description for this venue
+            </div>
+          </div>
+        <div *ngIf="venue.website">
+          <div class="venueWebsite">
+            <a href="{{ venue.website }}" target="blank">{{ venue.name }}'s website</a>
+          </div>
+        </div>
+        <div *ngIf="!venue.website">
+            <div class="venueWebsite">
+              <a href="{{ venue.uri }}" target="blank">{{ venue.name }}'s songkick page</a>
+            </div>
+          </div>
       </div>
     </div>
   </div>
   <hr>
-  <div class="row mb-2">
-      <div class="col-12">
-        <div class="nextConcerts">Next concerts:</div>
-        <app-concert-list-venue></app-concert-list-venue>
-      </div>
+  <div *ngIf="concerts">
+    <div class="row mb-2">
+        <div class="col-12">
+          <div class="nextConcerts">Next concerts:</div>
+          <app-concert-list-venue [concerts]='concerts'></app-concert-list-venue>
+        </div>
+    </div>
   </div>
 </div>

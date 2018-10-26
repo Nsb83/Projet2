@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from "@angular/router";
-import { SearchByArtistService } from "../search-by-artist.service";
+import { Component, OnInit, Input } from '@angular/core';
+
 import { Venue } from '../Venue';
 
 @Component({
@@ -10,23 +9,17 @@ import { Venue } from '../Venue';
 })
 export class MapVenueComponent implements OnInit {
 
-  venueId: number;
-  venue: Venue;
+  @Input() venue: Venue;
+
   lat: number
   lng: number
+
   infoWindowOpened = null;
 
-  constructor(
-    private _searchbyArtistService: SearchByArtistService,
-    private route: ActivatedRoute) { }
+  constructor( ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: ParamMap) => {
-      this.venueId = params['id'];
-      this.venue = this._searchbyArtistService.getChosenVenue();
-      this.lat = this.venue.lat;
-      this.lng = this.venue.lng;
-    });
+    
   }
 
 }

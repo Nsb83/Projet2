@@ -3,6 +3,7 @@ export class Venue {
   city: string;
   country: string;
   street: string;
+  zip: string;
   uri: string;
   id: number;
   lat: number;
@@ -15,6 +16,7 @@ export class Venue {
     city: string,
     country: string,
     street: string,
+    zip: string,
     uri: string,
     id: number,
     lat: number,
@@ -26,6 +28,7 @@ export class Venue {
     this.city = city;
     this.country = country;
     this.street = street;
+    this.zip = zip;
     this.uri = uri;
     this.id = id;
     this.lat = lat;
