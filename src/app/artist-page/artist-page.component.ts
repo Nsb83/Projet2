@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchByArtistService } from '../search-by-artist.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Artist } from '../Artist';
 import { Concert } from '../Concert';
 

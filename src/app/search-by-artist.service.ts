@@ -45,6 +45,10 @@ export class SearchByArtistService {
     return this.chosenCity;
   }
 
+  getOneCity(cityId) {
+    return this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`);
+  }
+
   getArtists(userInput) {
     let artists: Artist[] = [];
 
@@ -134,7 +138,31 @@ export class SearchByArtistService {
    }
 
    getCityConcerts(cityId) {
-     return this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`);
+     let concerts: Concert[] = [];
+
+     this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
+     .subscribe((reponse: any) => {
+          let concertTable = reponse.resultsPage.results.event;
+            if (concertTable) {
+              for (let concert of concertTable) {
+                let aConcert = new Concert(
+                  concert.displayName,
+                  concert.performance[0].displayName,
+                  concert.venue.displayName,
+                  concert.id,
+                  concert.uri,
+                  concert.location.city,
+                  concert.location.lat,
+                  concert.location.lng,
+                  concert.start.datetime,
+                  concert.start.date
+                );
+                concerts.push(aConcert);
+              }
+            }
+          });
+
+      return concerts;
    }
 
    getArtistConcerts(artistId) {

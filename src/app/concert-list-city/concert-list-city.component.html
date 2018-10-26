@@ -1,19 +1,38 @@
-<div class="row padding-move">
-  <div class="col-12">
-    <ul *ngFor="let concert of concerts">
-      <li class="list-group-item shadow bg-white rounded">
-        <div class="row">
-          <div class="col-2">
-            <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
-            <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
-          </div>
-          <div class="col-10">
-            <p class="artistName"><a href='{{concert.uri}}' target='blank'>{{ concert.artistName }}</a></p>
-            <p class="groupName">{{ concert.venueName }}</p>
-            <p class="groupName">{{ concert.city }}</p>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <ul *ngFor="let concert of concerts | paginate: { itemsPerPage: 5, currentPage: page } ">
+          <li class="list-group-item shadow bg-white rounded">
+            <div class="row">
+              <div class="col-4">
+                <div *ngIf="concert.dateTime">
+                  <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
+                  <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
+                </div>
+                <div *ngIf="!concert.dateTime">
+                  <p class="date">{{ concert.date | date :'mediumDate' }}</p>
+                  <p>Festival</p>
+                </div>
+              </div>
+              <div class="col-8">
+                <div *ngIf="!concert.dateTime">
+                  <p class="artistName"><a href='{{concert.uri}}' target='blank'>{{ concert.name }}</a></p>
+                  <p class="groupName">{{ concert.venueName }}</p>
+                  <p class="groupName">{{ concert.city }}</p>
+                  <!-- <p class="groupName">{{ concert.artistName }}</p> -->
+                </div>
+                <div *ngIf="concert.dateTime">
+                  <p class="artistName"><a href='{{concert.uri}}' target='blank'>{{ concert.artistName }}</a></p>
+                  <p class="groupName">{{ concert.venueName }}</p>
+                  <p class="groupName">{{ concert.city }}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-11 p-0 d-flex justify-content-center">
+      <pagination-controls (pageChange)="onPageChange($event)" autoHide="true" responsive="true" maxSize="5" previousLabel="" nextLabel=""></pagination-controls>
+    </div>
   </div>
