@@ -41,8 +41,6 @@ export class ConcertListVenueComponent implements OnInit {
         });
 
       this._searchByArtistService.setChosenArtist(artist);
-      console.log(artist);
-      
       });
   }
 

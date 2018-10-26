@@ -24,7 +24,7 @@ export class ArtistPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.artistId = params['id'];
-      if (this._searchByArtistService.chosenArtist) {
+      if (this._searchByArtistService.chosenArtist && this._searchByArtistService.getChosenArtist().id === this.artistId) {
         this.artist = this._searchByArtistService.getChosenArtist();
       } else {
       this._searchByArtistService.getOneArtist(this.artistId)

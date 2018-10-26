@@ -22,7 +22,7 @@
         lng: number,
         dateTime: string,
         date?: string,
-        artistId?: string
+        artistId?: number
         ) {
         this.name = name;
         this.artistName = artistName;
