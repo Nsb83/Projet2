@@ -14,6 +14,9 @@ button {
   :host input {
     min-width:100px;
     }
+    #navBar::placeholder{
+      font-size: 12px;
+    }
   }
 
 @media (min-width: 788px) {
