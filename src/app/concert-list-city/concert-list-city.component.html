@@ -16,13 +16,13 @@
               </div>
               <div class="col-md-7 col-sm-8">
                 <div *ngIf="!concert.dateTime">
-                  <p class="artistName"><a href='{{concert.uri}}' target='blank'>{{ concert.name }}</a></p>
+                  <p class="artistName">{{ concert.name }}</p>
                   <p class="groupName">{{ concert.venueName }}</p>
                   <p class="groupName">{{ concert.city }}</p>
                   <!-- <p class="groupName">{{ concert.artistName }}</p> -->
                 </div>
                 <div *ngIf="concert.dateTime">
-                  <p class="artistName"><a href='{{concert.uri}}' target='blank'>{{ concert.artistName }}</a></p>
+                  <p class="artistName">{{ concert.artistName }}</p>
                   <p class="groupName">{{ concert.venueName }}</p>
                   <p class="groupName">{{ concert.city }}</p>
                 </div>
