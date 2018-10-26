@@ -1,4 +1,4 @@
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="1.7">
+  <agm-map [latitude]="(concerts[0].lat+concerts[concerts.length-1].lat)/2" [longitude]="(concerts[0].lng+concerts[concerts.length-1].lng)/2" [zoom]="2">
     <agm-marker
         *ngFor='let concert of concerts; let i = index'
         (markerClick)="showInfoWindow(infoWindow, i)"
@@ -13,9 +13,7 @@
                                 [closeWhenOthersOpen]="true"
                                 [borderRadius]="'15px'"
                                 [padding]="'1.5em'">
-
         <ng-template>
-
           <div class="windows">
             <h2>{{ concert.artistName }}</h2>
             <h3 class='text-secondary'>{{ concert.dateTime | date:"short" }}</h3>
