@@ -158,7 +158,8 @@ export class SearchByArtistService {
               concert.location.lat,
               concert.location.lng,
               concert.start.datetime,
-              concert.start.date
+              concert.start.date,
+              concert.performance[0].artist.id
             );
             concerts.push(aConcert);
           }
@@ -186,7 +187,8 @@ export class SearchByArtistService {
                   concert.location.lat,
                   concert.location.lng,
                   concert.start.datetime,
-                  concert.start.date
+                  concert.start.date,
+                  concert.performance[0].artist.id
                 );
                 concerts.push(aConcert);
               }

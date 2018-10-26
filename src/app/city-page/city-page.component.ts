@@ -25,7 +25,7 @@ export class CityPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.cityId = params['id'];
-      if (this._searchByArtistService.chosenCity) {
+      if (this._searchByArtistService.chosenCity && this._searchByArtistService.chosenCity.id === this.cityId) {
         this.city = this._searchByArtistService.getChosenCity();
       } else {
       this._searchByArtistService.getOneCity(this.cityId)
