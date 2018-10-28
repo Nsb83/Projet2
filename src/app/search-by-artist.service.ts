@@ -5,6 +5,7 @@ import { Artist } from './Artist';
 import { Venue } from './Venue';
 import { City } from './City';
 import { Concert } from './Concert';
+import { SimilarArtist } from './similar-artist'
 
 @Injectable({
   providedIn: "root"
@@ -224,5 +225,37 @@ export class SearchByArtistService {
           });
 
     return concerts;
+  }
+
+  getSimilarArtists(artistId) {
+    let SimilarArtists: SimilarArtist[] = [];
+
+    this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/similar_artists.json?apikey=R82Hox7PJZDJyV0G`)
+      .subscribe((res: any) => {
+        let simArtistesTable = res.resultsPage.results.artist;
+        if (simArtistesTable) {
+          for (let simArtist of simArtistesTable) {
+            let unSimilarArtiste = new SimilarArtist(
+              simArtist.displayName,
+              simArtist.id,
+              simArtist.onTourUntil,
+              simArtist.uri
+            );
+
+            this.getImgDescr(unSimilarArtiste.name)
+              .subscribe((data: any) => {
+                if (data.artist) {
+                  unSimilarArtiste.image = data.artist.image[2]["#text"];
+                  if (simArtist.onTourUntil != null){
+                  SimilarArtists.push(unSimilarArtiste);}
+                }
+              });
+          }
+        }
+      });
+     return SimilarArtists;
+  }
+  getOneSimilarArtist(artistId) {
+    return this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/similar_artists.json?apikey=R82Hox7PJZDJyV0G`)
   }
 }

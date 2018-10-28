@@ -13,9 +13,10 @@
       </div>
     </div>
   </div>
-  <div *ngIf='!concerts.length' class="text-center">
-    <p>This artist is not tour at the moment, so we have nothing to show you :(</p>
+  <div *ngIf='!concerts.length'>
+    <p class="text-center">This artist is not tour at the moment, but you can look at this artist who are :</p>
+      <app-similar-artist [SimilarArtists]='SimilarArtists'></app-similar-artist>
   </div>
-</div>
+
 
 

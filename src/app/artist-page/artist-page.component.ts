@@ -3,6 +3,7 @@ import { SearchByArtistService } from '../search-by-artist.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Artist } from '../Artist';
 import { Concert } from '../Concert';
+import { SimilarArtist } from '../similar-artist';
 
 @Component({
   selector: 'app-artist-page',
@@ -20,6 +21,8 @@ export class ArtistPageComponent implements OnInit {
 
   artistId: number;
   concerts: Concert[];
+  SimilarArtists: SimilarArtist[];
+
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
@@ -46,6 +49,8 @@ export class ArtistPageComponent implements OnInit {
         }
 
         this.concerts = this._searchByArtistService.getArtistConcerts(this.artistId);
+        this.SimilarArtists = this._searchByArtistService.getSimilarArtists(this.artistId);
+
     });
   }
 
