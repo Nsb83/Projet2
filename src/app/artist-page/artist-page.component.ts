@@ -49,8 +49,10 @@ export class ArtistPageComponent implements OnInit {
         }
 
         this.concerts = this._searchByArtistService.getArtistConcerts(this.artistId);
-        this.SimilarArtists = this._searchByArtistService.getSimilarArtists(this.artistId);
 
+        if (!this.concerts.length) {
+          this.SimilarArtists = this._searchByArtistService.getSimilarArtists(this.artistId);
+        }
     });
   }
 
