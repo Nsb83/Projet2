@@ -23,7 +23,6 @@ export class ResultsListComponent implements OnInit {
   public mobile: boolean;
   public currentWindowWidth: number;
 
-
   public artistDisplayName: string;
   public userInput: string;
 
@@ -39,20 +38,13 @@ export class ResultsListComponent implements OnInit {
   onResize() {this.currentWindowWidth = window.innerWidth}
 
   ngOnInit() {
-    // if (window.screen.width === 700) { // 768px portrait
-    //   this.mobile = true;
-    // }
     this.currentWindowWidth = window.innerWidth;
 
-
-
     this.route.params.subscribe((params: ParamMap) => {
+      this.showAll();
       this.userInput = params["value"];
-
       this.artists = this._searchbyArtistService.getArtists(this.userInput);
-
       this.venues = this._searchbyArtistService.getVenues(this.userInput);
-
       this.cities = this._searchbyArtistService.getCities(this.userInput);
     });
   }
@@ -64,8 +56,6 @@ export class ResultsListComponent implements OnInit {
   onChoosingVenue(chosenVenue) {
     this._searchbyArtistService.setChosenVenue(chosenVenue);
   }
-
-
 
   onChoosingCity(chosenCity) {
     this._searchbyArtistService.setChosenCity(chosenCity);
