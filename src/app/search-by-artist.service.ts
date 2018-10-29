@@ -255,7 +255,4 @@ export class SearchByArtistService {
       });
      return SimilarArtists;
   }
-  getOneSimilarArtist(artistId) {
-    return this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/similar_artists.json?apikey=R82Hox7PJZDJyV0G`)
-  }
 }

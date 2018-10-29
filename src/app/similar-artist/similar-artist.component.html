@@ -1,15 +1,15 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12"></div>
-    <ng-container class="column" *ngFor="let SimilarArtist of SimilarArtists | slice:0:4 ; let i=index">
-      <ul *ngIf='SimilarArtist.onTourUntil'>
-
-        <div class="column">
+  <div class="row d-flex justify-content-around">
+    <div class="col-12 d-flex justify-content-center"></div>
+    <ng-container  *ngFor="let SimilarArtist of SimilarArtists | slice:0:4 ; let i=index">
+      <ul class="list" *ngIf='SimilarArtist.onTourUntil'>
+        <div class="col-12 d-flex justify-content-center cadre">
+        <div class="column ">
           <img class="img-fluid" [src]="SimilarArtist.image" alt="">
-          <p><a routerLink='/artist/{{ SimilarArtist.id }}' (click)='onChoosingArtist(SimilarArtist.id)'>{{ SimilarArtist.name }}</a></p>
-          <p> {{ SimilarArtist.onTourUntil }}</p>
+          <p class="artistName"><a routerLink='/artist/{{ SimilarArtist.id }}'>{{ SimilarArtist.name }}</a></p>
+          <p class="date"> On tour Until : {{ SimilarArtist.onTourUntil | date :'mediumDate' }}</p>
         </div>
-
+      </div>
       </ul>
     </ng-container>
   </div>
