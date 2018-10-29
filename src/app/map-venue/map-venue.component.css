@@ -1,3 +1,41 @@
-agm-map {
+@media screen and (max-width: 100000px) {
+  h2{
+    font-size:1.4em;
+  }
+  
+  h3,h4,h5{
+    font-size:1.2em;
+  }
+  
+  
+  .windows{
+    min-width:19em;
+    max-width:25em;
+    text-align:center;
+  }
+
+  agm-map {
     height: 550px;
   }
+}
+
+
+@media screen and (max-width: 400px) {
+  h2{
+    font-size:1.1em;
+  }
+  
+  h3,h4,h5{
+    font-size: 1em;
+  }
+
+  .windows{
+    min-width:10em;
+    max-width:12em;
+    text-align:center;
+  }
+
+  agm-map {
+    height: 400px;
+  }
+}

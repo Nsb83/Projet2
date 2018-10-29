@@ -9,18 +9,17 @@
       (dragEnd)="markerDragEnd(concert, $event)">
       <agm-snazzy-info-window [maxWidth]="800"
                               [maxHeight]="800"
-                              [shadow]="{h: '0px',v: '3px',blur: '6px',spread: '0px',opacity: 1.9,color: 'black'}"
+                              [shadow]="{h: '10px',v: '4px',blur: '6px',spread: '0px',opacity: 1.9,color: 'black'}"
                               [closeWhenOthersOpen]="true"
                               [borderRadius]="'15px'"
-                              [padding]="'1.5em'">
+                              [padding]="'0.7em'">
 
       <ng-template>
-
         <div class="windows">
-          <h2>{{ concert.name }}</h2>
-          <h3 class='text-secondary'>{{ concert.datetime | date:"short" }}</h3>
+          <h2>{{ concert.artistName }}</h2>
+          <h3 class='text-secondary'>{{ concert.dateTime | date:"short" }}</h3>
           <h4><a href='{{concert.uri}}' target='blank'>{{ concert.venueName }}</a></h4>
-          <h5>{{concert.city }}</h5>
+          <h5>{{ concert.city }}</h5>
         </div>
       </ng-template>
       </agm-snazzy-info-window>
