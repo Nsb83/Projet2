@@ -2,6 +2,7 @@
     name: string;
     artistName: string;
     venueName: string;
+    venueId: number;
     id: number;
     status: string;
     uri: string;
@@ -17,6 +18,7 @@
         name: string,
         artistName: string,
         venueName: string,
+        venueId: number,
         id: number,
         status: string,
         uri: string,
@@ -31,6 +33,7 @@
         this.name = name;
         this.artistName = artistName;
         this.venueName = venueName;
+        this.venueId = venueId;
         this.id = id;
         this.status = status;
         this.uri = uri;

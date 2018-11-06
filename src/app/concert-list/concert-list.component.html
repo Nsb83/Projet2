@@ -27,7 +27,7 @@
               </div>
               <div *ngIf="concert.dateTime">
                 <p class="artistName">{{ concert.artistName }}</p>
-                <p class="groupName">{{ concert.venueName }}</p>
+                <a routerLink='/venue/{{ concert.venueId }}'><p class="venueName">{{ concert.venueName }}</p></a>
                 <p class="groupName">{{ concert.city }}</p>
               </div>
             </div>
