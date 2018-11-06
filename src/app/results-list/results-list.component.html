@@ -1,7 +1,7 @@
 <div *ngIf="userInput">
   <div class="filtre row d-flex justify-content-center fixed-top" *ngIf="currentWindowWidth < 992">
     <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showAll()'>All</button></div>
-    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showArtists()'>Artists
+    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showArtists() ; changeColorClick()'>Artists
         ({{artists.length}})</button></div>
     <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showVenues()'>Venues
         ({{venues.length}})</button></div>

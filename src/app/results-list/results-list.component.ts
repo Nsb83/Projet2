@@ -9,7 +9,8 @@ import { HostListener } from '@angular/core'
 @Component({
   selector: "app-results-list",
   templateUrl: "./results-list.component.html",
-  styleUrls: ["./results-list.component.css"]
+  styleUrls: ["./results-list.component.css"],
+  
 })
 export class ResultsListComponent implements OnInit {
   venue: Venue;
@@ -33,6 +34,9 @@ export class ResultsListComponent implements OnInit {
   public filterArtists: boolean = true;
   public filterVenues: boolean = true;
   public filterCities: boolean = true;
+
+  public buttonColor: string = '#000';
+
 
   @HostListener('window:resize')
   onResize() {this.currentWindowWidth = window.innerWidth}
@@ -59,6 +63,10 @@ export class ResultsListComponent implements OnInit {
 
   onChoosingCity(chosenCity) {
     this._searchbyArtistService.setChosenCity(chosenCity);
+  }
+
+  changeColorClick() {
+    this.buttonColor = '#7d3c98';
   }
 
   showArtists() {
