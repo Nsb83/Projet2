@@ -51,8 +51,6 @@ ul.ngx.pagination.responsive {
     color:white;
 }
 
-
-
 @media screen and (max-width: 400px) {
     .btn{
         background-color:#7d3c98;

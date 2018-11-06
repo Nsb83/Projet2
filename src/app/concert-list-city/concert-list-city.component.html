@@ -11,14 +11,13 @@
                 </div>
                 <div *ngIf="!concert.dateTime">
                   <p class="date">{{ concert.date | date :'mediumDate' }}</p>
-                  <p>Festival</p>
                 </div>
               </div>
               <div class="col-md-7 col-sm-8">
                 <div *ngIf="!concert.dateTime">
                   <p class="artistName">{{ concert.name }}</p>
                   <p *ngIf="concert.venueName != 'Unknown venue'" class="groupName">{{ concert.venueName }}</p>
-                  <p class="groupName">Festival in {{ concert.city }}</p>                 <p class="groupName">{{ concert.city }}</p>
+                  <p class="groupName">Festival in {{ concert.city }}</p>
                   <!-- <p class="groupName">{{ concert.artistName }}</p> -->
                 </div>
                 <div *ngIf="concert.dateTime">
@@ -27,8 +26,11 @@
                   <p class="groupName">{{ concert.city }}</p>
                 </div>
               </div>
-              <div class="col-md-3 col-sm-4 align-self-center text-center martphone">
-                <a class="btn " href='{{concert.uri}}' target='blank' role="button">Buy ticket</a>
+              <div *ngIf="concert.status == 'cancelled'">
+                  <a class="disabledBtn btn btn-sm" target='blank' role="button">Cancelled</a>
+              </div>
+              <div *ngIf="concert.status == 'ok'">
+                  <a class="btn btn-sm" href='{{concert.uri}}' target='blank' role="button" disabled>Buy ticket</a>
               </div>
             </div>
           </li>
