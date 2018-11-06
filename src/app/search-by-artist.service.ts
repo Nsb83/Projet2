@@ -5,10 +5,10 @@ import { Artist } from './Artist';
 import { Venue } from './Venue';
 import { City } from './City';
 import { Concert } from './Concert';
-import { SimilarArtist } from './similar-artist'
+import { SimilarArtist } from './similar-artist';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class SearchByArtistService {
 
@@ -43,7 +43,7 @@ export class SearchByArtistService {
   }
 
   getOneVenue(venueId) {
-    return this.http.get<any>(`https://api.songkick.com/api/3.0/venues/${venueId}.json?apikey=R82Hox7PJZDJyV0G`)
+    return this.http.get<any>(`https://api.songkick.com/api/3.0/venues/${venueId}.json?apikey=R82Hox7PJZDJyV0G`);
   }
 
   getChosenCity() {
@@ -55,14 +55,14 @@ export class SearchByArtistService {
   }
 
   getArtists(userInput) {
-    let artists: Artist[] = [];
+    const artists: Artist[] = [];
 
     this.http.get<any>(`https://api.songkick.com/api/3.0/search/artists.json?apikey=R82Hox7PJZDJyV0G&query=${userInput}`)
       .subscribe((res: any) => {
-        let artistes = res.resultsPage.results.artist;
+        const artistes = res.resultsPage.results.artist;
         if (artistes) {
-          for (let artist of artistes) {
-            let unArtiste = new Artist(
+          for (const artist of artistes) {
+            const unArtiste = new Artist(
               artist.displayName,
               artist.id,
               artist.onTourUntil,
@@ -72,7 +72,7 @@ export class SearchByArtistService {
             this.getImgDescr(unArtiste.name)
               .subscribe((data: any) => {
                 if (data.artist) {
-                  unArtiste.image = data.artist.image[3]["#text"];
+                  unArtiste.image = data.artist.image[3]['#text'];
                   unArtiste.summary = data.artist.bio.summary;
                   artists.push(unArtiste);
                 }
@@ -89,29 +89,29 @@ export class SearchByArtistService {
   }
 
   getVenues(userInput) {
-    let venues: Venue[] = [];
+    const venues: Venue[] = [];
 
     this.http.get<any>(`https://api.songkick.com/api/3.0/search/venues.json?query=${userInput}&apikey=R82Hox7PJZDJyV0G`)
       .subscribe((res: any) => {
-        let venuess = res.resultsPage.results.venue;
+        const venuess = res.resultsPage.results.venue;
         if (venuess) {
-          for (let venue of venuess) {
-            let aVenue = new Venue(
-              venue.displayName,
-              venue.city.displayName,
-              venue.city.country.displayName,
-              venue.street,
-              venue.zip,
-              venue.uri,
-              venue.id,
-              venue.lat,
-              venue.lng,
-              venue.website,
-              venue.description
-            );
+        for (const venue of venuess) {
+          const aVenue = new Venue(
+            venue.displayName,
+            venue.city.displayName,
+            venue.city.country.displayName,
+            venue.street,
+            venue.zip,
+            venue.uri,
+            venue.id,
+            venue.lat,
+            venue.lng,
+            venue.website,
+            venue.description
+          );
 
-            venues.push(aVenue);
-          }
+          venues.push(aVenue);
+        }
         }
       });
 
@@ -119,123 +119,192 @@ export class SearchByArtistService {
   }
 
   getCities(userInput) {
-    let cities: City[] = [];
+    const cities: City[] = [];
     this.http.get<any>(`https://api.songkick.com/api/3.0/search/locations.json?query=${userInput}&apikey=R82Hox7PJZDJyV0G`)
       .subscribe((data: any) => {
-        let citiesTable = data.resultsPage.results.location;
+        const citiesTable = data.resultsPage.results.location;
         if (citiesTable) {
-          for (let city of citiesTable) {
-            let aCity = new City(
-              city.metroArea.id,
-              city.metroArea.uri,
-              city.city.displayName,
-              city.metroArea.country.displayName,
-              city.metroArea.lat,
-              city.metroArea.lng
-            );
-            cities.push(aCity);
-          }
+        for (const city of citiesTable) {
+          const aCity = new City(
+            city.metroArea.id,
+            city.metroArea.uri,
+            city.city.displayName,
+            city.metroArea.country.displayName,
+            city.metroArea.lat,
+            city.metroArea.lng
+          );
+          cities.push(aCity);
         }
+      }
       });
 
     return cities;
   }
 
-  getVenueConcerts(venueId) {
-    let concerts: Concert[] = [];
+   getVenueConcerts(venueId) {
+     const concerts: Concert[] = [];
 
-    this.http.get<any>(`https://api.songkick.com/api/3.0/venues/${venueId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
-      .subscribe((reponse: any) => {
-        let concertTable = reponse.resultsPage.results.event;
-        if (concertTable) {
-          for (let concert of concertTable) {
-            let aConcert = new Concert(
+     this.http.get<any>(`https://api.songkick.com/api/3.0/venues/${venueId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
+     .subscribe((reponse: any) => {
+      const concertTable = reponse.resultsPage.results.event;
+      if (concertTable) {
+        for (const concert of concertTable) {
+          if (concert.type === 'Concert') {
+            const aConcert = new Concert(
               concert.displayName,
               concert.performance[0].displayName,
               concert.venue.displayName,
+              concert.venue.id,
               concert.id,
+              concert.status,
               concert.uri,
               concert.location.city,
               concert.location.lat,
               concert.location.lng,
               concert.start.datetime,
               concert.start.date,
-              concert.performance[0].artist.id
+              concert.performance[0].artist.id,
             );
             concerts.push(aConcert);
-          }
-        }
-      });
-
-    return concerts;
-  }
-
-  getCityConcerts(cityId) {
-    let concerts: Concert[] = [];
-
-    this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
-      .subscribe((reponse: any) => {
-        let concertTable = reponse.resultsPage.results.event;
-        if (concertTable) {
-          for (let concert of concertTable) {
-            let aConcert = new Concert(
+          } else {
+            const aConcert = new Concert(
               concert.displayName,
               concert.performance[0].displayName,
               concert.venue.displayName,
+              concert.venue.id,
               concert.id,
+              concert.status,
               concert.uri,
               concert.location.city,
               concert.location.lat,
               concert.location.lng,
               concert.start.datetime,
               concert.start.date,
-              concert.performance[0].artist.id
+              concert.performance[0].artist.id,
+              concert.end.date
             );
             concerts.push(aConcert);
           }
+
         }
+      }
       });
 
     return concerts;
-  }
+   }
 
-  getArtistConcerts(artistId) {
-    let concerts: Concert[] = [];
+   getCityConcerts(cityId) {
+     const concerts: Concert[] = [];
 
-    this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
-      .subscribe((reponse: any) => {
-        let concertTable = reponse.resultsPage.results.event;
-        if (concertTable) {
-          for (let concert of concertTable) {
-            let aConcert = new Concert(
-              concert.displayName,
-              concert.performance[0].displayName,
-              concert.venue.displayName,
-              concert.id,
-              concert.uri,
-              concert.location.city,
-              concert.location.lat,
-              concert.location.lng,
-              concert.start.datetime,
-              concert.start.date
-            );
-            concerts.push(aConcert);
+     this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
+     .subscribe((reponse: any) => {
+          const concertTable = reponse.resultsPage.results.event;
+          if (concertTable) {
+            for (const concert of concertTable) {
+              if (concert.type === 'Concert') {
+                const aConcert = new Concert(
+                  concert.displayName,
+                  concert.performance[0].displayName,
+                  concert.venue.displayName,
+                  concert.venue.id,
+                  concert.id,
+                  concert.status,
+                  concert.uri,
+                  concert.location.city,
+                  concert.location.lat,
+                  concert.location.lng,
+                  concert.start.datetime,
+                  concert.start.date,
+                  concert.performance[0].artist.id,
+                );
+                concerts.push(aConcert);
+              } else {
+                const aConcert = new Concert(
+                  concert.displayName,
+                  concert.performance[0].displayName,
+                  concert.venue.displayName,
+                  concert.venue.id,
+                  concert.id,
+                  concert.status,
+                  concert.uri,
+                  concert.location.city,
+                  concert.location.lat,
+                  concert.location.lng,
+                  concert.start.datetime,
+                  concert.start.date,
+                  concert.performance[0].artist.id,
+                  concert.end.date
+                );
+                concerts.push(aConcert);
+              }
+
+            }
           }
+          });
+          return concerts;
         }
-      });
+
+   getArtistConcerts(artistId) {
+    const concerts: Concert[] = [];
+
+     this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
+     .subscribe((reponse: any) => {
+              const concertTable = reponse.resultsPage.results.event;
+              if (concertTable) {
+              for (const concert of concertTable) {
+                if (concert.type === 'Concert') {
+                  const aConcert = new Concert(
+                    concert.displayName,
+                    concert.performance[0].displayName,
+                    concert.venue.displayName,
+                    concert.venue.id,
+                    concert.id,
+                    concert.status,
+                    concert.uri,
+                    concert.location.city,
+                    concert.location.lat,
+                    concert.location.lng,
+                    concert.start.datetime,
+                    concert.start.date,
+                    concert.performance[0].artist.id,
+                  );
+                  concerts.push(aConcert);
+                } else {
+                  const aConcert = new Concert(
+                    concert.displayName,
+                    concert.performance[0].displayName,
+                    concert.venue.displayName,
+                    concert.venue.id,
+                    concert.id,
+                    concert.status,
+                    concert.uri,
+                    concert.location.city,
+                    concert.location.lat,
+                    concert.location.lng,
+                    concert.start.datetime,
+                    concert.start.date,
+                    concert.performance[0].artist.id,
+                    concert.end.date
+                  );
+                  concerts.push(aConcert);
+                }
+
+              }
+            }
+          });
 
     return concerts;
   }
 
   getSimilarArtists(artistId) {
-    let SimilarArtists: SimilarArtist[] = [];
+    const SimilarArtists: SimilarArtist[] = [];
 
     this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/similar_artists.json?apikey=R82Hox7PJZDJyV0G&page=1`)
       .subscribe((res: any) => {
-        let simArtistesTable = res.resultsPage.results.artist;
+        const simArtistesTable = res.resultsPage.results.artist;
         if (simArtistesTable) {
-          for (let simArtist of simArtistesTable) {
-            let unSimilarArtiste = new SimilarArtist(
+          for (const simArtist of simArtistesTable) {
+            const unSimilarArtiste = new SimilarArtist(
               simArtist.displayName,
               simArtist.id,
               simArtist.onTourUntil,
@@ -245,8 +314,7 @@ export class SearchByArtistService {
               this.getImgDescr(unSimilarArtiste.name)
               .subscribe((data: any) => {
                 if (data.artist) {
-                  unSimilarArtiste.image = data.artist.image[2]["#text"];
-
+                  unSimilarArtiste.image = data.artist.image[2]['#text'];
                   SimilarArtists.push(unSimilarArtiste);
                 }
               });

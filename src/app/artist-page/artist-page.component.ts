@@ -32,7 +32,7 @@ export class ArtistPageComponent implements OnInit {
       } else {
       this._searchByArtistService.getOneArtist(this.artistId)
         .subscribe(res => {
-          let obj = res.resultsPage.results.artist;
+          const obj = res.resultsPage.results.artist;
           this.artist = new Artist(
               obj.displayName,
               obj.id,
