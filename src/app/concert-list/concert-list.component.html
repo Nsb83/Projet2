@@ -4,7 +4,7 @@
       <ul *ngFor="let concert of concerts | paginate: { itemsPerPage: 5, currentPage: page } ">
         <li class="list-group-item shadow bg-white rounded">
           <div class="row">
-            <div class="col-4 d-flex">
+            <div class="col-4 d-flex mr-2">
               <div *ngIf="concert.dateTime">
                 <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
                 <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
@@ -12,14 +12,13 @@
                   <a class="disabledBtn btn btn-sm" target='blank' role="button">Cancelled</a>
                 </div>
                 <div *ngIf="concert.status == 'ok'"><a class="btn btn-sm" href='{{concert.uri}}' target='blank' role="button" disabled>Buy ticket</a></div>
-                
               </div>
               <div *ngIf="!concert.dateTime">
                 <p class="date">{{ concert.date | date :'mediumDate' }}</p>
                 <a class="btn btn-sm" href='{{concert.uri}}' target='blank' role="button">Buy ticket</a>
               </div>
             </div>
-            <div class="col-8">
+            <div class="col-7">
               <div *ngIf="!concert.dateTime">
                 <p class="artistName">{{ concert.name }}</p>
                 <p *ngIf="concert.venueName != 'Unknown venue'" class="groupName">{{ concert.venueName }}</p>
