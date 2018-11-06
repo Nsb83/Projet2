@@ -25,19 +25,19 @@ export class CityPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.cityId = params['id'];
-      if (this._searchByArtistService.chosenCity && this._searchByArtistService.chosenCity.id === this.cityId) {
+      if (this._searchByArtistService.chosenCity && this._searchByArtistService.getChosenCity().id === this.cityId) {
         this.city = this._searchByArtistService.getChosenCity();
       } else {
       this._searchByArtistService.getOneCity(this.cityId)
         .subscribe(res => {
-          let obj = res.resultsPage.results.event[0].venue;
+          const obj = res.resultsPage.results.event[0];
           this.city = new City(
-              obj.metroArea.id,
-              obj.metroArea.uri,
-              obj.metroArea.displayName,
-              obj.metroArea.country.displayName,
-              obj.lat,
-              obj.lng
+              obj.venue.metroArea.id,
+              obj.venue.metroArea.uri,
+              obj.venue.metroArea.displayName,
+              obj.venue.metroArea.country.displayName,
+              obj.location.lat,
+              obj.location.lng
             );
         });
       }

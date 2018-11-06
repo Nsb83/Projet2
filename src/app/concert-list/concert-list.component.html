@@ -21,14 +21,14 @@
             <div class="col-7">
               <div *ngIf="!concert.dateTime">
                 <p class="artistName">{{ concert.name }}</p>
-                <p *ngIf="concert.venueName != 'Unknown venue'" class="groupName">{{ concert.venueName }}</p>
-                <p class="groupName">Festival in {{ concert.city }}</p>
+                <p *ngIf="concert.venueName != 'Unknown venue'" class="groupName"><a routerLink='/venue/{{ concert.venueId }}'>{{ concert.venueName }}</a></p>
+                <p class="groupName">Festival in <a routerLink='/city/{{ concert.cityId }}'>{{ concert.city }}</a></p>
                 <!-- <p class="groupName">{{ concert.artistName }}</p> -->
               </div>
               <div *ngIf="concert.dateTime">
                 <p class="artistName">{{ concert.artistName }}</p>
-                <a routerLink='/venue/{{ concert.venueId }}'><p class="venueName">{{ concert.venueName }}</p></a>
-                <p class="groupName">{{ concert.city }}</p>
+                <p class="venueName"><a routerLink='/venue/{{ concert.venueId }}'>{{ concert.venueName }}</a></p>
+                <p class="groupName"><a routerLink='/city/{{ concert.cityId }}'>{{ concert.city }}</a></p>
               </div>
             </div>
           </div>
