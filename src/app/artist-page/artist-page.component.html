@@ -1,7 +1,14 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div *ngIf='artist'>
+    <div class="row">
+      <div class="col-lg-6">
     <app-artist-img [artist]='artist'></app-artist-img>
+    </div>
+    <div class="col-lg-6">
+    <app-artist-video [artist]='artist'></app-artist-video>
+  </div>
+</div>
   </div>
   <div *ngIf="concerts.length">
     <div class="row">

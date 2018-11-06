@@ -6,6 +6,7 @@ import { Venue } from './Venue';
 import { City } from './City';
 import { Concert } from './Concert';
 import { SimilarArtist } from './similar-artist'
+import { Video } from './Video'
 
 @Injectable({
   providedIn: "root"
@@ -256,4 +257,27 @@ export class SearchByArtistService {
       });
   return SimilarArtists;
   }
+  getArtistVideo(artistName) {
+    let Videos: Video[] = []
+      this.http.get<any>(`https://www.googleapis.com/youtube/v3/search?q=${artistName}&key=AIzaSyCKvW8IJW1k9S3Lh9gIIHsBmhid8FCvORo&part=snippet`)
+      .subscribe((res: any) => {
+        let videosTable = res.items;
+        if (videosTable) {
+          for (let video of videosTable) {
+            let uneVideo = new Video(
+              video.id.kind,
+              video.id.channelId,
+              video.id.videoId,
+              video.snippet.title
+            );
+            Videos.push(uneVideo);
+              
+          }
+        }
+      })
+      console.log(Videos);      
+    return Videos;
+  }
+  
+
 }
