@@ -3,6 +3,7 @@
     artistName: string;
     venueName: string;
     id: number;
+    status: string;
     uri: string;
     city: string;
     lat: number;
@@ -10,24 +11,28 @@
     dateTime: string;
     date: string;
     artistId: number;
+    endingDate: string;
 
     constructor (
         name: string,
         artistName: string,
         venueName: string,
         id: number,
+        status: string,
         uri: string,
         city: string,
         lat: number,
         lng: number,
         dateTime: string,
         date?: string,
-        artistId?: number
+        artistId?: number,
+        endingDate?: string
         ) {
         this.name = name;
         this.artistName = artistName;
         this.venueName = venueName;
         this.id = id;
+        this.status = status;
         this.uri = uri;
         this.city = city;
         this.lat = lat;
@@ -35,5 +40,6 @@
         this.dateTime = dateTime;
         this.date = date;
         this.artistId = artistId;
+        this.endingDate = endingDate;
      }
  }

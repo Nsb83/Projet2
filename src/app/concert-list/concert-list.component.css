@@ -40,6 +40,19 @@ ul.ngx.pagination.responsive {
     width:6em;
 }
 
+.btn.disabledBtn{
+    opacity: 0.65;
+    background-color: crimson;
+    color: white;
+    cursor: not-allowed;
+}
+
+.btn.disabledBtn:hover{
+    color:white;
+}
+
+
+
 @media screen and (max-width: 400px) {
     .btn{
         background-color:#7d3c98;
