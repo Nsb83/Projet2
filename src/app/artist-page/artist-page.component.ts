@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Artist } from '../Artist';
 import { Concert } from '../Concert';
 import { SimilarArtist } from '../similar-artist';
+import { Video } from '../Video';
 
 @Component({
   selector: 'app-artist-page',
@@ -22,7 +23,8 @@ export class ArtistPageComponent implements OnInit {
   artistId: number;
   concerts: Concert[];
   SimilarArtists: SimilarArtist[];
-
+  
+  artistName: string;
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
@@ -53,6 +55,7 @@ export class ArtistPageComponent implements OnInit {
         if (!this.concerts.length) {
           this.SimilarArtists = this._searchByArtistService.getSimilarArtists(this.artistId);
         }
+        
     });
   }
 
