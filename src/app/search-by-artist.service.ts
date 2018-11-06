@@ -16,7 +16,7 @@ export class SearchByArtistService {
   public chosenVenue: Venue;
   public chosenCity: City;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   setChosenArtist(chosenArtist) {
     this.chosenArtist = chosenArtist;
@@ -81,7 +81,7 @@ export class SearchByArtistService {
         }
       });
 
-     return artists;
+    return artists;
   }
 
   getImgDescr(artistName) {
@@ -112,10 +112,10 @@ export class SearchByArtistService {
 
           venues.push(aVenue);
         }
-      }
-    });
+        }
+      });
 
-      return venues;
+    return venues;
   }
 
   getCities(userInput) {
@@ -136,9 +136,9 @@ export class SearchByArtistService {
           cities.push(aCity);
         }
       }
-    });
+      });
 
-      return cities;
+    return cities;
   }
 
    getVenueConcerts(venueId) {
@@ -237,9 +237,8 @@ export class SearchByArtistService {
             }
           }
           });
-
-      return concerts;
-   }
+          return concerts;
+        }
 
    getArtistConcerts(artistId) {
     const concerts: Concert[] = [];
@@ -294,7 +293,7 @@ export class SearchByArtistService {
   getSimilarArtists(artistId) {
     const SimilarArtists: SimilarArtist[] = [];
 
-    this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/similar_artists.json?apikey=R82Hox7PJZDJyV0G`)
+    this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/similar_artists.json?apikey=R82Hox7PJZDJyV0G&page=1`)
       .subscribe((res: any) => {
         const simArtistesTable = res.resultsPage.results.artist;
         if (simArtistesTable) {
@@ -305,18 +304,18 @@ export class SearchByArtistService {
               simArtist.onTourUntil,
               simArtist.uri
             );
-
-            this.getImgDescr(unSimilarArtiste.name)
+            if (simArtist.onTourUntil != null) {
+              this.getImgDescr(unSimilarArtiste.name)
               .subscribe((data: any) => {
                 if (data.artist) {
                   unSimilarArtiste.image = data.artist.image[2]['#text'];
-                  if (simArtist.onTourUntil != null) {
-                  SimilarArtists.push(unSimilarArtiste); }
+                  SimilarArtists.push(unSimilarArtiste);
                 }
               });
+            }
           }
         }
       });
-     return SimilarArtists;
+  return SimilarArtists;
   }
 }
