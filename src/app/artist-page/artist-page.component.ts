@@ -23,7 +23,7 @@ export class ArtistPageComponent implements OnInit {
   artistId: number;
   concerts: Concert[];
   SimilarArtists: SimilarArtist[];
-  
+  videos: Video[];
   artistName: string;
 
   ngOnInit() {
@@ -31,6 +31,7 @@ export class ArtistPageComponent implements OnInit {
       this.artistId = params['id'];
       if (this._searchByArtistService.chosenArtist && this._searchByArtistService.getChosenArtist().id === this.artistId) {
         this.artist = this._searchByArtistService.getChosenArtist();
+        this.videos = this._searchByArtistService.getArtistVideo(this._searchByArtistService.getChosenArtist().name);
       } else {
       this._searchByArtistService.getOneArtist(this.artistId)
         .subscribe(res => {
@@ -41,8 +42,8 @@ export class ArtistPageComponent implements OnInit {
               obj.onTourUntil,
               obj.uri
             );
-
-            this._searchByArtistService.getImgDescr(obj.displayName)
+          this.videos = this._searchByArtistService.getArtistVideo(obj.displayName);
+          this._searchByArtistService.getImgDescr(obj.displayName)
             .subscribe(data => {
               this.artist.image = data.artist.image[3]['#text'];
               this.artist.summary = data.artist.bio.summary;
@@ -55,7 +56,6 @@ export class ArtistPageComponent implements OnInit {
         if (!this.concerts.length) {
           this.SimilarArtists = this._searchByArtistService.getSimilarArtists(this.artistId);
         }
-        
     });
   }
 

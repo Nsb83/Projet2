@@ -10,32 +10,23 @@ import { Video } from '../Video';
 })
 export class ArtistVideoComponent implements OnInit, OnChanges {
   // id =  "tAGnKpE4NCI"
-  id:string = "";
-  private player;
-  private ytEvent;
+  // id: string;
 
   constructor(
     private _searchByArtistService: SearchByArtistService,
   ) { }
 
-  videos: Video[];
-  video:Video;
-
-  // onStateChange(event) {
-  //   this.ytEvent = event.data;
-  // }
-  // savePlayer(player) {
-  //   this.player = player;
-  // }
+  public video: Video;
 
   @Input() artist: Artist;
+  @Input() videos: Video[];
 
   ngOnInit() {
 
   }
 
   ngOnChanges() {
-    this.videos = this._searchByArtistService.getArtistVideo(this.artist.name);
+    setTimeout(() => this.video = this.videos[1], 0.001);
+    // this.video = this.videos[0]
   }
-
 }

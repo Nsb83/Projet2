@@ -333,26 +333,24 @@ export class SearchByArtistService {
   }
 
   getArtistVideo(artistName) {
-    let Videos: Video[] = []
+    const Videos: Video[] = [];
       this.http.get<any>(`https://www.googleapis.com/youtube/v3/search?q=${artistName}&key=AIzaSyCKvW8IJW1k9S3Lh9gIIHsBmhid8FCvORo&part=snippet`)
       .subscribe((res: any) => {
-        let videosTable = res.items;
+        const videosTable = res.items;
         if (videosTable) {
-          for (let video of videosTable) {
-            let uneVideo = new Video(
-              video.id.kind,
-              video.id.channelId,
-              video.id.videoId,
-              video.snippet.title
-            );
+          for (const video of videosTable) {
+            if (video.id.kind === 'youtube#video') {
+              const uneVideo = new Video(
+                video.id.videoId,
+                video.snippet.title
+              );
             Videos.push(uneVideo);
-              
+            }
           }
         }
-      })
-      console.log(Videos);      
+      });
     return Videos;
   }
-  
+
 
 }
