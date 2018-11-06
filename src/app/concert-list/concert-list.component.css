@@ -32,22 +32,26 @@ ul {
 ul.ngx.pagination.responsive {
     padding : 0px;
 }
-
 .btn{
+    opacity: 0.9;
     background-color:#7d3c98;
     color:white;
     font-weight:bold;
-    width:6em;
+    width:8em;
+}
+
+.btn:hover{
+    opacity: 1;
 }
 
 .btn.disabledBtn{
-    opacity: 0.65;
     background-color: crimson;
     color: white;
     cursor: not-allowed;
 }
 
 .btn.disabledBtn:hover{
+    opacity: 0.5;
     color:white;
 }
 

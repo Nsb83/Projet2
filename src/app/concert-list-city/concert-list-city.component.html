@@ -26,11 +26,11 @@
                   <p class="groupName">{{ concert.city }}</p>
                 </div>
               </div>
-              <div *ngIf="concert.status == 'cancelled'">
+              <div *ngIf="concert.status == 'cancelled'" class="col-md-3 col-sm-4 align-self-center text-center smartphone">
                   <a class="disabledBtn btn btn-sm" target='blank' role="button">Cancelled</a>
               </div>
-              <div *ngIf="concert.status == 'ok'">
-                  <a class="btn btn-sm" href='{{concert.uri}}' target='blank' role="button" disabled>Buy ticket</a>
+              <div *ngIf="concert.status == 'ok'" class="col-md-3 col-sm-4 align-self-center text-center smartphone">
+                  <a class="btn btn-sm" href='{{concert.uri}}' target='blank' role="button">Buy ticket</a>
               </div>
             </div>
           </li>

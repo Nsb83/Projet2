@@ -31,10 +31,28 @@ ul {
 }
 
 .btn{
+    opacity: 0.9;
     background-color:#7d3c98;
     color:white;
     font-weight:bold;
     width:8em;
+}
+
+.btn:hover{
+    opacity: 1;
+}
+
+
+
+.btn.disabledBtn{
+    background-color: crimson;
+    color: white;
+    cursor: not-allowed;
+}
+
+.btn.disabledBtn:hover{
+    opacity: 0.5;
+    color:white;
 }
 
 @media screen and (max-width: 400px) {
