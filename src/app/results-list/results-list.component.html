@@ -18,15 +18,15 @@
         All
         <span class="badge badge-primary badge-pill">{{ artists.length + venues.length + cities.length }}</span>
       </a>
-      <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showArtists()'>
+      <a class="list-group-item d-flex justify-content-between align-items-center" [ngClass]="{'disabledFilter': !artists.length}" (click)='showArtists()'>
         Artists
         <span class="badge badge-primary badge-pill">{{ artists.length }}</span>
       </a>
-      <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showVenues()'>
+      <a class="list-group-item d-flex justify-content-between align-items-center" [ngClass]="{'disabledFilter': !venues.length}" (click)='showVenues()'>
         Venues
         <span class="badge badge-primary badge-pill">{{ venues.length }}</span>
       </a>
-      <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showCities()'>
+      <a class="list-group-item d-flex justify-content-between align-items-center" [ngClass]="{'disabledFilter': !cities.length}" (click)='showCities()'>
         Cities
         <span class="badge badge-primary badge-pill">{{ cities.length }}</span>
       </a>
