@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -10,6 +10,8 @@ import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from '@ng-bootstrap
 export class DatePickerComponent implements OnInit {
 
   constructor() { }
+
+  @Output() datesMinMax = new EventEmitter<String[]>();
 
   get today() {
     return new Date();
@@ -26,7 +28,7 @@ export class DatePickerComponent implements OnInit {
   }
 
   onSubmit(dateMin, dateMax) {
-    console.log('From:', this.convertDate(dateMin), 'To:', this.convertDate(dateMax));
+    this.datesMinMax.emit([this.convertDate(dateMin), this.convertDate(dateMax)]);
   }
 
   ngOnInit() {

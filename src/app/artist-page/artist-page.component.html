@@ -4,6 +4,7 @@
     <app-artist-img [artist]='artist'></app-artist-img>
   </div>
   <div *ngIf="concerts.length">
+    <app-date-picker (datesMinMax)="onReceivingDates($event)"></app-date-picker>
     <div class="row">
       <div class="col-lg-6">
         <app-concert-list [concerts]='concerts'></app-concert-list>

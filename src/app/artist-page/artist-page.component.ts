@@ -56,4 +56,8 @@ export class ArtistPageComponent implements OnInit {
     });
   }
 
+  onReceivingDates(dates: String[]) {
+    console.log('From:', dates[0], 'To:', dates[1]);
+  }
+
 }

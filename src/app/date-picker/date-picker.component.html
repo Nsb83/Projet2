@@ -1,23 +1,15 @@
+<form class="form-inline">
+  <div class="form-group">
+    <input class="form-control m-1" placeholder="from" name="d2" (click)="d2.toggle()" [(ngModel)]="dateMin" ngbDatepicker #d2="ngbDatepicker">
+    <input class="form-control m-1" placeholder="to" name="d3" (click)="d3.toggle()" [(ngModel)]="dateMax" ngbDatepicker #d3="ngbDatepicker">
+    <button (click)="onSubmit(dateMin, dateMax)" class="btn m-1" type="button">Filter</button>
+  </div>
+</form>
 
-<div class="container text-center">
-  <form class="form-inline">
-    <div class="form-group">
-      <div class="input-group">
-        <!-- <button class="btn input-group-append" type="button"><i class="fas fa-calendar-alt"></i></button> -->
-        <input class="form-control m-1" placeholder="from" name="d2" (click)="d2.toggle()" [(ngModel)]="dateMin" ngbDatepicker #d2="ngbDatepicker">
-        <input class="form-control m-1" placeholder="to" name="d3" (click)="d3.toggle()" [(ngModel)]="dateMax" ngbDatepicker #d3="ngbDatepicker">
-        <button (click)="onSubmit(dateMin, dateMax)" class="btn m-1" type="button">Filter</button>
-      </div>
-    </div>
-  </form>
 <!--   
   <hr/>
   <button class="btn btn-sm btn-outline-primary" (click)="dateMin = today; dateMax = today">Select Today</button>
-  <hr/> -->
-</div>
+  <hr/> 
 
-
-
-
-<!-- <p>{{ date | json }}</p> -->
-<!-- <p>{{ date2 | json}}</p> -->
+  <button class="btn input-group-append" type="button"><i class="fas fa-calendar-alt"></i></button>
+-->
