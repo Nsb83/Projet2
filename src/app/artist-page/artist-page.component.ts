@@ -31,7 +31,7 @@ export class ArtistPageComponent implements OnInit {
       this.artistId = params['id'];
       if (this._searchByArtistService.chosenArtist && this._searchByArtistService.getChosenArtist().id === this.artistId) {
         this.artist = this._searchByArtistService.getChosenArtist();
-        this.videos = this._searchByArtistService.getArtistVideo(this._searchByArtistService.getChosenArtist().name);
+        this.videos = this._searchByArtistService.getArtistVideo(this.artist.name);
       } else {
       this._searchByArtistService.getOneArtist(this.artistId)
         .subscribe(res => {

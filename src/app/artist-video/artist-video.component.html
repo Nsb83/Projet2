@@ -1,8 +1,8 @@
-<div *ngIf="video">
+<div *ngIf="videos.length != 0">
   <div class="row d-flex justify-content-center">
     <div class="col-md-6 col-12">
       <youtube-player 
-      [videoId]="video.videoId" 
+      [videoId]="videos[0].videoId" 
       (ready)="savePlayer($event)"
       >
       </youtube-player>

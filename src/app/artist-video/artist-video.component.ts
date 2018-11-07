@@ -16,7 +16,7 @@ export class ArtistVideoComponent implements OnInit, OnChanges {
     private _searchByArtistService: SearchByArtistService,
   ) { }
 
-  public video: Video;
+  // public video: Video;
 
   @Input() artist: Artist;
   @Input() videos: Video[];
@@ -24,12 +24,11 @@ export class ArtistVideoComponent implements OnInit, OnChanges {
   player: YT.Player;
 
   ngOnInit() {
-console.log(this.videos);
-
+  console.log(this.videos);
   }
 
   ngOnChanges() {
-    setTimeout(() => this.video = this.videos[0]);
+    // setTimeout(() => this.video = this.videos[0]);
   }
 
   savePlayer(player) {
