@@ -2,15 +2,39 @@
 <div class="container">
   <div *ngIf='artist'>
     <div class="row">
-      <div class="col-lg-12">
-        <app-artist-img [artist]='artist'></app-artist-img>
+        <div class="col-md-4">
+            <h1>{{ artist.name }}</h1>
+            <img class ="img-fluid" [src]="artist.image" alt="">
+        </div>
+      <div class="col-md-8">
+              <ngb-tabset>
+                <ngb-tab title="Biography">
+                    <ng-template ngbTabContent>
+                        <app-artist-img [artist]='artist'></app-artist-img>  
+                    </ng-template>
+                  </ngb-tab>
+                  <ngb-tab title="Vidéos">
+                    <ng-template ngbTabContent>
+                        <app-artist-video [videos]='videos'></app-artist-video>
+                    </ng-template>
+                  </ngb-tab>
+                  <ngb-tab title="Similar Artists">
+                    <ng-template ngbTabContent>
+                        <div *ngIf='SimilarArtists.length'>
+                            <app-similar-artist [SimilarArtists]='SimilarArtists'></app-similar-artist>
+                          </div>
+                        <div *ngIf='!SimilarArtists.length'>
+                            <p class="info">This artist has no equivalent :) Sorry !</p>
+                        </div>
+                    </ng-template>
+                  </ngb-tab>
+                </ngb-tabset>
+            </div>
         <hr>
       </div>
-      <div class="col-lg-12">
-        <app-artist-video [videos]='videos'></app-artist-video>
-      </div>
+    
     </div>
-  </div>
+  
   <hr>
   <div *ngIf="concerts.length">
     <div class="row">
@@ -23,14 +47,8 @@
     </div>
   </div>
   <div *ngIf='!concerts.length'>
-      <div *ngIf='SimilarArtists.length'>
-        <p class="info">This artist is not on tour at the moment, but you can look at those artists who are :</p>
-        <app-similar-artist [SimilarArtists]='SimilarArtists'></app-similar-artist>
-      </div>
-    <div *ngIf='!SimilarArtists.length'>
       <p class="info">This artist is not on tour at the moment, and we have nothing more to show you, sorry ! :(</p>
-    </div>
   </div>
-
+</div>
 
 

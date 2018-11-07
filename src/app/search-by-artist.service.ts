@@ -343,7 +343,7 @@ export class SearchByArtistService {
               const uneVideo = new Video(
                 video.id.videoId,
                 video.snippet.title,
-                video.snippet.thumbnails.medium.url
+                video.snippet.thumbnails.default.url
               );
             Videos.push(uneVideo);
             }

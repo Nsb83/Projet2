@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyDQ0W8cM7rJsvHPWQ0g0oU9DNBhlpKr-Lc'
     }),
     AgmSnazzyInfoWindowModule,
-    YoutubePlayerModule
+    YoutubePlayerModule,
+    NgbModule.forRoot()
   ],
 
   providers: [
