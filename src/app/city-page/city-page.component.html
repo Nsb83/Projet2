@@ -20,7 +20,7 @@
     <hr>
     <div class="row mb-2">
       <div class="col-12">
-        <div class="nextConcerts">Next concerts:</div>
+        <app-date-picker (datesMinMax)="onReceivingDates($event)"></app-date-picker>
         <app-concert-list-city [concerts]='concerts'></app-concert-list-city>
       </div>
     </div>
