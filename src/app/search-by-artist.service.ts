@@ -353,5 +353,60 @@ export class SearchByArtistService {
     return Videos;
   }
 
+  getArtistConcertsFilteredByDate(artistId, dateMin, dateMax) {
+
+    const concerts: Concert[] = [];
+
+     this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=R82Hox7PJZDJyV0G&min_date=${dateMin}&max_date=${dateMax}`)
+     .subscribe((reponse: any) => {
+              const concertTable = reponse.resultsPage.results.event;
+              if (concertTable) {
+              for (const concert of concertTable) {
+                if (concert.type === 'Concert') {
+                  const aConcert = new Concert(
+                    concert.displayName,
+                    concert.performance[0].displayName,
+                    concert.venue.displayName,
+                    concert.venue.id,
+                    concert.id,
+                    concert.status,
+                    concert.uri,
+                    concert.location.city,
+                    concert.venue.metroArea.id,
+                    concert.location.lat,
+                    concert.location.lng,
+                    concert.start.datetime,
+                    concert.start.date,
+                    concert.performance[0].artist.id,
+                  );
+                  concerts.push(aConcert);
+                } else {
+                  const aConcert = new Concert(
+                    concert.displayName,
+                    concert.performance[0].displayName,
+                    concert.venue.displayName,
+                    concert.venue.id,
+                    concert.id,
+                    concert.status,
+                    concert.uri,
+                    concert.location.city,
+                    concert.venue.metroArea.id,
+                    concert.location.lat,
+                    concert.location.lng,
+                    concert.start.datetime,
+                    concert.start.date,
+                    concert.performance[0].artist.id,
+                    concert.end.date
+                  );
+                  concerts.push(aConcert);
+                }
+
+              }
+            }
+          });
+
+    return concerts;
+
+  }
 
 }

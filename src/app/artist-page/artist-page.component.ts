@@ -60,7 +60,8 @@ export class ArtistPageComponent implements OnInit {
   }
 
   onReceivingDates(dates: String[]) {
-    console.log('From:', dates[0], 'To:', dates[1]);
+    // console.log('From:', dates[0], 'To:', dates[1]);
+    this.concerts = this._searchByArtistService.getArtistConcertsFilteredByDate(this.artistId, dates[0], dates[1]);
   }
 
 }
