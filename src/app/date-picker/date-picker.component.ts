@@ -31,6 +31,10 @@ export class DatePickerComponent implements OnInit {
     this.datesMinMax.emit([this.convertDate(dateMin), this.convertDate(dateMax)]);
   }
 
+  onClearingFilters() {
+    this.datesMinMax.emit(['', '']);
+  }
+
   ngOnInit() {
 
   }

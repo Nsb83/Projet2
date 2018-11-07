@@ -1,22 +1,24 @@
 
 <div class="container mb-1 date-filter">
+  <h5>Filter by date:</h5>
   <form class="form-inline">
     <div class="form-group">
       <div class="row">
         <div class="col-5 col-sm-4 mt-1">
-          <div class="datepicker-container" (click)="d2.toggle()">
-            <input id="datepicker-mindate" class="form-control" type="text" readonly placeholder="From" name="d2" [(ngModel)]="dateMin" ngbDatepicker #d2="ngbDatepicker">
-            <img class="ui-datepicker-trigger" src="../../assets/images/calendar.png" alt="calendar icon">
+          <div class="datepicker-container">
+            <input id="datepicker-mindate" class="form-control" (click)="d2.toggle()" type="text" readonly placeholder="From" name="d2" [(ngModel)]="dateMin" ngbDatepicker #d2="ngbDatepicker" >
+            <img class="ui-datepicker-trigger" src="../../assets/images/calendar2.png" alt="calendar icon" (click)="d2.toggle()">
           </div>
         </div>
         <div class="col-5 col-sm-4 mt-1">
-          <div class="datepicker-container" (click)="d3.toggle()">
-            <input class="form-control" type="text" readonly placeholder="To" name="d3" [(ngModel)]="dateMax" ngbDatepicker #d3="ngbDatepicker">
-            <img class="ui-datepicker-trigger" src="../../assets/images/calendar.png" alt="calendar icon">
+          <div class="datepicker-container">
+            <input class="form-control" type="text" (click)="d3.toggle()" readonly placeholder="To" name="d3" [(ngModel)]="dateMax" ngbDatepicker #d3="ngbDatepicker">
+            <img class="ui-datepicker-trigger" src="../../assets/images/calendar2.png" alt="calendar icon" (click)="d3.toggle()">
           </div>
         </div>
-        <div class="col-5 col-sm-4 mt-1">
-          <button (click)="onSubmit(dateMin, dateMax)" class="btn ml-1" id="filter" type="button">Filter</button>
+        <button (click)="onSubmit(dateMin, dateMax)" class="btn ml-3 mt-1" id="filter" type="button">Filter</button>
+        <div id="clear-dates-container" class="align-self-center">
+          <a id="clear-dates" (click)="onClearingFilters()">Clear filters</a>
         </div>
       </div>
     </div>

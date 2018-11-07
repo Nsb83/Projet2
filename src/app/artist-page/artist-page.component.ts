@@ -60,7 +60,11 @@ export class ArtistPageComponent implements OnInit {
   }
 
   onReceivingDates(dates: String[]) {
-    this.concerts = this._searchByArtistService.getArtistConcertsFilteredByDate(this.artistId, dates[0], dates[1]);
+    if (dates[0] !== '') {
+      this.concerts = this._searchByArtistService.getArtistConcertsFilteredByDate(this.artistId, dates[0], dates[1]);
+    } else {
+      this.concerts = this._searchByArtistService.getArtistConcerts(this.artistId);
+    }
   }
 
 }

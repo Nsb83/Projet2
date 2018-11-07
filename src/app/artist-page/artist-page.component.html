@@ -32,7 +32,7 @@
   </div>
 
   <hr>
-  <div *ngIf="artist.onTourUntil !== null">
+  <div *ngIf="artist && artist.onTourUntil !== null">
     <app-date-picker (datesMinMax)="onReceivingDates($event)"></app-date-picker>
   </div>
   <div *ngIf="concerts.length">

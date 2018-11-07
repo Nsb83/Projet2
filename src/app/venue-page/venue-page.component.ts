@@ -50,6 +50,10 @@ export class VenuePageComponent implements OnInit {
   }
 
   onReceivingDates(dates: String[]) {
-    this.concerts = this._searchByArtistService.getVenueConcertsFilteredByDate(this.venueId, dates[0], dates[1]);
+    if (dates[0] !== '') {
+      this.concerts = this._searchByArtistService.getVenueConcertsFilteredByDate(this.venueId, dates[0], dates[1]);
+    } else {
+      this.concerts = this._searchByArtistService.getVenueConcerts(this.venueId);
+    }
   }
 }
