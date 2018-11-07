@@ -1,7 +1,13 @@
-.cityName, .nextConcerts{
+.cityName{
     font-size:1.5em;
     font-weight: bold;
-    color:black;
+    color:  #B30E38 ;
+}
+
+.nextConcerts{
+    font-size:1.5em;
+    font-weight: bold;
+    color: #85929E    ;
 }
 
 .cityCountry{
