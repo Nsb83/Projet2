@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Artist } from '../Artist';
 import { Concert } from '../Concert';
 import { SimilarArtist } from '../similar-artist';
+import { Video } from '../Video';
 
 @Component({
   selector: 'app-artist-page',
@@ -22,13 +23,15 @@ export class ArtistPageComponent implements OnInit {
   artistId: number;
   concerts: Concert[];
   SimilarArtists: SimilarArtist[];
-
+  videos: Video[];
+  artistName: string;
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.artistId = params['id'];
       if (this._searchByArtistService.chosenArtist && this._searchByArtistService.getChosenArtist().id === this.artistId) {
         this.artist = this._searchByArtistService.getChosenArtist();
+        this.videos = this._searchByArtistService.getArtistVideo(this.artist.name);
       } else {
       this._searchByArtistService.getOneArtist(this.artistId)
         .subscribe(res => {
@@ -39,8 +42,8 @@ export class ArtistPageComponent implements OnInit {
               obj.onTourUntil,
               obj.uri
             );
-
-            this._searchByArtistService.getImgDescr(obj.displayName)
+          this.videos = this._searchByArtistService.getArtistVideo(obj.displayName);
+          this._searchByArtistService.getImgDescr(obj.displayName)
             .subscribe(data => {
               this.artist.image = data.artist.image[3]['#text'];
               this.artist.summary = data.artist.bio.summary;

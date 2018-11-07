@@ -1,0 +1,23 @@
+<div *ngIf="videos.length != 0">
+  <div class="row d-flex justify-content-center mt-3">
+    <div class="col-lg-6 mr-0 d-flex justify-content-center">
+      <youtube-player 
+      [videoId]="videos[0].videoId" 
+      (ready)="savePlayer($event)"
+      [width]="300"
+      [height]="300"
+      >
+      </youtube-player>
+    </div>
+    <div class="col-lg-6 mt-0 playlist">
+      <div class="row" *ngFor="let element of videos">
+          <div class="col-4 ">
+        <img [src]="element.thumbnail" class="img-fluid m-1" alt="bla" (click)="onChoosingVideo(element.videoId)">
+        </div>
+        <div class="col-6 Title">
+        {{ element.title }}
+        </div>
+      </div>
+    </div>
+  </div>      
+</div>
