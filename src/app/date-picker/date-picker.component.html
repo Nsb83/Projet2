@@ -1,3 +1,8 @@
-<p>
-  date-picker works!
-</p>
+<div class="container text-center">
+  <input type="text" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="date"/>
+  <button (click)="d.toggle()">Toggle</button>
+</div>
+
+
+<p>{{ date | json }}</p>
+<!-- <p>{{ date2 | json}}</p> -->

@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatePickerComponent implements OnInit {
 
+
+  date;
+  date2;
+
   constructor() { }
 
+
   ngOnInit() {
+    // this.date2 = this.date.year + '-' + this.date.month + '-' + this.date.day;
   }
 
 }

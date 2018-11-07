@@ -23,8 +23,9 @@ import { CityPageComponent } from './city-page/city-page.component';
 import { ConcertListCityComponent } from './concert-list-city/concert-list-city.component';
 import { MapCityComponent } from './map-city/map-city.component';
 import { SimilarArtistComponent } from './similar-artist/similar-artist.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
   { path: 'venue/:id', component: VenuePageComponent },
   { path: 'city/:id', component: CityPageComponent },
   { path: 'datePicker', component: DatePickerComponent }
-]
+];
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyDQ0W8cM7rJsvHPWQ0g0oU9DNBhlpKr-Lc'
     }),
     AgmSnazzyInfoWindowModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
 
   providers: [
