@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SearchByArtistService } from '../search-by-artist.service';
 import { Artist } from '../Artist';
 import { Video } from '../Video';
@@ -8,15 +8,11 @@ import { Video } from '../Video';
   templateUrl: './artist-video.component.html',
   styleUrls: ['./artist-video.component.css']
 })
-export class ArtistVideoComponent implements OnInit, OnChanges {
-  // id =  "tAGnKpE4NCI"
-  // id: string;
+export class ArtistVideoComponent implements OnInit {
 
   constructor(
     private _searchByArtistService: SearchByArtistService,
   ) { }
-
-  // public video: Video;
 
   @Input() artist: Artist;
   @Input() videos: Video[];
@@ -24,11 +20,6 @@ export class ArtistVideoComponent implements OnInit, OnChanges {
   player: YT.Player;
 
   ngOnInit() {
-  console.log(this.videos);
-  }
-
-  ngOnChanges() {
-    // setTimeout(() => this.video = this.videos[0]);
   }
 
   savePlayer(player) {
