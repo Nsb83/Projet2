@@ -3,23 +3,19 @@
   <form class="form-inline">
     <div class="form-group">
       <div class="input-group">
-        <input class="form-control" placeholder="yyyy-mm-dd" name="d2" #c2="ngModel" [(ngModel)]="dateMin" ngbDatepicker #d2="ngbDatepicker">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
-        </div>
+        <!-- <button class="btn input-group-append" type="button"><i class="fas fa-calendar-alt"></i></button> -->
+        <input class="form-control m-1" placeholder="from" name="d2" (click)="d2.toggle()" [(ngModel)]="dateMin" ngbDatepicker #d2="ngbDatepicker">
+        <input class="form-control m-1" placeholder="to" name="d3" (click)="d3.toggle()" [(ngModel)]="dateMax" ngbDatepicker #d3="ngbDatepicker">
+        <button (click)="onSubmit(dateMin, dateMax)" class="btn m-1" type="button">Filter</button>
       </div>
     </div>
   </form>
-  
+<!--   
   <hr/>
-  <button class="btn btn-sm btn-outline-primary" (click)="dateMin = today">Select Today</button>
-  <hr/>
-  
-  
-  <pre>Model: {{ dateMin | json }}</pre>
-  <pre>State: {{ c2.status }}</pre>
-  <!-- <pre>Date bonne : {{ dateMinBonne }}</pre> -->
+  <button class="btn btn-sm btn-outline-primary" (click)="dateMin = today; dateMax = today">Select Today</button>
+  <hr/> -->
 </div>
+
 
 
 

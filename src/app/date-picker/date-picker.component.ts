@@ -12,7 +12,7 @@ export class DatePickerComponent implements OnInit {
   constructor() { }
 
   get today() {
-    return this.convertDate(new Date());
+    return new Date();
   }
 
   convertDate(date) {
@@ -23,6 +23,10 @@ export class DatePickerComponent implements OnInit {
             (mm > 9 ? '' : '0') + mm,
             (dd > 9 ? '' : '0') + dd
            ].join('-');
+  }
+
+  onSubmit(dateMin, dateMax) {
+    console.log('From:', this.convertDate(dateMin), 'To:', this.convertDate(dateMax));
   }
 
   ngOnInit() {
