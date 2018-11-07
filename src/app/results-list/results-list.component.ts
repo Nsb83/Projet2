@@ -35,8 +35,8 @@ export class ResultsListComponent implements OnInit {
   public filterVenues: boolean = true;
   public filterCities: boolean = true;
 
-  public buttonColor: string = '#000';
-
+  //public buttonColor: string = '#000';
+  public isAvailable: boolean = true;
 
   @HostListener('window:resize')
   onResize() {this.currentWindowWidth = window.innerWidth}
@@ -65,8 +65,11 @@ export class ResultsListComponent implements OnInit {
     this._searchbyArtistService.setChosenCity(chosenCity);
   }
 
-  changeColorClick() {
-    this.buttonColor = '#7d3c98';
+  clickFilterColor() {
+    console.log ('ca marche!');
+    this.buttonColor = '#F20344; 
+    }
+    
   }
 
   showArtists() {
