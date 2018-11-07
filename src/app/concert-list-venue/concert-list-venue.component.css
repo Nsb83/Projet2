@@ -42,8 +42,6 @@ ul {
     opacity: 1;
 }
 
-
-
 .btn.disabledBtn{
     background-color: crimson;
     color: white;
@@ -53,6 +51,12 @@ ul {
 .btn.disabledBtn:hover{
     opacity: 0.5;
     color:white;
+}
+
+.nextConcerts{
+    font-size:1.5em;
+    font-weight: bold;
+    color:#283747;
 }
 
 @media screen and (max-width: 400px) {

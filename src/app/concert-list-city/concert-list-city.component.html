@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+      <div class="nextConcerts">Next concerts:</div>
       <ul *ngFor="let concert of concerts | paginate: { itemsPerPage: 5, currentPage: page } ">
         <li class="list-group-item shadow bg-white rounded">
           <div class="row">

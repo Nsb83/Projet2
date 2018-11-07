@@ -24,7 +24,6 @@ export class ArtistVideoComponent implements OnInit {
 
   savePlayer(player) {
     this.player = player;
-    console.log('player instance', player);
   }
 
   onChoosingVideo(videoId) {
