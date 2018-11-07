@@ -32,10 +32,10 @@
   </div>
 
   <hr>
+  <app-date-picker (datesMinMax)="onReceivingDates($event)"></app-date-picker>
   <div *ngIf="concerts.length">
     <div class="row">
       <div class="col-lg-6">
-        <app-date-picker (datesMinMax)="onReceivingDates($event)"></app-date-picker>
         <app-concert-list [concerts]='concerts'></app-concert-list>
       </div>
       <div class="col-lg-6">

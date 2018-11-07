@@ -1,7 +1,8 @@
 <div *ngIf='artist'>
   <div class="container">
     <div class="row mt-2">
-      <div  [innerHtml]="artist.summary"></div>
+      <div>{{ artist.summary.slice(0, artist.summary.indexOf("<")) }}</div>
+      <a href='{{ artist.summary.slice(artist.summary.indexOf("https"), artist.summary.indexOf("\">")) }}' target="blank">Read more about {{ artist.name }} on Last.fm</a>
     </div>
   </div>
 </div>
