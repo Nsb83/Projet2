@@ -112,6 +112,9 @@ a:not([href]):not([tabindex]):hover {
   pointer-events: none;
 }
 
+.activedButton {
+  background-color:#1F618D;
+}
 /* .imgVenue {
   max-width: 7rem;
   max-height: 7rem;
