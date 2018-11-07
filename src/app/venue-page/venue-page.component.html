@@ -42,6 +42,7 @@
   <div *ngIf="concerts">
     <div class="row mb-2">
         <div class="col-12">
+          <app-date-picker (datesMinMax)="onReceivingDates($event)"></app-date-picker>
           <app-concert-list-venue [concerts]='concerts'></app-concert-list-venue>
         </div>
     </div>
