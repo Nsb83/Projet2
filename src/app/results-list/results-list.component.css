@@ -62,17 +62,6 @@ a:not([href]):not([tabindex]):hover {
   background-color: white;
 }
 
-.available{
-  color:green;
-}
-.unavailable{
-  color:red;
-}
-
-
-/* btn.btn-primary :active {
-  background-color : grey !important;
-} */
 
 @media (max-width: 992px) {
   .results {
