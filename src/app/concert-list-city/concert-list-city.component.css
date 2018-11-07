@@ -53,10 +53,10 @@ ul {
     color:white;
 }
 
-.nextConcerts{
+.nextConcerts {
     font-size:1.5em;
     font-weight: bold;
-    color:#283747;
+    color: #85929E    ;
 }
 
 @media screen and (max-width: 400px) {
