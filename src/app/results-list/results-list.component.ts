@@ -65,12 +65,11 @@ export class ResultsListComponent implements OnInit {
     this._searchbyArtistService.setChosenCity(chosenCity);
   }
 
-  clickFilterColor() {
-    console.log ('ca marche!');
-    this.buttonColor = '#F20344; 
-    }
-    
-  }
+  // clickFilterColor() {
+  //   console.log ('ca marche!');
+  //   this.buttonColor = '#F20344; 
+  //   }
+
 
   showArtists() {
     this.filterArtists = true;

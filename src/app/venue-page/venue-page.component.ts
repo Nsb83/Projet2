@@ -24,12 +24,12 @@ export class VenuePageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.venueId = params['id'];
-      if (this._searchByArtistService.chosenVenue) {
+      if (this._searchByArtistService.chosenVenue && this._searchByArtistService.getChosenVenue().id === this.venueId) {
         this.venue = this._searchByArtistService.getChosenVenue();
       } else {
         this._searchByArtistService.getOneVenue(this.venueId)
         .subscribe(res => {
-          let obj = res.resultsPage.results.venue;
+          const obj = res.resultsPage.results.venue;
           this.venue = new Venue(
             obj.displayName,
             obj.city.displayName,

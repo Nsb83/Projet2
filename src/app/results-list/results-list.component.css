@@ -118,6 +118,10 @@ a:not([href]):not([tabindex]):hover {
   }
 }
 
+.disabledFilter {
+  opacity: 0.7;
+  pointer-events: none;
+}
 
 /* .imgVenue {
   max-width: 7rem;

@@ -4,8 +4,8 @@ export class SimilarArtist {
     id: number;
     onTourUntil: string;
     uri: string;
-  
-  
+
+
     constructor (name: string,
       id: number,
       onTourUntil: string,
