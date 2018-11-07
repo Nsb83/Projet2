@@ -1,10 +1,24 @@
 
-<div class="container mb-1">
+<div class="container mb-1 date-filter">
   <form class="form-inline">
     <div class="form-group">
-      <input class="form-control m-1" placeholder="from" name="d2" (click)="d2.toggle()" [(ngModel)]="dateMin" ngbDatepicker #d2="ngbDatepicker">
-      <input class="form-control m-1" placeholder="to" name="d3" (click)="d3.toggle()" [(ngModel)]="dateMax" ngbDatepicker #d3="ngbDatepicker">
-      <button (click)="onSubmit(dateMin, dateMax)" class="btn m-1" type="button">Filter</button>
+      <div class="row">
+        <div class="col-5 col-sm-4 mt-1">
+          <div class="datepicker-container" (click)="d2.toggle()">
+            <input id="datepicker-mindate" class="form-control" type="text" readonly placeholder="From" name="d2" [(ngModel)]="dateMin" ngbDatepicker #d2="ngbDatepicker">
+            <img class="ui-datepicker-trigger" src="../../assets/images/calendar.png" alt="calendar icon">
+          </div>
+        </div>
+        <div class="col-5 col-sm-4 mt-1">
+          <div class="datepicker-container" (click)="d3.toggle()">
+            <input class="form-control" type="text" readonly placeholder="To" name="d3" [(ngModel)]="dateMax" ngbDatepicker #d3="ngbDatepicker">
+            <img class="ui-datepicker-trigger" src="../../assets/images/calendar.png" alt="calendar icon">
+          </div>
+        </div>
+        <div class="col-5 col-sm-4 mt-1">
+          <button (click)="onSubmit(dateMin, dateMax)" class="btn ml-1" id="filter" type="button">Filter</button>
+        </div>
+      </div>
     </div>
   </form>
 </div>
