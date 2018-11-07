@@ -106,14 +106,14 @@ a:not([href]):not([tabindex]):hover {
   }
 }
 
-<<<<<<< HEAD
-=======
 .disabledFilter {
   opacity: 0.7;
   pointer-events: none;
 }
 
->>>>>>> 2e4860b5623476722ee0ae22717c5cdefb1c6567
+.activedButton {
+  background-color:#1F618D;
+}
 /* .imgVenue {
   max-width: 7rem;
   max-height: 7rem;

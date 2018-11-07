@@ -1,12 +1,12 @@
 <div *ngIf="userInput">
   <div class="filtre row d-flex justify-content-center fixed-top" *ngIf="currentWindowWidth < 992">
-    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showAll()'>All
+    <div class="m-0 p-2"><button type="button" [ngClass]="{'activedButton': activeButtonAll}" class="btn btn-primary p-2" (click)='showAll()'>All
       ({{ artists.length + venues.length + cities.length }})</button></div>
-    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showArtists()' [disabled]="!artists.length">Artists
+    <div class="m-0 p-2"><button type="button" [ngClass]="{'activedButton': activeButtonArtists}" class="btn btn-primary p-2" (click)='showArtists()' [disabled]="!artists.length">Artists
         ({{artists.length}})</button></div>
-    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showVenues()' [disabled]="!venues.length">Venues
+    <div class="m-0 p-2"><button type="button" [ngClass]="{'activedButton': activeButtonVenues}" class="btn btn-primary p-2" (click)='showVenues()' [disabled]="!venues.length">Venues
         ({{venues.length}})</button></div>
-    <div class="m-0 p-2"><button type="button" class="btn btn-primary p-2" (click)='showCities()' [disabled]="!cities.length">Cities
+    <div class="m-0 p-2"><button type="button" [ngClass]="{'activedButton': activeButtonCities}" class="btn btn-primary p-2" (click)='showCities()' [disabled]="!cities.length">Cities
         ({{cities.length}})</button></div>
   </div>
 </div>
@@ -16,19 +16,19 @@
     <ul class="list-group">
       <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showAll()'>
         All
-        <span class="badge badge-primary badge-pill">{{ artists.length + venues.length + cities.length }}</span>
+        <span [ngClass]="{'activedButton': activeButtonAll}" class="badge badge-primary badge-pill">{{ artists.length + venues.length + cities.length }}</span>
       </a>
       <a class="list-group-item d-flex justify-content-between align-items-center" [ngClass]="{'disabledFilter': !artists.length}" (click)='showArtists()'>
         Artists
-        <span class="badge badge-primary badge-pill">{{ artists.length }}</span>
+        <span [ngClass]="{'activedButton': activeButtonArtists}" class="badge badge-primary badge-pill">{{ artists.length }}</span>
       </a>
       <a class="list-group-item d-flex justify-content-between align-items-center" [ngClass]="{'disabledFilter': !venues.length}" (click)='showVenues()'>
         Venues
-        <span class="badge badge-primary badge-pill">{{ venues.length }}</span>
+        <span [ngClass]="{'activedButton': activeButtonVenues}" class="badge badge-primary badge-pill">{{ venues.length }}</span>
       </a>
       <a class="list-group-item d-flex justify-content-between align-items-center" [ngClass]="{'disabledFilter': !cities.length}" (click)='showCities()'>
         Cities
-        <span class="badge badge-primary badge-pill">{{ cities.length }}</span>
+        <span [ngClass]="{'activedButton': activeButtonCities}" class="badge badge-primary badge-pill">{{ cities.length }}</span>
       </a>
     </ul>
   </div>
