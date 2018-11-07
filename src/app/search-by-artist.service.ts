@@ -6,6 +6,7 @@ import { Venue } from './Venue';
 import { City } from './City';
 import { Concert } from './Concert';
 import { SimilarArtist } from './similar-artist';
+import { Video } from './Video';
 
 @Injectable({
   providedIn: 'root'
@@ -330,4 +331,27 @@ export class SearchByArtistService {
       });
   return SimilarArtists;
   }
+
+  getArtistVideo(artistName) {
+    const Videos: Video[] = [];
+      this.http.get<any>(`https://www.googleapis.com/youtube/v3/search?q=${artistName}&key=AIzaSyCKvW8IJW1k9S3Lh9gIIHsBmhid8FCvORo&part=snippet`)
+      .subscribe((res: any) => {
+        const videosTable = res.items;
+        if (videosTable) {
+          for (const video of videosTable) {
+            if (video.id.kind === 'youtube#video') {
+              const uneVideo = new Video(
+                video.id.videoId,
+                video.snippet.title,
+                video.snippet.thumbnails.default.url
+              );
+            Videos.push(uneVideo);
+            }
+          }
+        }
+      });
+    return Videos;
+  }
+
+
 }
