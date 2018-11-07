@@ -198,7 +198,6 @@ export class SearchByArtistService {
 
    getCityConcerts(cityId) {
      const concerts: Concert[] = [];
-
      this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
      .subscribe((reponse: any) => {
           const concertTable = reponse.resultsPage.results.event;
@@ -242,17 +241,115 @@ export class SearchByArtistService {
                 );
                 concerts.push(aConcert);
               }
-
             }
           }
-          });
-          return concerts;
-        }
+        });
+        return concerts;
+    }
 
    getArtistConcerts(artistId) {
     const concerts: Concert[] = [];
+    this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
+     .subscribe((reponse: any) => {
+              const concertTable = reponse.resultsPage.results.event;
+              if (concertTable) {
+              for (const concert of concertTable) {
+                if (concert.type === 'Concert') {
+                  const aConcert = new Concert(
+                    concert.displayName,
+                    concert.performance[0].displayName,
+                    concert.venue.displayName,
+                    concert.venue.id,
+                    concert.id,
+                    concert.status,
+                    concert.uri,
+                    concert.location.city,
+                    concert.venue.metroArea.id,
+                    concert.location.lat,
+                    concert.location.lng,
+                    concert.start.datetime,
+                    concert.start.date,
+                    concert.performance[0].artist.id,
+                  );
+                  concerts.push(aConcert);
+                } else {
+                  const aConcert = new Concert(
+                    concert.displayName,
+                    concert.performance[0].displayName,
+                    concert.venue.displayName,
+                    concert.venue.id,
+                    concert.id,
+                    concert.status,
+                    concert.uri,
+                    concert.location.city,
+                    concert.venue.metroArea.id,
+                    concert.location.lat,
+                    concert.location.lng,
+                    concert.start.datetime,
+                    concert.start.date,
+                    concert.performance[0].artist.id,
+                    concert.end.date
+                  );
+                  concerts.push(aConcert);
+                }
+              }
+            }
+          });
+    return concerts;
+  }
 
-     this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=R82Hox7PJZDJyV0G`)
+  getSimilarArtists(artistId) {
+    const SimilarArtists: SimilarArtist[] = [];
+    this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/similar_artists.json?apikey=R82Hox7PJZDJyV0G&page=1`)
+      .subscribe((res: any) => {
+        const simArtistesTable = res.resultsPage.results.artist;
+        if (simArtistesTable) {
+          for (const simArtist of simArtistesTable) {
+            const unSimilarArtiste = new SimilarArtist(
+              simArtist.displayName,
+              simArtist.id,
+              simArtist.onTourUntil,
+              simArtist.uri
+            );
+            if (simArtist.onTourUntil != null) {
+              this.getImgDescr(unSimilarArtiste.name)
+              .subscribe((data: any) => {
+                if (data.artist) {
+                  unSimilarArtiste.image = data.artist.image[2]['#text'];
+                  SimilarArtists.push(unSimilarArtiste);
+                }
+              });
+            }
+          }
+        }
+      });
+  return SimilarArtists;
+  }
+
+  getArtistVideo(artistName) {
+    const Videos: Video[] = [];
+    this.http.get<any>(`https://www.googleapis.com/youtube/v3/search?q=${artistName}&key=AIzaSyCKvW8IJW1k9S3Lh9gIIHsBmhid8FCvORo&part=snippet`)
+      .subscribe((res: any) => {
+        const videosTable = res.items;
+        if (videosTable) {
+          for (const video of videosTable) {
+            if (video.id.kind === 'youtube#video') {
+              const uneVideo = new Video(
+                video.id.videoId,
+                video.snippet.title,
+                video.snippet.thumbnails.default.url
+              );
+            Videos.push(uneVideo);
+            }
+          }
+        }
+      });
+    return Videos;
+  }
+
+  getArtistConcertsFilteredByDate(artistId, dateMin, dateMax) {
+    const concerts: Concert[] = [];
+    this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=R82Hox7PJZDJyV0G&min_date=${dateMin}&max_date=${dateMax}`)
      .subscribe((reponse: any) => {
               const concertTable = reponse.resultsPage.results.event;
               if (concertTable) {
@@ -299,59 +396,112 @@ export class SearchByArtistService {
               }
             }
           });
-
     return concerts;
   }
 
-  getSimilarArtists(artistId) {
-    const SimilarArtists: SimilarArtist[] = [];
+  getCityConcertsFilteredByDate(cityId, dateMin, dateMax) {
+    const concerts: Concert[] = [];
+     this.http.get<any>(`https://api.songkick.com/api/3.0/metro_areas/${cityId}/calendar.json?apikey=R82Hox7PJZDJyV0G&min_date=${dateMin}&max_date=${dateMax}`)
+     .subscribe((reponse: any) => {
+          const concertTable = reponse.resultsPage.results.event;
+          if (concertTable) {
+            for (const concert of concertTable) {
+              if (concert.type === 'Concert') {
+                const aConcert = new Concert(
+                  concert.displayName,
+                  concert.performance[0].displayName,
+                  concert.venue.displayName,
+                  concert.venue.id,
+                  concert.id,
+                  concert.status,
+                  concert.uri,
+                  concert.location.city,
+                  concert.venue.metroArea.id,
+                  concert.location.lat,
+                  concert.location.lng,
+                  concert.start.datetime,
+                  concert.start.date,
+                  concert.performance[0].artist.id,
+                );
+                concerts.push(aConcert);
+              } else {
+                const aConcert = new Concert(
+                  concert.displayName,
+                  concert.performance[0].displayName,
+                  concert.venue.displayName,
+                  concert.venue.id,
+                  concert.id,
+                  concert.status,
+                  concert.uri,
+                  concert.location.city,
+                  concert.venue.metroArea.id,
+                  concert.location.lat,
+                  concert.location.lng,
+                  concert.start.datetime,
+                  concert.start.date,
+                  concert.performance[0].artist.id,
+                  concert.end.date
+                );
+                concerts.push(aConcert);
+              }
+            }
+          }
+        });
+        return concerts;
+  }
 
-    this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}/similar_artists.json?apikey=R82Hox7PJZDJyV0G&page=1`)
-      .subscribe((res: any) => {
-        const simArtistesTable = res.resultsPage.results.artist;
-        if (simArtistesTable) {
-          for (const simArtist of simArtistesTable) {
-            const unSimilarArtiste = new SimilarArtist(
-              simArtist.displayName,
-              simArtist.id,
-              simArtist.onTourUntil,
-              simArtist.uri
+  getVenueConcertsFilteredByDate(venueId, dateMin, dateMax){
+    const concerts: Concert[] = [];
+
+     this.http.get<any>(`https://api.songkick.com/api/3.0/venues/${venueId}/calendar.json?apikey=R82Hox7PJZDJyV0G&min_date=${dateMin}&max_date=${dateMax}`)
+     .subscribe((reponse: any) => {
+      const concertTable = reponse.resultsPage.results.event;
+      if (concertTable) {
+        for (const concert of concertTable) {
+          if (concert.type === 'Concert') {
+            const aConcert = new Concert(
+              concert.displayName,
+              concert.performance[0].displayName,
+              concert.venue.displayName,
+              concert.venue.id,
+              concert.id,
+              concert.status,
+              concert.uri,
+              concert.location.city,
+              concert.venue.metroArea.id,
+              concert.location.lat,
+              concert.location.lng,
+              concert.start.datetime,
+              concert.start.date,
+              concert.performance[0].artist.id,
             );
-            if (simArtist.onTourUntil != null) {
-              this.getImgDescr(unSimilarArtiste.name)
-              .subscribe((data: any) => {
-                if (data.artist) {
-                  unSimilarArtiste.image = data.artist.image[2]['#text'];
-                  SimilarArtists.push(unSimilarArtiste);
-                }
-              });
-            }
+            concerts.push(aConcert);
+          } else {
+            const aConcert = new Concert(
+              concert.displayName,
+              concert.performance[0].displayName,
+              concert.venue.displayName,
+              concert.venue.id,
+              concert.id,
+              concert.status,
+              concert.uri,
+              concert.location.city,
+              concert.venue.metroArea.id,
+              concert.location.lat,
+              concert.location.lng,
+              concert.start.datetime,
+              concert.start.date,
+              concert.performance[0].artist.id,
+              concert.end.date
+            );
+            concerts.push(aConcert);
           }
-        }
-      });
-  return SimilarArtists;
-  }
 
-  getArtistVideo(artistName) {
-    const Videos: Video[] = [];
-      this.http.get<any>(`https://www.googleapis.com/youtube/v3/search?q=${artistName}&key=AIzaSyCKvW8IJW1k9S3Lh9gIIHsBmhid8FCvORo&part=snippet`)
-      .subscribe((res: any) => {
-        const videosTable = res.items;
-        if (videosTable) {
-          for (const video of videosTable) {
-            if (video.id.kind === 'youtube#video') {
-              const uneVideo = new Video(
-                video.id.videoId,
-                video.snippet.title,
-                video.snippet.thumbnails.default.url
-              );
-            Videos.push(uneVideo);
-            }
-          }
         }
+      }
       });
-    return Videos;
-  }
 
+    return concerts;
+  }
 
 }

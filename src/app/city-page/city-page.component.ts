@@ -45,4 +45,10 @@ export class CityPageComponent implements OnInit {
       this.concerts = this._searchByArtistService.getCityConcerts(this.cityId);
       });
     }
+
+
+  onReceivingDates(dates: String[]) {
+    this.concerts = this._searchByArtistService.getCityConcertsFilteredByDate(this.cityId, dates[0], dates[1]);
   }
+
+}

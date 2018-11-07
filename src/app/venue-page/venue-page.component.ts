@@ -48,4 +48,8 @@ export class VenuePageComponent implements OnInit {
     this.concerts = this._searchByArtistService.getVenueConcerts(this.venueId);
     });
   }
+
+  onReceivingDates(dates: String[]) {
+    this.concerts = this._searchByArtistService.getVenueConcertsFilteredByDate(this.venueId, dates[0], dates[1]);
+  }
 }
