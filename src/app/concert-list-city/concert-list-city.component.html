@@ -1,43 +1,43 @@
 <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <ul *ngFor="let concert of concerts | paginate: { itemsPerPage: 5, currentPage: page } ">
-          <li class="list-group-item shadow bg-white rounded">
-            <div class="row">
-              <div class="col-md-2 col-sm-4">
-                <div *ngIf="concert.dateTime">
-                  <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
-                  <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
-                </div>
-                <div *ngIf="!concert.dateTime">
-                  <p class="date">{{ concert.date | date :'mediumDate' }}</p>
-                </div>
+  <div class="row">
+    <div class="col-12">
+      <ul *ngFor="let concert of concerts | paginate: { itemsPerPage: 5, currentPage: page } ">
+        <li class="list-group-item shadow bg-white rounded">
+          <div class="row">
+            <div class="col-md-2 col-sm-4">
+              <div *ngIf="concert.dateTime">
+                <p class="date">{{ concert.dateTime | date :'mediumDate' }}</p>
+                <p class="time">{{ concert.dateTime | date : 'shortTime' }}</p>
               </div>
-              <div class="col-md-7 col-sm-8">
-                <div *ngIf="!concert.dateTime">
-                  <p class="artistName">{{ concert.name }}</p>
-                  <p *ngIf="concert.venueName != 'Unknown venue'" class="groupName">{{ concert.venueName }}</p>
-                  <p class="groupName">Festival in {{ concert.city }}</p>
-                  <!-- <p class="groupName">{{ concert.artistName }}</p> -->
-                </div>
-                <div *ngIf="concert.dateTime">
-                  <a routerLink='/artist/{{ concert.artistId }}' (click)='onChoosingArtist(concert.artistId)'><p class="artistName">{{ concert.artistName }}</p></a>
-                  <a routerLink='/venue/{{ concert.venueId }}'><p class="venueName">{{ concert.venueName }}</p></a>
-                  <p class="groupName">{{ concert.city }}</p>
-                </div>
-              </div>
-              <div *ngIf="concert.status == 'cancelled'" class="col-md-3 col-sm-4 align-self-center text-center smartphone">
-                <a class="disabledBtn btn btn-sm" target='blank' role="button">Cancelled</a>
-              </div>
-              <div *ngIf="concert.status == 'ok'" class="col-md-3 col-sm-4 align-self-center text-center smartphone">
-                <a class="btn btn-sm" href='{{concert.uri}}' target='blank' role="button">Buy ticket</a>
+              <div *ngIf="!concert.dateTime">
+                <p class="date">{{ concert.date | date :'mediumDate' }}</p>
               </div>
             </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-11 p-0 d-flex justify-content-center">
-      <pagination-controls (pageChange)="onPageChange($event)" autoHide="true" responsive="true" maxSize="5" previousLabel="" nextLabel=""></pagination-controls>
+            <div class="col-md-7 col-sm-8">
+              <div *ngIf="!concert.dateTime">
+                <p class="artistName">{{ concert.name }}</p>
+                <p *ngIf="concert.venueName != 'Unknown venue'" class="groupName"><a routerLink='/venue/{{ concert.venueId }}'>{{ concert.venueName }}</a></p>
+                <p class="groupName">Festival in {{ concert.city }}</p>
+                <!-- <p class="groupName">{{ concert.artistName }}</p> -->
+              </div>
+              <div *ngIf="concert.dateTime">
+                <a routerLink='/artist/{{ concert.artistId }}' (click)='onChoosingArtist(concert.artistId)'><p class="artistName">{{ concert.artistName }}</p></a>
+                <a routerLink='/venue/{{ concert.venueId }}'><p class="venueName">{{ concert.venueName }}</p></a>
+                <p class="groupName">{{ concert.city }}</p>
+              </div>
+            </div>
+            <div *ngIf="concert.status == 'cancelled'" class="col-md-3 col-sm-4 align-self-center text-center smartphone">
+              <a class="disabledBtn btn btn-sm" target='blank' role="button">Cancelled</a>
+            </div>
+            <div *ngIf="concert.status == 'ok'" class="col-md-3 col-sm-4 align-self-center text-center smartphone">
+              <a class="btn btn-sm" href='{{concert.uri}}' target='blank' role="button">Buy ticket</a>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
+  <div class="col-11 p-0 d-flex justify-content-center">
+    <pagination-controls (pageChange)="onPageChange($event)" autoHide="true" responsive="true" maxSize="5" previousLabel="" nextLabel=""></pagination-controls>
+  </div>
+</div>

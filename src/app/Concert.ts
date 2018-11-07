@@ -7,6 +7,7 @@
     status: string;
     uri: string;
     city: string;
+    cityId: number;
     lat: number;
     lng: number;
     dateTime: string;
@@ -23,6 +24,7 @@
         status: string,
         uri: string,
         city: string,
+        cityId: number,
         lat: number,
         lng: number,
         dateTime: string,
@@ -38,6 +40,7 @@
         this.status = status;
         this.uri = uri;
         this.city = city;
+        this.cityId = cityId;
         this.lat = lat;
         this.lng = lng;
         this.dateTime = dateTime;
