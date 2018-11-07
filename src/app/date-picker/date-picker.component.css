@@ -27,8 +27,14 @@
   filter: drop-shadow(1px 1px 1px #283747);
 }
 
-h5 {
-  color: #283747;
+.nextConcerts{
+  font-size:1.5em;
+  font-weight: bold;
+  color: #6F7887;
+}
+
+.dateTitle{
+  color: #CA3727;
 }
 
 #clear-dates-container {

@@ -55,12 +55,6 @@ ul.ngx.pagination.responsive {
     color:white;
 }
 
-.nextConcerts{
-    font-size:1.5em;
-    font-weight: bold;
-    color: #85929E    ;
-}
-
 @media screen and (max-width: 400px) {
     .btn{
         background-color:#7d3c98;

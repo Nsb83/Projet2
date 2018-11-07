@@ -1,6 +1,6 @@
 
 <div class="container mb-1 date-filter">
-  <h5>Filter by date:</h5>
+  <div class="nextConcerts">Filter concerts by <span class="dateTitle">date:</span></div>
   <form class="form-inline">
     <div class="form-group">
       <div class="row">
@@ -16,9 +16,9 @@
             <img class="ui-datepicker-trigger" src="../../assets/images/calendar2.png" alt="calendar icon" (click)="d3.toggle()">
           </div>
         </div>
-        <button (click)="onSubmit(dateMin, dateMax)" class="btn ml-3 mt-1" id="filter" type="button">Filter</button>
+        <button (click)="onSubmit(dateMin, dateMax)" class="btn btn-light ml-3 mt-1" id="filter" type="button">Filter</button>
         <div id="clear-dates-container" class="align-self-center">
-          <a id="clear-dates" (click)="onClearingFilters()">Clear filters</a>
+          <a id="clear-dates" (click)="onClearingFilters()">Reset filters</a>
         </div>
       </div>
     </div>
