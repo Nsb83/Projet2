@@ -1,0 +1,14 @@
+img {
+    cursor: pointer;
+}
+
+.playlist {
+    height: 300px;
+    overflow: scroll;
+}
+
+.Title {
+    font-size: 12px;
+    padding-top:15px;
+}
+

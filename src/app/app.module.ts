@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -23,10 +24,11 @@ import { CityPageComponent } from './city-page/city-page.component';
 import { ConcertListCityComponent } from './concert-list-city/concert-list-city.component';
 import { MapCityComponent } from './map-city/map-city.component';
 import { SimilarArtistComponent } from './similar-artist/similar-artist.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { FormsModule } from '@angular/forms';
 
+import { YoutubePlayerModule } from 'ngx-youtube-player';
+import { ArtistVideoComponent } from './artist-video/artist-video.component';
 
 
 
@@ -61,6 +63,7 @@ const appRoutes: Routes = [
     MapCityComponent,
     SimilarArtistComponent,
     DatePickerComponent,
+    ArtistVideoComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,9 @@ const appRoutes: Routes = [
     }),
     AgmSnazzyInfoWindowModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    YoutubePlayerModule,
+    NgbModule
   ],
 
   providers: [
