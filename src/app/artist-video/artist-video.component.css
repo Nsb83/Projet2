@@ -1,0 +1,9 @@
+img {
+    width: 150px;
+    cursor: pointer;
+}
+
+.playlist {
+    height: 270.4px;
+    overflow: scroll;
+}

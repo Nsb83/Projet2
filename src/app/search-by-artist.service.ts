@@ -342,7 +342,8 @@ export class SearchByArtistService {
             if (video.id.kind === 'youtube#video') {
               const uneVideo = new Video(
                 video.id.videoId,
-                video.snippet.title
+                video.snippet.title,
+                video.snippet.thumbnails.medium.url
               );
             Videos.push(uneVideo);
             }

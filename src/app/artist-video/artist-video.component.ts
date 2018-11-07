@@ -21,12 +21,23 @@ export class ArtistVideoComponent implements OnInit, OnChanges {
   @Input() artist: Artist;
   @Input() videos: Video[];
 
+  player: YT.Player;
+
   ngOnInit() {
+console.log(this.videos);
 
   }
 
   ngOnChanges() {
-    setTimeout(() => this.video = this.videos[1], 0.001);
-    // this.video = this.videos[0]
+    setTimeout(() => this.video = this.videos[0]);
+  }
+
+  savePlayer(player) {
+    this.player = player;
+    console.log('player instance', player);
+  }
+
+  onChoosingVideo(videoId) {
+    this.player.loadVideoById(videoId);
   }
 }

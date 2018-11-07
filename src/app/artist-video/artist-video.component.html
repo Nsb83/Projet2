@@ -1,12 +1,17 @@
 <div *ngIf="video">
-  <div class="row">
-    <!-- <div *ngFor="let video of videos"> -->
-      <div class="col-4">
-        <youtube-player 
-        [videoId]="video.videoId" 
-        >
-        </youtube-player>
-      </div>
-    <!-- </div> -->
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 col-12">
+      <youtube-player 
+      [videoId]="video.videoId" 
+      (ready)="savePlayer($event)"
+      >
+      </youtube-player>
+    </div>
+    <div class="playlist">
+      <span *ngFor="let element of videos">
+        <img [src]="element.thumbnail" class="m-1" alt="bla" (click)="onChoosingVideo(element.videoId)">
+        <p>{{ element.title }}</p>
+      </span>
+    </div>
   </div>      
 </div>
