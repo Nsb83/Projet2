@@ -33,7 +33,7 @@ export class ResultsListComponent implements OnInit {
   public filterArtists: boolean = true;
   public filterVenues: boolean = true;
   public filterCities: boolean = true;
-
+  
   @HostListener('window:resize')
   onResize() {this.currentWindowWidth = window.innerWidth}
 
@@ -84,6 +84,8 @@ export class ResultsListComponent implements OnInit {
     this.filterVenues = false;
     this.filterCities = true;
   }
+
+
 }
 
 // https://api.songkick.com/api/3.0/artists/mbid:a523bd85-01ad-4815-aaac-2b95c1946088/calendar.json?apikey=R82Hox7PJZDJyV0G
