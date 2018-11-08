@@ -1,0 +1,37 @@
+<agm-map [latitude]="(concerts[0].lat+concerts[concerts.length-1].lat)/2" [longitude]="(concerts[0].lng+concerts[concerts.length-1].lng)/2" [zoom]="2">
+  <agm-marker
+      *ngFor='let concert of concerts; let i = index'
+      (markerClick)="showInfoWindow(infoWindow, i)"
+      [latitude]="concert.lat"
+      [longitude]="concert.lng"
+      [label]="concert.label"
+      [markerDraggable]="concert.draggable"
+      [iconUrl]="'assets/images/marker.png'"
+      (dragEnd)="markerDragEnd(concert, $event)">
+      <agm-snazzy-info-window [maxWidth]="1000"
+                              [maxHeight]="1000"
+                              [shadow]="{h: '10px',v: '4px',blur: '6px',spread: '0px',opacity: 1.9,color: 'black'}"
+                              [closeWhenOthersOpen]="true"
+                              [borderRadius]="'15px'"
+                              [padding]="'0.7em'">
+      <ng-template>
+        <div class="windows">
+          <img *ngIf="concert.status == 'cancelled'" class="cancelledShow" alt="" src="../../assets/images/cancelledStamp2.png">
+          <div *ngIf="!concert.dateTime" class="ligne">
+          <h2> <i class="fas fa-microphone-alt"></i> {{ concert.name }}</h2>
+          </div>
+          <div *ngIf="concert.dateTime" class="ligne">
+            <h2> <i class="fas fa-microphone-alt"></i> {{ concert.artistName }}</h2>
+          </div>
+          <h3 class='text-secondary'>{{ concert.dateTime | date:"short" }}</h3>
+          <div class="ligne">
+            <a routerLink='/venue/{{ concert.venueId }}'><h4><i class="fas fa-ticket-alt"></i>{{ concert.venueName }}</h4></a>
+          </div>
+          <div class="ligne">
+            <a routerLink='/city/{{ concert.cityId }}'><h5><i class="fas fa-city"></i>{{ concert.city }}</h5></a>
+          </div>
+        </div>
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
+</agm-map>

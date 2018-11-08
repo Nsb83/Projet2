@@ -1,0 +1,32 @@
+<div>
+  <agm-map [latitude]="venue.lat" [longitude]="venue.lng" [zoom]="13">
+    <agm-marker 
+        (markerClick)="showInfoWindow(infoWindow, i)"
+        [latitude]="venue.lat"
+        [longitude]="venue.lng"
+        [label]="venue.label"
+        [markerDraggable]="venue.draggable"
+        [iconUrl]="'assets/images/marker.png'"
+        (dragEnd)="markerDragEnd(venue, $event)"> 
+        <agm-snazzy-info-window [maxWidth]="800"
+                                [maxHeight]="800" 
+                                [shadow]="{h: '10px',v: '4px',blur: '6px',spread: '0px',opacity: 1.9,color: 'black'}"
+                                [closeWhenOthersOpen]="true" 
+                                [borderRadius]="'15px'" 
+                                [padding]="'0.7em'">   
+        
+        <ng-template>
+          <div class="windows"> 
+            <div class="ligne">
+              <h4><a href='{{venue.website}}' target='blank'><i class="fas fa-ticket-alt"></i>{{ venue.name }}</a></h4>
+            </div>
+            <h5 class='text-secondary'>{{ venue.street }} {{venue.zip}}</h5>
+            <div class="ligne">
+              <h5><a routerLink='/city/{{ venue.cityId }}'><i class="fas fa-city"></i>{{venue.city}}, {{ venue.country }}</a></h5>
+            </div>
+          </div>
+        </ng-template>  
+        </agm-snazzy-info-window>
+    </agm-marker>
+  </agm-map>
+</div>

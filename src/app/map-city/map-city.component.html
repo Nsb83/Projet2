@@ -1,0 +1,34 @@
+<agm-map [latitude]="city.lat" [longitude]="city.lng" [zoom]="13">
+  <agm-marker
+      *ngFor="let concert of concerts; let i = index"
+      (markerClick)="showInfoWindow(infoWindow, i)"
+      [latitude]="concert.lat"
+      [longitude]="concert.lng"
+      [label]="concert.label"
+      [markerDraggable]="concert.draggable"
+      [iconUrl]="'assets/images/marker.png'"
+      (dragEnd)="markerDragEnd(concert, $event)">
+      <agm-snazzy-info-window [maxWidth]="800"
+                              [maxHeight]="800"
+                              [shadow]="{h: '10px',v: '4px',blur: '6px',spread: '0px',opacity: 1.9,color: 'black'}"
+                              [closeWhenOthersOpen]="true"
+                              [borderRadius]="'15px'"
+                              [padding]="'0.7em'">
+
+      <ng-template>
+        <div class="windows">
+          <div class="ligne">
+            <a routerLink='/artist/{{ concert.artistId }}'><h2><i class="fas fa-microphone-alt"></i>{{ concert.artistName }}</h2></a>
+          </div>
+          <h3 class='text-secondary'>{{ concert.dateTime | date:"short" }}</h3>
+          <div class="ligne">
+            <a routerLink='/venue/{{ concert.venueId }}'><h4><i class="fas fa-ticket-alt"></i>{{ concert.venueName }}</h4></a>
+          </div>
+          <div class="ligne">
+            <h5><i class="fas fa-city"></i>{{ concert.city }}</h5>
+          </div>
+        </div>
+      </ng-template>
+      </agm-snazzy-info-window>
+  </agm-marker>
+</agm-map>

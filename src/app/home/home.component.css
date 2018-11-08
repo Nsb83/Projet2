@@ -1,0 +1,31 @@
+.container-fluid {
+    height: 100vh;
+    background-image: url(https://hebergeur-images.com/up/23f9e731ba63a91ec9d7fbcd8a7934dd.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+
+h1 {
+    color: white;
+    padding-top: 40vh;
+    font-size: 5vw;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 10vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  h1 {
+    font-size: 8vw;
+  }
+}

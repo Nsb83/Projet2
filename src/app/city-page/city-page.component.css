@@ -1,0 +1,23 @@
+.cityName{
+    font-size:1.5em;
+    font-weight: bold;
+    color:  #B30E38 ;
+}
+
+.cityCountry{
+    font-size:1em;
+}
+
+.cityUri{
+    font-size:1em;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+.info {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+}

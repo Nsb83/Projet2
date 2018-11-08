@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div *ngIf='artist'>
+    <div class="row">
+      <div class="col-md-4 artistName">
+        <h1>{{ artist.name }}</h1>
+        <div *ngIf="artist.image">
+          <img class="img-fluid" [src]="artist.image" alt="">
+        </div>
+      <div *ngIf="!artist.image">
+        <img class="img-fluid placeholder" src="../../assets/images/artistPlaceholder.png" alt="">
+      </div>
+      </div>
+      <div class="col-md-8">
+        <ngb-tabset>
+          <ngb-tab title="Biography">
+            <ng-template ngbTabContent>
+              <app-artist-img [artist]='artist'></app-artist-img>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Videos">
+            <ng-template ngbTabContent>
+              <app-artist-video [videos]='videos'></app-artist-video>
+            </ng-template>
+          </ngb-tab>
+          <div *ngIf='SimilarArtists.length'>
+            <ngb-tab title="Similar Artists">
+              <ng-template ngbTabContent>
+                <app-similar-artist [SimilarArtists]='SimilarArtists'></app-similar-artist>
+              </ng-template>
+            </ngb-tab>
+          </div>
+        </ngb-tabset>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+  <hr>
+  <div *ngIf="artist && artist.onTourUntil !== null">
+    <app-date-picker (datesMinMax)="onReceivingDates($event)"></app-date-picker>
+  </div>
+  <div *ngIf="concerts.length">
+    <div class="row">
+      <div class="col-lg-6 mt-3">
+        <app-concert-list [concerts]='concerts'></app-concert-list>
+      </div>
+      <div class="col-lg-6 mt-3">
+        <app-map [concerts]='concerts'></app-map>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="artist && artist.onTourUntil === null">
+    <p class="info">This artist is not on tour at the moment, sorry ! :(</p>
+  </div>
+  <div *ngIf="artist && !concerts.length && artist.onTourUntil !== null">
+    <p class="info">We can't seem to find any concerts... Try to change the date filters!</p>
+  </div>
+</div>

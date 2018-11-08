@@ -1,0 +1,9 @@
+button{
+    border-radius:20em;
+    font-size:1.7em;
+    min-width:6em;
+}
+
+.container {
+    margin-top: 100px;
+}

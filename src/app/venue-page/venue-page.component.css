@@ -1,0 +1,27 @@
+.venueDescription{
+    font-size:1em;
+}
+
+.venueName{
+    font-size:1.5em;
+    font-weight: bold;
+    color: #B30E38;
+}
+
+.venueStreet{
+    font-size:1em;
+}
+
+.venueCountry{
+    font-size:1em;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+.info {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+}

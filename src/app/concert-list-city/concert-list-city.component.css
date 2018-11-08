@@ -1,0 +1,73 @@
+.groupName {
+    font-size: 15px;
+    line-height: 1;
+    margin-bottom: 7px;
+}
+
+.artistName  {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #1F618D;
+} 
+
+.date {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #283747;
+}
+
+.time {
+    font-size: 15px;
+    line-height: 1;
+    margin-bottom: 5px;
+    color: #283747;
+}
+
+
+ul {
+    padding-left: 0px;
+}
+
+.btn{
+    opacity: 0.9;
+    background-color:#7d3c98;
+    color:white;
+    font-weight:bold;
+    width:8em;
+}
+
+.btn:hover{
+    opacity: 1;
+}
+
+.btn.disabledBtn{
+    background-color: crimson;
+    color: white;
+    cursor: not-allowed;
+}
+
+.btn.disabledBtn:hover{
+    opacity: 0.5;
+    color:white;
+}
+
+.nextConcerts {
+    font-size:1.5em;
+    font-weight: bold;
+    color: #85929E    ;
+}
+
+@media screen and (max-width: 400px) {
+    .btn{
+        background-color:#7d3c98;
+        color:white;
+        font-weight:bold;
+        width:8em;
+        text-align:center;
+    }
+    .smartphone, .time, .date, .artistName, .groupName, p {
+        text-align:center;
+    }
+  }

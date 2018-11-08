@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row d-flex justify-content-around mt-3">
+    <div class="col-12 playlist">
+    <ng-container  *ngFor="let SimilarArtist of SimilarArtists | slice:0:9 ; let i=index">
+      <ul class="list" *ngIf='SimilarArtist.onTourUntil'>
+        <div class="col-12 cadre">
+          <div class="row">
+            <div *ngIf="SimilarArtist.image" class="col-6 col-sm-4 imgArt"><img class="img-fluid simArtPic" [src]="SimilarArtist.image" alt=""></div>
+            <div *ngIf="!SimilarArtist.image" class="col-6 col-sm-4 imgArt"><img class="img-fluid simArtPic" src="../../assets/images/artistPlaceholder.png" alt=""></div>
+            <div class="col-6 col-sm-8 txtArt">
+              <p class="artistName"><a routerLink='/artist/{{ SimilarArtist.id }}'>{{ SimilarArtist.name }}</a></p>
+              <p class="date"> On tour Until : {{ SimilarArtist.onTourUntil | date :'mediumDate' }}</p>
+            </div>
+          </div>
+        </div>
+      </ul>
+    </ng-container>
+  </div>
+</div>

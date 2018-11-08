@@ -1,0 +1,51 @@
+@media screen and (max-width: 100000px) {
+  h2{
+    font-size:1.4em;
+  }
+  
+  h3,h4,h5{
+    font-size:1.2em;
+  }
+  
+  
+  .windows{
+    min-width:17em;
+    max-width:25em;
+    text-align:center;
+  }
+
+  agm-map {
+    height: 550px;
+  }
+
+  i {
+    color: black;
+    margin-right:2.5%;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  h2{
+    font-size:1.1em;
+  }
+  
+  h3,h4,h5{
+    font-size: 1em;
+  }
+
+  .windows{
+    min-width:12em;
+    max-width:15em;
+    text-align:center;
+  }
+
+  agm-map {
+    height: 400px;
+  }
+
+  i {
+    color: black;
+    margin-right:2.5%;
+  }
+}

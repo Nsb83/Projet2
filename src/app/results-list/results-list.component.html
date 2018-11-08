@@ -1,0 +1,123 @@
+<div *ngIf="userInput">
+  <div class="filtre row d-flex justify-content-center fixed-top" *ngIf="currentWindowWidth < 992">
+    <div class="m-0 p-1"><button type="button" [ngClass]="{'activedButton': activeButtonAll}" class="btn btn-primary p-2" (click)='showAll()'>All
+      ({{ artists.length + venues.length + cities.length }})</button></div>
+    <div class="m-0 p-1"><button type="button" [ngClass]="{'activedButton': activeButtonArtists}" class="btn btn-primary p-2" (click)='showArtists()' [disabled]="!artists.length">Artists
+        ({{artists.length}})</button></div>
+    <div class="m-0 p-1"><button type="button" [ngClass]="{'activedButton': activeButtonVenues}" class="btn btn-primary p-2" (click)='showVenues()' [disabled]="!venues.length">Venues
+        ({{venues.length}})</button></div>
+    <div class="m-0 p-1"><button type="button" [ngClass]="{'activedButton': activeButtonCities}" class="btn btn-primary p-2" (click)='showCities()' [disabled]="!cities.length">Cities
+        ({{cities.length}})</button></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="menu col-2  position-fixed" *ngIf="currentWindowWidth >= 992">
+    <ul class="list-group">
+      <a class="list-group-item d-flex justify-content-between align-items-center" (click)='showAll()'>
+        All
+        <span [ngClass]="{'activedButton': activeButtonAll}" class="badge badge-primary badge-pill">{{ artists.length + venues.length + cities.length }}</span>
+      </a>
+      <a class="list-group-item d-flex justify-content-between align-items-center" [ngClass]="{'disabledFilter': !artists.length}" (click)='showArtists()'>
+        Artists
+        <span [ngClass]="{'activedButton': activeButtonArtists}" class="badge badge-primary badge-pill">{{ artists.length }}</span>
+      </a>
+      <a class="list-group-item d-flex justify-content-between align-items-center" [ngClass]="{'disabledFilter': !venues.length}" (click)='showVenues()'>
+        Venues
+        <span [ngClass]="{'activedButton': activeButtonVenues}" class="badge badge-primary badge-pill">{{ venues.length }}</span>
+      </a>
+      <a class="list-group-item d-flex justify-content-between align-items-center" [ngClass]="{'disabledFilter': !cities.length}" (click)='showCities()'>
+        Cities
+        <span [ngClass]="{'activedButton': activeButtonCities}" class="badge badge-primary badge-pill">{{ cities.length }}</span>
+      </a>
+    </ul>
+  </div>
+  <div class="results offset-lg-3 col-lg-9 col-md-12">
+    <span class="resultsLine">This is the results for your search about <span class="userInput">'{{ userInput }}'</span> : </span>
+    <div class="row mt-3">
+      <div class="col-12">
+        <div *ngIf="filterArtists">
+          <ul *ngFor="let artist of artists">
+            <li>
+              <div class="row align-items-center">
+                <div class="col-10">
+                  <div class="artistName">
+                    <a routerLink='/artist/{{ artist.id }}' (click)='onChoosingArtist(artist)'> {{ artist.name }}</a>
+                  </div>
+                  <div class="col-12">
+                    <span class="text-success onTour" *ngIf="artist.onTourUntil !== null"> ( On tour until {{
+                      artist.onTourUntil }} )</span>
+                    <span class="text-danger onTour" *ngIf="artist.onTourUntil === null"> ( Not on tour at the moment
+                      :/ )</span>
+                  </div>
+                </div>
+                <div class="col-2 d-flex justify-content-end">
+                  <a routerLink='/artist/{{ artist.id }}' (click)='onChoosingArtist(artist)'>
+                    <img *ngIf='artist.image != ""' class="musicNote" [src]="artist.image" alt="a music note">
+                    <img *ngIf='artist.image == ""' class="musicNote" src="../../assets/images/note.png" alt="a music note">
+                  </a>
+                </div>
+              </div>
+            </li>
+            <hr>
+          </ul>
+        </div>
+        <div *ngIf="filterCities">
+          <ul *ngFor="let city of cities">
+            <li>
+              <div class="row align-items-center">
+                <div class="col-10">
+                  <div class="artistName">
+                    <a routerLink="/city/{{city.id}}" (click)="onChoosingCity(city)"> {{ city.name }}</a>
+                  </div>
+                  <div class="col-12">
+                    <span class="onTour">({{ city.country }})</span>
+                  </div>
+                </div>
+                <div class="col-2 d-flex justify-content-end">
+                  <a routerLink="/city/{{city.id}}" (click)="onChoosingCity(city)">
+                    <img class="musicNote" src="../../assets/images/city.png" alt="city">
+                  </a>
+                </div>
+              </div>
+            </li>
+            <hr>
+          </ul>
+        </div>
+        <div *ngIf="filterVenues">
+          <div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <ul *ngFor="let venue of venues">
+                  <li>
+                    <div class="row align-items-center">
+                      <div class="col-10">
+                        <p class="artistName"><a routerLink="/venue/{{venue.id}}" (click)="onChoosingVenue(venue)">{{
+                            venue.name }}</a></p>
+                        <div class="col-12">
+                          <p class="onTour">{{ venue.street }}</p>
+                          <p class="onTour">{{venue.city}} / {{ venue.country }}</p>
+                        </div>
+                      </div>
+                      <div class="col-2 d-flex justify-content-end ">
+                        <a routerLink="/venue/{{venue.id}}" (click)="onChoosingVenue(venue)">
+                        <img class="musicNote" src="../../assets/images/ticket.png" alt="ticket">
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+                  <hr>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!userInput">
+      <div class="col-12">
+        <span class="resultsLine">Please, search for an artist with the search bar!</span>
+      </div>
+    </div>
+  </div>
+  
