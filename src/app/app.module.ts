@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { ArtistVideoComponent } from './artist-video/artist-video.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
   { path: 'artist/:id', component: ArtistPageComponent },
   { path: 'venue/:id', component: VenuePageComponent },
   { path: 'city/:id', component: CityPageComponent },
-  { path: 'datePicker', component: DatePickerComponent }
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
     SimilarArtistComponent,
     DatePickerComponent,
     ArtistVideoComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
