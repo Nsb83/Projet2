@@ -13,10 +13,8 @@ export class SimilarArtistComponent implements OnInit {
 
 @Input() SimilarArtists:SimilarArtist[];
 
-  constructor(
-  ) { }
+  constructor( ) { }
 
   ngOnInit() {
-    }
- 
+  }
 }

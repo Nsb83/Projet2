@@ -450,7 +450,7 @@ export class SearchByArtistService {
         return concerts;
   }
 
-  getVenueConcertsFilteredByDate(venueId, dateMin, dateMax){
+  getVenueConcertsFilteredByDate(venueId, dateMin, dateMax) {
     const concerts: Concert[] = [];
 
      this.http.get<any>(`https://api.songkick.com/api/3.0/venues/${venueId}/calendar.json?apikey=R82Hox7PJZDJyV0G&min_date=${dateMin}&max_date=${dateMax}`)

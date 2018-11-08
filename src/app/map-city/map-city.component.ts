@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { SearchByArtistService } from "../search-by-artist.service";
-// import { ActivatedRoute, ParamMap } from "@angular/router";
 
 import { Concert } from '../Concert';
 import { City } from '../City';

@@ -11,15 +11,15 @@ export class MapVenueComponent implements OnInit {
 
   @Input() venue: Venue;
 
-  lat: number
-  lng: number
+  lat: number;
+  lng: number;
 
   infoWindowOpened = null;
 
   constructor( ) { }
 
   ngOnInit() {
-    
+
   }
 
 }
