@@ -1,12 +1,12 @@
 <div *ngIf="userInput">
   <div class="filtre row d-flex justify-content-center fixed-top" *ngIf="currentWindowWidth < 992">
-    <div class="m-0 p-2"><button type="button" [ngClass]="{'activedButton': activeButtonAll}" class="btn btn-primary p-2" (click)='showAll()'>All
+    <div class="m-0 p-1"><button type="button" [ngClass]="{'activedButton': activeButtonAll}" class="btn btn-primary p-2" (click)='showAll()'>All
       ({{ artists.length + venues.length + cities.length }})</button></div>
-    <div class="m-0 p-2"><button type="button" [ngClass]="{'activedButton': activeButtonArtists}" class="btn btn-primary p-2" (click)='showArtists()' [disabled]="!artists.length">Artists
+    <div class="m-0 p-1"><button type="button" [ngClass]="{'activedButton': activeButtonArtists}" class="btn btn-primary p-2" (click)='showArtists()' [disabled]="!artists.length">Artists
         ({{artists.length}})</button></div>
-    <div class="m-0 p-2"><button type="button" [ngClass]="{'activedButton': activeButtonVenues}" class="btn btn-primary p-2" (click)='showVenues()' [disabled]="!venues.length">Venues
+    <div class="m-0 p-1"><button type="button" [ngClass]="{'activedButton': activeButtonVenues}" class="btn btn-primary p-2" (click)='showVenues()' [disabled]="!venues.length">Venues
         ({{venues.length}})</button></div>
-    <div class="m-0 p-2"><button type="button" [ngClass]="{'activedButton': activeButtonCities}" class="btn btn-primary p-2" (click)='showCities()' [disabled]="!cities.length">Cities
+    <div class="m-0 p-1"><button type="button" [ngClass]="{'activedButton': activeButtonCities}" class="btn btn-primary p-2" (click)='showCities()' [disabled]="!cities.length">Cities
         ({{cities.length}})</button></div>
   </div>
 </div>
