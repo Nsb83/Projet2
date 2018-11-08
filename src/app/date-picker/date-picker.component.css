@@ -1,15 +1,57 @@
-/* input {
-    border-radius:20em;
-    min-width: 150px;
-    max-width: 600px;
-  }
-  
-  button {
-    min-width:50px;
-    border-radius:20rem;
-  }
-  
-  .btn {
-    background-color : #1F618D;
-    color : #F0F3F4;
-  }  */
+
+.datepicker-container {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.date-filter input[type=text] {
+  margin-right: 0;
+  cursor: pointer;
+  width: 140px;
+  padding: 10px 40px 10px 10px;
+  box-sizing: border-box;
+}
+
+#datepicker-mindate {
+  margin-right: 5px;
+}
+
+.date-filter .ui-datepicker-trigger {
+  position: absolute;
+  width: 28px;
+  margin: 5px;
+  z-index: 1;
+  left: 70%;
+  top: 0;
+  filter: drop-shadow(1px 1px 1px #283747);
+}
+
+.nextConcerts{
+  font-size:1.5em;
+  font-weight: bold;
+  color: #6F7887;
+}
+
+.dateTitle{
+  color: #CA3727;
+}
+
+#clear-dates-container {
+  display: inline-block;
+  position: absolute;
+  line-height: 20px;
+  margin-left: 15px;
+  margin-top: 7px;
+  color: #0277ad;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+#clear-dates-container:hover {
+  opacity: 1;
+}
+
+.form-group {
+  margin-bottom: 0;
+}

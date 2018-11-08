@@ -53,11 +53,11 @@ ul {
     color:white;
 }
 
-.nextConcerts{
+/* .nextConcerts{
     font-size:1.5em;
     font-weight: bold;
-    color: #AEB6BF;
-}
+    
+} */
 
 @media screen and (max-width: 400px) {
     .btn{

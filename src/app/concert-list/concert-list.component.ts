@@ -10,7 +10,7 @@ export class ConcertListComponent implements OnInit {
 
   @Input() concerts: Concert[];
 
-  page: number = 1;
+  page = 1;
 
   constructor(
   ) { }
@@ -20,9 +20,7 @@ export class ConcertListComponent implements OnInit {
   }
 
   onPageChange(page: number) {
-    window.scrollTo({ top: 700, behavior: "smooth" });
+    window.scrollTo({ top: 700, behavior: 'smooth' });
     setTimeout(() => (this.page = page), 200);
   }
-    // this.page = page;
-  
 }

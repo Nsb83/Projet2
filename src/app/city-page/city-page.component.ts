@@ -48,7 +48,11 @@ export class CityPageComponent implements OnInit {
 
 
   onReceivingDates(dates: String[]) {
+    if (dates[0] !== '') {
     this.concerts = this._searchByArtistService.getCityConcertsFilteredByDate(this.cityId, dates[0], dates[1]);
+    } else {
+      this.concerts = this._searchByArtistService.getCityConcerts(this.cityId);
+    }
   }
 
 }
