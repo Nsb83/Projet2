@@ -14,7 +14,7 @@ export class DatePickerComponent implements OnInit {
   @Output() datesMinMax = new EventEmitter<String[]>();
 
   private dateMin: any = this.today;
-  private dateMax: any = { year: 2050, month:12, day: 31 };
+  private dateMax: any = { year: 2050, month: 12, day: 31 };
   isFiltered = false;
 
   get dateMaxObj() {
@@ -66,7 +66,7 @@ export class DatePickerComponent implements OnInit {
   onClearingFilters() {
     this.datesMinMax.emit(['', '']);
     this.dateMin = this.today;
-    this.dateMax = { year: 2050, month:12, day: 31 };
+    this.dateMax = { year: 2050, month: 12, day: 31 };
     this.isFiltered = false;
   }
 
