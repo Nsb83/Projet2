@@ -328,7 +328,7 @@ export class SearchByArtistService {
 
   getArtistVideo(artistName) {
     const Videos: Video[] = [];
-    this.http.get<any>(`https://www.googleapis.com/youtube/v3/search?q=${artistName}&key=AIzaSyCKvW8IJW1k9S3Lh9gIIHsBmhid8FCvORo&part=snippet`)
+    this.http.get<any>(`https://www.googleapis.com/youtube/v3/search?q=${artistName}&key=AIzaSyCKvW8IJW1k9S3Lh9gIIHsBmhid8FCvORo&part=snippet&maxResults=8`)
       .subscribe((res: any) => {
         const videosTable = res.items;
         if (videosTable) {

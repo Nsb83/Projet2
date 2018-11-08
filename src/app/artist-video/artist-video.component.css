@@ -10,5 +10,6 @@ img {
 .Title {
     font-size: 12px;
     padding-top:15px;
+    cursor: pointer;
 }
 
