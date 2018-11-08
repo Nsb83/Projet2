@@ -17,6 +17,11 @@
   agm-map {
     height: 550px;
   }
+
+  i {
+    float:left;
+    margin-top:2px;
+  }
 }
 
 
@@ -30,8 +35,8 @@
   }
 
   .windows{
-    min-width:10em;
-    max-width:12em;
+    min-width:13em;
+    max-width:18em;
     text-align:center;
   }
 

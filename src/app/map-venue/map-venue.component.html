@@ -6,6 +6,7 @@
         [longitude]="venue.lng"
         [label]="venue.label"
         [markerDraggable]="venue.draggable"
+        [iconUrl]="'assets/images/marker.png'"
         (dragEnd)="markerDragEnd(venue, $event)"> 
         <agm-snazzy-info-window [maxWidth]="800"
                                 [maxHeight]="800" 
@@ -16,9 +17,9 @@
         
         <ng-template>
           <div class="windows"> 
-            <h4><a href='{{venue.website}}' target='blank'>{{ venue.name }}</a></h4>
+              <div class="ligne"><i class="fas fa-ticket-alt"></i><h4><a href='{{venue.website}}' target='blank'>{{ venue.name }}</a></h4></div>
             <h5 class='text-secondary'>{{ venue.street }} {{venue.zip}}</h5>
-            <h5>{{venue.city}}, {{ venue.country }}</h5> 
+            <div class="ligne"><i class="fas fa-city"></i><h5>{{venue.city}}, {{ venue.country }}</h5></div>
           </div>
         </ng-template>  
         </agm-snazzy-info-window>
