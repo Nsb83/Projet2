@@ -1,6 +1,7 @@
 @media screen and (max-width: 100000px) {
   h2{
     font-size:1.4em;
+    text-align: center;
   }
   
   h3,h4,h5{
@@ -9,7 +10,7 @@
   
   
   .windows{
-    min-width:19em;
+    min-width:17em;
     max-width:25em;
     text-align:center;
   }
@@ -19,8 +20,8 @@
   }
 
   i {
-    float:left;
-    margin-top:2px;
+    color: black;
+    margin-right:2.5%;
   }
 }
 
@@ -36,15 +37,17 @@
   }
 
   .windows{
-    min-width:13em;
-    max-width:18em;
+    min-width:12em;
+    max-width:15em;
     text-align:center;
   }
 
   agm-map {
     height: 400px;
   }
-  i{
-    margin-right:auto;
+
+  i {
+    color: black;
+    margin-right:2.5%;
   }
 }
