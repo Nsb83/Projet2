@@ -4,7 +4,12 @@
     <div class="row">
       <div class="col-md-4 artistName">
         <h1>{{ artist.name }}</h1>
+        <div *ngIf="artist.image">
         <img class="img-fluid" [src]="artist.image" alt="">
+      </div>
+        <div *ngIf="!artist.image">
+        <img class="img-fluid placeholder" src="../../assets/images/artistPlaceholder.png" alt="">
+        </div>
       </div>
       <div class="col-md-8">
         <ngb-tabset>
