@@ -7,7 +7,7 @@
         <div *ngIf="artist.image">
           <img class="img-fluid" [src]="artist.image" alt="">
         </div>
-      <div *ngIf="!artist.image">
+      <div *ngIf="artist.summary && !artist.image">
         <img class="img-fluid placeholder" src="../../assets/images/artistPlaceholder.png" alt="">
       </div>
       </div>
