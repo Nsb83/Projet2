@@ -18,11 +18,15 @@
       <ng-template>
         <div class="windows">
           <div class="ligne">
-            <i class="fas fa-microphone-alt"></i><a routerLink='/artist/{{ concert.artistId }}'><h2>{{ concert.artistName }}</h2></a>
+            <a routerLink='/artist/{{ concert.artistId }}'><h2><i class="fas fa-microphone-alt"></i>{{ concert.artistName }}</h2></a>
           </div>
           <h3 class='text-secondary'>{{ concert.dateTime | date:"short" }}</h3>
-          <div class="ligne"><i class="fas fa-ticket-alt"></i><a routerLink='/venue/{{ concert.venueId }}'><h4>{{ concert.venueName }}</h4></a></div>
-          <div class="ligne"><i class="fas fa-city"></i><h5><a></a>{{ concert.city }}</h5></div>
+          <div class="ligne">
+            <a routerLink='/venue/{{ concert.venueId }}'><h4><i class="fas fa-ticket-alt"></i>{{ concert.venueName }}</h4></a>
+          </div>
+          <div class="ligne">
+            <h5><i class="fas fa-city"></i>{{ concert.city }}</h5>
+          </div>
         </div>
       </ng-template>
       </agm-snazzy-info-window>
