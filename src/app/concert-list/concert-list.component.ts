@@ -20,6 +20,9 @@ export class ConcertListComponent implements OnInit {
   }
 
   onPageChange(page: number) {
-    this.page = page;
+    window.scrollTo({ top: 700, behavior: "smooth" });
+    setTimeout(() => (this.page = page), 200);
   }
+    // this.page = page;
+  
 }

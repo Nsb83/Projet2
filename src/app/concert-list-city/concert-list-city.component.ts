@@ -46,6 +46,7 @@ export class ConcertListCityComponent implements OnInit {
   }
 
   onPageChange(page: number) {
-    this.page = page;
+    window.scrollTo({ top: 650, behavior: "smooth" });
+    setTimeout(() => (this.page = page), 200);
   }
 }
