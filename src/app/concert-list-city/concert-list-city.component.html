@@ -18,7 +18,6 @@
                 <p class="artistName">{{ concert.name }}</p>
                 <p *ngIf="concert.venueName != 'Unknown venue'" class="groupName"><a routerLink='/venue/{{ concert.venueId }}'>{{ concert.venueName }}</a></p>
                 <p class="groupName">Festival in {{ concert.city }}</p>
-                <!-- <p class="groupName">{{ concert.artistName }}</p> -->
               </div>
               <div *ngIf="concert.dateTime">
                 <a routerLink='/artist/{{ concert.artistId }}' (click)='onChoosingArtist(concert.artistId)'><p class="artistName">{{ concert.artistName }}</p></a>

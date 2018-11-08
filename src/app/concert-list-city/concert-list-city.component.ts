@@ -13,7 +13,7 @@ export class ConcertListCityComponent implements OnInit {
 
   @Input() concerts: Concert [];
 
-  page: number = 1;
+  page = 1;
 
   constructor(
     private _searchByArtistService: SearchByArtistService
@@ -25,8 +25,8 @@ export class ConcertListCityComponent implements OnInit {
   onChoosingArtist(artistId) {
     this._searchByArtistService.getOneArtist(artistId)
     .subscribe(res => {
-      let obj = res.resultsPage.results.artist;
-      let artist = new Artist(
+      const obj = res.resultsPage.results.artist;
+      const artist = new Artist(
           obj.displayName,
           obj.id,
           obj.onTourUntil,
@@ -41,12 +41,12 @@ export class ConcertListCityComponent implements OnInit {
 
       this._searchByArtistService.setChosenArtist(artist);
       console.log(artist);
-      
+
       });
   }
 
   onPageChange(page: number) {
-    window.scrollTo({ top: 650, behavior: "smooth" });
+    window.scrollTo({ top: 650, behavior: 'smooth' });
     setTimeout(() => (this.page = page), 200);
   }
 }
