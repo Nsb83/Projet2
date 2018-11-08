@@ -108,7 +108,8 @@ export class SearchByArtistService {
             venue.lat,
             venue.lng,
             venue.website,
-            venue.description
+            venue.description,
+            venue.city.id
           );
 
           venues.push(aVenue);

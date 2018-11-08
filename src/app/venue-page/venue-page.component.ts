@@ -41,7 +41,8 @@ export class VenuePageComponent implements OnInit {
             obj.lat,
             obj.lng,
             obj.website,
-            obj.description
+            obj.description,
+            obj.city.id
             );
           });
         }
