@@ -45,7 +45,10 @@
       </div>
     </div>
   </div>
-  <div *ngIf='!concerts.length'>
+  <div *ngIf="artist && artist.onTourUntil === null">
     <p class="info">This artist is not on tour at the moment, sorry ! :(</p>
+  </div>
+  <div *ngIf="artist && artist.onTourUntil !== null">
+    <p class="info">We can't seem to find any concerts... Try and change the date filters!</p>
   </div>
 </div>
