@@ -23,7 +23,6 @@
                 <p class="artistName">{{ concert.name }}</p>
                 <p *ngIf="concert.venueName != 'Unknown venue'" class="groupName"><a routerLink='/venue/{{ concert.venueId }}'>{{ concert.venueName }}</a></p>
                 <p class="groupName">Festival in <a routerLink='/city/{{ concert.cityId }}'>{{ concert.city }}</a></p>
-                <!-- <p class="groupName">{{ concert.artistName }}</p> -->
               </div>
               <div *ngIf="concert.dateTime">
                 <p class="artistName">{{ concert.artistName }}</p>

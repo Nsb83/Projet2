@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { Concert } from '../Concert';
 import { SearchByArtistService } from '../search-by-artist.service';
@@ -9,11 +9,11 @@ import { Artist } from '../Artist';
   templateUrl: './concert-list-venue.component.html',
   styleUrls: ['./concert-list-venue.component.css']
 })
-export class ConcertListVenueComponent implements OnInit {
+export class ConcertListVenueComponent implements OnInit, OnChanges {
 
   @Input() concerts: Concert[];
 
-  page: number = 1;
+  page = 1;
 
   constructor(
     private _searchByArtistService: SearchByArtistService
@@ -23,11 +23,15 @@ export class ConcertListVenueComponent implements OnInit {
 
   }
 
+  ngOnChanges() {
+    this.page = 1;
+  }
+
   onChoosingArtist(artistId) {
     this._searchByArtistService.getOneArtist(artistId)
     .subscribe(res => {
-      let obj = res.resultsPage.results.artist;
-      let artist = new Artist(
+      const obj = res.resultsPage.results.artist;
+      const artist = new Artist(
           obj.displayName,
           obj.id,
           obj.onTourUntil,
@@ -45,7 +49,7 @@ export class ConcertListVenueComponent implements OnInit {
   }
 
   onPageChange(page: number) {
-    window.scrollTo({ top: 600, behavior: "smooth" });
+    window.scrollTo({ top: 600, behavior: 'smooth' });
     setTimeout(() => (this.page = page), 200);
   }
 
