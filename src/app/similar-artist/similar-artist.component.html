@@ -5,13 +5,14 @@
       <ul class="list" *ngIf='SimilarArtist.onTourUntil'>
         <div class="col-12 cadre">
           <div class="row">
-          <div class="col-6 col-sm-4 imgArt"><img class="img-fluid simArtPic" [src]="SimilarArtist.image" alt=""></div>
-          <div class="col-6 col-sm-8 txtArt">
-          <p class="artistName"><a routerLink='/artist/{{ SimilarArtist.id }}'>{{ SimilarArtist.name }}</a></p>
-          <p class="date"> On tour Until : {{ SimilarArtist.onTourUntil | date :'mediumDate' }}</p>
+            <div *ngIf="SimilarArtist.image" class="col-6 col-sm-4 imgArt"><img class="img-fluid simArtPic" [src]="SimilarArtist.image" alt=""></div>
+            <div *ngIf="!SimilarArtist.image" class="col-6 col-sm-4 imgArt"><img class="img-fluid simArtPic" src="../../assets/images/artistPlaceholder.png" alt=""></div>
+            <div class="col-6 col-sm-8 txtArt">
+              <p class="artistName"><a routerLink='/artist/{{ SimilarArtist.id }}'>{{ SimilarArtist.name }}</a></p>
+              <p class="date"> On tour Until : {{ SimilarArtist.onTourUntil | date :'mediumDate' }}</p>
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
       </ul>
     </ng-container>
   </div>
