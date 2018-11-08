@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { SearchByArtistService } from '../search-by-artist.service';
 import { Artist } from '../Artist';
 import { Concert } from '../Concert';
@@ -9,7 +9,7 @@ import { Concert } from '../Concert';
   templateUrl: './concert-list-city.component.html',
   styleUrls: ['./concert-list-city.component.css']
 })
-export class ConcertListCityComponent implements OnInit {
+export class ConcertListCityComponent implements OnInit, OnChanges {
 
   @Input() concerts: Concert [];
 
@@ -20,6 +20,10 @@ export class ConcertListCityComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
+    this.page = 1;
   }
 
   onChoosingArtist(artistId) {
@@ -40,8 +44,6 @@ export class ConcertListCityComponent implements OnInit {
         });
 
       this._searchByArtistService.setChosenArtist(artist);
-      console.log(artist);
-
       });
   }
 
@@ -49,4 +51,5 @@ export class ConcertListCityComponent implements OnInit {
     window.scrollTo({ top: 650, behavior: 'smooth' });
     setTimeout(() => (this.page = page), 200);
   }
+
 }
