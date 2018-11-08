@@ -10,6 +10,7 @@ export class Venue {
   lng: number;
   website: string;
   description: string;
+  cityId: number;
 
   constructor(
     name: string,
@@ -23,6 +24,7 @@ export class Venue {
     lng: number,
     website: string,
     description: string,
+    cityId: number
   ) {
     this.name = name;
     this.city = city;
@@ -35,5 +37,6 @@ export class Venue {
     this.lng = lng;
     this.website = website;
     this.description = description;
+    this.cityId = cityId;
   }
 }
