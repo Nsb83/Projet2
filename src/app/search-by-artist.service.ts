@@ -36,7 +36,7 @@ export class SearchByArtistService {
   }
 
   getOneArtist(artistId) {
-    return this.http.get<any>(`http://api.songkick.com/api/3.0/artists/${artistId}.json?apikey=R82Hox7PJZDJyV0G`);
+    return this.http.get<any>(`https://api.songkick.com/api/3.0/artists/${artistId}.json?apikey=R82Hox7PJZDJyV0G`);
   }
 
   getChosenVenue() {
@@ -86,7 +86,7 @@ export class SearchByArtistService {
   }
 
   getImgDescr(artistName) {
-    return this.http.get<any>(`http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&autocorrect=1&api_key=9b7579d5f409106928353935ac0ab5ab&format=json`);
+    return this.http.get<any>(`https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&autocorrect=1&api_key=9b7579d5f409106928353935ac0ab5ab&format=json`);
   }
 
   getVenues(userInput) {
@@ -329,7 +329,7 @@ export class SearchByArtistService {
 
   getArtistVideo(artistName) {
     const Videos: Video[] = [];
-    this.http.get<any>(`https://www.googleapis.com/youtube/v3/search?q=${artistName}&key=AIzaSyCKvW8IJW1k9S3Lh9gIIHsBmhid8FCvORo&part=snippet&maxResults=8`)
+    this.http.get<any>(`https://www.googleapis.com/youtube/v3/search?q=music+${artistName}&key=AIzaSyCKvW8IJW1k9S3Lh9gIIHsBmhid8FCvORo&part=snippet&maxResults=8`)
       .subscribe((res: any) => {
         const videosTable = res.items;
         if (videosTable) {
